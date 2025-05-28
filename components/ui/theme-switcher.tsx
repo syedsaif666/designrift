@@ -5,14 +5,40 @@ import { useTheme } from 'next-themes';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
 const ThemeSwitcher = () => {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme, systemTheme, resolvedTheme } = useTheme();
 
-    // Avoid hydration mismatch
+    // Debug logging
+    // useEffect(() => {
+    //     console.log('Theme State:', {
+    //         currentTheme: theme,
+    //         systemTheme,
+    //         resolvedTheme,
+    //     });
+    // }, [theme, systemTheme, resolvedTheme]);
+
+    // Avoid hydration mismatch and handle system theme
     useEffect(() => {
         // Set system as default theme if none is set
         if (!theme) {
+            console.log('No theme set, defaulting to system');
             setTheme('system');
         }
+
+        // Debug system theme detection
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        console.log('System prefers dark:', mediaQuery.matches);
+
+        // Listen for system theme changes
+        const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+            console.log('System theme changed:', e.matches ? 'dark' : 'light');
+            if (theme === 'system') {
+                // Force a re-render when system theme changes
+                setTheme('system');
+            }
+        };
+
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+        return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
     }, [theme, setTheme]);
 
     if (!theme) {
@@ -23,7 +49,10 @@ const ThemeSwitcher = () => {
         <RadioGroup.Root
             className="w-fit border border-canvas-line rounded-full p-1 space-x-0.5"
             value={theme}
-            onValueChange={setTheme}
+            onValueChange={(value) => {
+                console.log('Theme changed to:', value);
+                setTheme(value);
+            }}
             aria-label="Theme selection"
         >
             {[

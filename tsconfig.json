@@ -27,6 +27,6 @@
     ],
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", "app/(website)/designrift/radix.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", "app/(website)/theme-generator/radix.js"],
   "exclude": ["node_modules"]
 }

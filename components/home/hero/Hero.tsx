@@ -51,13 +51,23 @@ export default function Hero() {
                             </h4>
                             <div className='flex flex-col gap-4'>
                                 <div className='flex flex-col gap-4 sm:flex-row'>
-                                    <Link
-                                        target='_blank'
-                                        href='https://github.com/silverthreadlabs/bloggen-seo-starter'
-                                        className='flex-1'>
+                                <Link target='_blank' href='/theme-generator' className='flex-1'>
                                         <Button
                                             color='primary'
                                             variant='solid'
+                                            size='lg'
+                                            aria-label='Generate my first blog post with Bloggen'
+                                            fullWidth
+                                            name='Create Your First Theme'>
+                                        </Button>
+                                    </Link>
+                                    <Link
+                                        target='_blank'
+                                        href='https://github.com/syedsaif666/designrift'
+                                        className='flex-1'>
+                                        <Button
+                                            color='primary'
+                                            variant='soft'
                                             size='lg'
                                             aria-label='View source code on GitHub'
                                             fullWidth
@@ -68,19 +78,10 @@ export default function Hero() {
                                             }>
                                         </Button>
                                     </Link>
-                                    <Link target='_blank' href='https://www.bloggen.dev/' className='flex-1'>
-                                        <Button
-                                            color='primary'
-                                            variant='surface'
-                                            size='lg'
-                                            aria-label='Generate my first blog post with Bloggen'
-                                            fullWidth
-                                            name='Create Your First Post'>
-                                        </Button>
-                                    </Link>
+                 
                                 </div>
 
-                                <div className='bg-canvas-bg-subtle border-canvas-line flex items-center justify-between rounded border px-4 py-3 font-mono text-sm'>
+                                {/* <div className='bg-canvas-bg-subtle border-canvas-line flex items-center justify-between rounded border px-4 py-3 font-mono text-sm'>
                                     <span className='text-fg-text-contrast inline-flex max-w-fit px-1 text-sm leading-normal font-normal tracking-normal whitespace-nowrap md:text-lg'>
                                         $ npx create-bloggen-app
                                     </span>
@@ -99,7 +100,7 @@ export default function Hero() {
                                             )
                                         }
                                     />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </motion.div>

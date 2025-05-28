@@ -13,8 +13,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NAV_ITEMS = [
-    { href: '/about', label: 'About' },
-    { href: '/blog', label: 'Blog' }
+    // { href: '/about', label: 'About' },
+    // { href: '/blog', label: 'Blog' }
     // { href: '/products', label: 'Products' },
 ];
 
@@ -44,10 +44,10 @@ export default function Header() {
                                 </li>
                             ))}
                         </ul>
-                        <Link href='/contact' className='flex-1'>
+                        {/* <Link href='/contact' className='flex-1'>
                             <Button color='primary' size='default' variant='solid' name='Contact'>
                             </Button>
-                        </Link>
+                        </Link> */}
                         {/* <Link href='https://www.bloggen.dev/' target='_blank'>
                             <Button
                                 color='primary'
