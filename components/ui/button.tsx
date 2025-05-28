@@ -24,7 +24,11 @@ const buttonVariants = cva(
         variants: {
             color: {
                 primary: '',
-                neutral: ''
+                neutral: '',
+                secondary: '',
+                outline: '',
+                ghost: '',
+                link: ''
             },
             variant: {
                 solid: '',
@@ -81,11 +85,16 @@ const buttonVariants = cva(
                 variant: 'ghost',
                 class: 'bg-transparent text-primary-text hover:bg-primary-bg-hover'
             },
+            {
+                color: 'primary',
+                variant: 'destructive',
+                class: 'bg-alert-solid text-alert-on-alert hover:bg-alert-solid-hover'
+            },
             // Neutral color variants
             {
                 color: 'neutral',
                 variant: 'solid',
-                class: 'bg-fg-text-contrast text-bg-default hover:bg-fg-text-contrast/90'
+                class: 'bg-canvas-text-contrast text-canvas-default hover:bg-canvas-text-contrast/90'
             },
             {
                 color: 'neutral',
@@ -95,7 +104,7 @@ const buttonVariants = cva(
             {
                 color: 'neutral',
                 variant: 'surface',
-                class: 'border border-canvas-border bg-canvas-bg-hover text-canvas-text hover:bg-canvas-bg-active hover:border-canvas-border-hover'
+                class: 'border border-canvas-border bg-canvas-bg text-canvas-text hover:bg-canvas-bg-hover hover:border-canvas-border-hover'
             },
             {
                 color: 'neutral',
@@ -107,6 +116,11 @@ const buttonVariants = cva(
                 variant: 'ghost',
                 class: 'bg-transparent text-canvas-text hover:bg-canvas-bg-hover'
             },
+            {
+                color: 'neutral',
+                variant: 'destructive',
+                class: 'bg-alert-solid text-alert-on-alert hover:bg-alert-solid-hover'
+            },
             // Focus ring styles based on color
             {
                 color: 'primary',
@@ -114,7 +128,7 @@ const buttonVariants = cva(
             },
             {
                 color: 'neutral',
-                class: 'focus-visible:ring-fg-solid'
+                class: 'focus-visible:ring-canvas-solid'
             },
 
             // Icon button styles
