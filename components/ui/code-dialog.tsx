@@ -1,0 +1,112 @@
+'use client'
+import React, { useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { Code, Copy, Download, X } from 'lucide-react';
+
+interface CodeDialogProps {
+  cssCode: string;
+  tailwindCode: string;
+}
+
+const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
+  const [copiedText, setCopiedText] = useState('');
+
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedText(type);
+    setTimeout(() => setCopiedText(''), 2000);
+  };
+
+  const downloadCSS = (content: string, filename: string) => {
+    const blob = new Blob([content], { type: 'text/css' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button className="flex items-center gap-2 px-4 py-2 bg-primary-solid text-primary-on-primary rounded hover:bg-primary-solid-hover transition-colors">
+          <Code size={16} />
+          Get Code
+        </button>
+      </Dialog.Trigger>
+      
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+        
+        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-3xl max-h-[85vh] bg-canvas-bg rounded-lg shadow-lg p-6 overflow-hidden">
+          <Dialog.Title className="text-xl font-bold text-canvas-text-contrast mb-4">
+            Generated Theme Code
+          </Dialog.Title>
+          
+          <div className="space-y-6 overflow-y-auto max-h-[calc(85vh-120px)] pr-2">
+            {/* CSS Variables */}
+            <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-lg font-semibold text-canvas-text-contrast">
+                  CSS Variables
+                </h3>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => copyToClipboard(cssCode, 'css')}
+                    className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
+                  >
+                    <Copy size={14} />
+                    {copiedText === 'css' ? 'Copied!' : 'Copy'}
+                  </button>
+                  <button
+                    onClick={() => downloadCSS(cssCode, 'global.css')}
+                    className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
+                  >
+                    <Download size={14} />
+                    Download
+                  </button>
+                </div>
+              </div>
+              <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-x-auto max-h-64">
+                {cssCode}
+              </pre>
+            </div>
+
+            {/* Tailwind Config */}
+            <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-lg font-semibold text-canvas-text-contrast">
+                  Tailwind Configuration
+                </h3>
+                <button
+                  onClick={() => copyToClipboard(tailwindCode, 'tailwind')}
+                  className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
+                >
+                  <Copy size={14} />
+                  {copiedText === 'tailwind' ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+              <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-x-auto max-h-64">
+                {tailwindCode}
+              </pre>
+            </div>
+          </div>
+          
+          <Dialog.Close asChild>
+            <button
+              className="absolute top-4 right-4 p-1 rounded-full hover:bg-canvas-bg-hover text-canvas-text"
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+};
+
+export { CodeDialog }; 
