@@ -46,9 +46,9 @@ const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
       </Dialog.Trigger>
       
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+        <Dialog.Overlay className="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm" />
         
-        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-3xl max-h-[85vh] bg-canvas-bg rounded-lg shadow-lg p-6 overflow-hidden">
+        <Dialog.Content className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-3xl max-h-[85vh] bg-canvas-bg rounded-lg shadow-lg p-6 overflow-hidden">
           <Dialog.Title className="text-xl font-bold text-canvas-text-contrast mb-4">
             Generated Theme Code
           </Dialog.Title>

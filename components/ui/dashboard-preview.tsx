@@ -56,7 +56,7 @@ export const DashboardPreview = () => {
                         </div>
                         <div className='flex w-full items-center space-x-3 sm:w-auto'>
                             <div className='group relative flex-1 sm:flex-none'>
-                                <Search className='text-canvas-text group-focus-within:text-primary-solid absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform transition-colors duration-200' />
+                                <Search className='text-canvas-text-contrast z-10 group-focus-within:text-primary-solid absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform transition-colors duration-200' />
                                 <input
                                     type='text'
                                     placeholder='Search orders...'
