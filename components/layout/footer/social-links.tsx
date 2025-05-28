@@ -14,6 +14,7 @@ const SocialLink = ({ href, ariaLabel, icon }: { href: string; ariaLabel: string
 );
 
 const SocialLinks = () => {
+    
     return (
         <div className='flex space-x-2'>
             <SocialLink

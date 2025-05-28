@@ -100,6 +100,7 @@ const generateCSSVariables = (selectedColors) => {
         const darkColor = radixColors[`${colorName}Dark`];
 
         if (!lightColor || !darkColor) {
+
             return { light: '', dark: '' };
         }
 
@@ -107,6 +108,7 @@ const generateCSSVariables = (selectedColors) => {
             .map((suffix, index) => {
                 const step = (index + 1) * 100;
                 const value = lightColor[step]?.value || '#000000';
+
                 return `  --${category}-${suffix}: ${value};`;
             })
             .join('\n');
@@ -115,6 +117,7 @@ const generateCSSVariables = (selectedColors) => {
             .map((suffix, index) => {
                 const step = (index + 1) * 100;
                 const value = darkColor[step]?.value || '#ffffff';
+
                 return `  --${category}-${suffix}: ${value};`;
             })
             .join('\n');
@@ -161,6 +164,7 @@ const generateTailwindConfig = (selectedColors) => {
     });
 
     config += '  }\n}';
+
     return config;
 };
 
@@ -185,6 +189,7 @@ const DesignRift = () => {
 
     const getPrimaryRecommendations = () => {
         const canvasColor = selectedColors.canvas;
+        
         return primaryRecommendations[canvasColor] || primaryRecommendations.default;
     };
 

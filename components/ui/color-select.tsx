@@ -21,6 +21,7 @@ const getColorValue = (color: string, resolvedTheme: string): string => {
   const value = colorData && colorData['900'] ? colorData['900'].value : '#8f8f8f';
   
   colorCache.set(cacheKey, value);
+  
   return value;
 };
 

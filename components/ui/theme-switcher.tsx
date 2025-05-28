@@ -38,13 +38,15 @@ const ThemeSwitcher = () => {
         };
 
         mediaQuery.addEventListener('change', handleSystemThemeChange);
+        
         return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
     }, [theme, setTheme]);
 
     if (!theme) {
+
         return null;
     }
-
+    
     return (
         <RadioGroup.Root
             className="w-fit border border-canvas-line rounded-full p-1 space-x-0.5"

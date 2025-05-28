@@ -30,6 +30,7 @@ const ColorSwatch = memo(({ colorName, isSelected, onClick, showTooltip = true }
     const value = colorData && colorData['900'] ? colorData['900'].value : '#8f8f8f';
     
     colorCache.set(cacheKey, value);
+    
     return value;
   }, [colorName, resolvedTheme]);
   
