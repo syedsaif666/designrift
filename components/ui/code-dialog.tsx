@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Code, Copy, Download, X } from 'lucide-react';
+import { Button } from './button';
 
 interface CodeDialogProps {
   cssCode: string;
@@ -32,10 +33,16 @@ const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="flex items-center gap-2 px-4 py-2 bg-primary-solid text-primary-on-primary rounded hover:bg-primary-solid-hover transition-colors">
-          <Code size={16} />
+        <Button
+          color="primary"
+          variant="solid"
+          size="default"
+          leadingIcon={<Code size={16} />}
+          className='flex-1'
+          fullWidth={true}
+        >
           Get Code
-        </button>
+        </Button>
       </Dialog.Trigger>
       
       <Dialog.Portal>
@@ -54,20 +61,26 @@ const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
                   CSS Variables
                 </h3>
                 <div className="flex gap-2">
-                  <button
+                  <Button
+                    color="neutral"
+                    variant="outline"
+                    size="sm"
                     onClick={() => copyToClipboard(cssCode, 'css')}
                     className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
                   >
                     <Copy size={14} />
                     {copiedText === 'css' ? 'Copied!' : 'Copy'}
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    color="neutral"
+                    variant="outline"
+                    size="sm"
                     onClick={() => downloadCSS(cssCode, 'global.css')}
                     className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
                   >
                     <Download size={14} />
                     Download
-                  </button>
+                  </Button>
                 </div>
               </div>
               <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-x-auto max-h-64">
@@ -81,13 +94,16 @@ const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
                 <h3 className="text-lg font-semibold text-canvas-text-contrast">
                   Tailwind Configuration
                 </h3>
-                <button
+                <Button
+                  color="neutral"
+                  variant="outline"
+                  size="sm"
                   onClick={() => copyToClipboard(tailwindCode, 'tailwind')}
                   className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
                 >
                   <Copy size={14} />
                   {copiedText === 'tailwind' ? 'Copied!' : 'Copy'}
-                </button>
+                </Button>
               </div>
               <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-x-auto max-h-64">
                 {tailwindCode}
@@ -96,12 +112,15 @@ const CodeDialog = ({ cssCode, tailwindCode }: CodeDialogProps) => {
           </div>
           
           <Dialog.Close asChild>
-            <button
-              className="absolute top-4 right-4 p-1 rounded-full hover:bg-canvas-bg-hover text-canvas-text"
+            <Button
+              color="neutral"
+              variant="ghost"
+              size="sm"
+              className="absolute top-4 right-4 rounded-full hover:bg-canvas-bg-hover text-canvas-text"
               aria-label="Close"
             >
               <X size={18} />
-            </button>
+            </Button>
           </Dialog.Close>
         </Dialog.Content>
       </Dialog.Portal>
