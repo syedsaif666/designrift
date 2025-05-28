@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import {
     BarChart3,
@@ -16,13 +16,160 @@ import {
 } from 'lucide-react';
 import { Button } from './button';
 
-export const DashboardPreview = () => {
+// Define types for component props
+interface MetricCardProps {
+    title: string;
+    icon: React.ReactNode;
+    value: string;
+    percentage: string;
+    color: string;
+    width: string;
+}
+
+interface OrderData {
+    name: string;
+    email: string;
+    type: string;
+    status: string;
+    date: string;
+    amount: string;
+    statusColor: string;
+}
+
+interface OrderRowProps {
+    order: OrderData;
+}
+
+interface OrderCardProps {
+    order: OrderData;
+}
+
+// Extracted smaller components for better rendering performance
+const MetricCard = memo(({ title, icon, value, percentage, color, width }: MetricCardProps) => (
+    <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group cursor-pointer rounded-2xl border bg-gradient-to-br p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl lg:p-6'>
+        <div className='mb-4 flex items-start justify-between'>
+            <h3 className='text-canvas-text text-sm font-medium'>{title}</h3>
+            <div className={`bg-${color}-solid/10 group-hover:bg-${color}-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300`}>
+                {icon}
+            </div>
+        </div>
+        <div className={`text-canvas-text-contrast group-hover:text-${color}-solid mb-2 text-2xl font-bold transition-colors duration-300 lg:text-3xl`}>
+            {value}
+        </div>
+        <div className={`text-${color}-solid mb-4 text-sm font-medium`}>{percentage}</div>
+        <div className='bg-canvas-bg/50 relative h-2 overflow-hidden rounded-full'>
+            <div className={`from-${color}-solid/20 to-${color}-solid/10 absolute inset-0 rounded-full bg-gradient-to-r`}></div>
+            <div
+                className={`from-${color}-solid to-${color}-solid-hover h-full rounded-full bg-gradient-to-r shadow-sm transition-all duration-1000 ease-out`}
+                style={{ width }}></div>
+        </div>
+    </div>
+));
+
+const OrderRow = memo(({ order }: OrderRowProps) => (
+    <div
+        className='hover:bg-canvas-bg-hover/50 group grid cursor-pointer grid-cols-5 gap-4 p-4 text-sm transition-all duration-300 lg:p-6'>
+        <div>
+            <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
+                {order.name}
+            </div>
+            <div className='text-canvas-text text-xs'>{order.email}</div>
+        </div>
+        <div className='text-canvas-text'>{order.type}</div>
+        <div>
+            <span
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 ${
+                    order.statusColor === 'success'
+                        ? 'bg-success-bg text-success-solid border-success-solid/20 border'
+                        : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
+                }`}>
+                {order.status}
+            </span>
+        </div>
+        <div className='text-canvas-text'>{order.date}</div>
+        <div className='text-canvas-text-contrast font-semibold'>{order.amount}</div>
+    </div>
+));
+
+const OrderCard = memo(({ order }: OrderCardProps) => (
+    <div
+        className='hover:bg-canvas-bg-hover/50 group cursor-pointer p-4 transition-all duration-300'>
+        <div className='mb-2 flex items-start justify-between'>
+            <div>
+                <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
+                    {order.name}
+                </div>
+                <div className='text-canvas-text text-xs'>{order.email}</div>
+            </div>
+            <div className='text-canvas-text-contrast font-semibold'>{order.amount}</div>
+        </div>
+        <div className='flex items-center justify-between'>
+            <div className='flex items-center space-x-3'>
+                <span className='text-canvas-text text-sm'>{order.type}</span>
+                <span
+                    className={`inline-flex rounded-full px-2 py-1 text-xs font-medium transition-all duration-200 ${
+                        order.statusColor === 'success'
+                            ? 'bg-success-bg text-success-solid border-success-solid/20 border'
+                            : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
+                    }`}>
+                    {order.status}
+                </span>
+            </div>
+            <div className='text-canvas-text text-sm'>{order.date}</div>
+        </div>
+    </div>
+));
+
+// Sample data - moved outside component to prevent recreation on each render
+const ORDERS_DATA: OrderData[] = [
+    {
+        name: 'Emma Brown',
+        email: 'emma@example.com',
+        type: 'Sale',
+        status: 'Fulfilled',
+        date: '2023-06-26',
+        amount: '$450.00',
+        statusColor: 'success'
+    },
+    {
+        name: 'Olivia Smith',
+        email: 'olivia@example.com',
+        type: 'Refund',
+        status: 'Declined',
+        date: '2023-06-24',
+        amount: '$150.00',
+        statusColor: 'alert'
+    }
+];
+
+const MOBILE_ORDERS_DATA: OrderData[] = [
+    {
+        name: 'Olivia Smith',
+        email: 'olivia@example.com',
+        type: 'Refund',
+        status: 'Declined',
+        date: '2023-06-24',
+        amount: '$150.00',
+        statusColor: 'alert'
+    },
+    {
+        name: 'Emma Brown',
+        email: 'emma@example.com',
+        type: 'Sale',
+        status: 'Fulfilled',
+        date: '2023-06-26',
+        amount: '$450.00',
+        statusColor: 'success'
+    }
+];
+
+export const DashboardPreview = memo(() => {
     return (
-        <div className='from-canvas-bg via-canvas-bg to-canvas-bg-subtle relative min-h-screen overflow-hidden bg-gradient-to-br'>
-            {/* Background decorative elements */}
+        <div className='from-canvas-bg-subtle  to-canvas-bg-subtle relative min-h-screen overflow-hidden bg-gradient-to-br'>
+            {/* Background decorative elements - removed animations */}
             <div className='pointer-events-none absolute inset-0 overflow-hidden'>
-                <div className='bg-primary-solid/5 absolute -top-40 -right-40 h-80 w-80 animate-pulse rounded-full blur-3xl'></div>
-                <div className='bg-success-solid/5 absolute -bottom-40 -left-40 h-80 w-80 animate-pulse rounded-full blur-3xl delay-1000'></div>
+                <div className='bg-primary-solid/5 absolute -top-40 -right-40 h-80 w-80 rounded-full blur-3xl'></div>
+                <div className='bg-success-solid/5 absolute -bottom-40 -left-40 h-80 w-80 rounded-full blur-3xl'></div>
             </div>
 
             {/* Main Content */}
@@ -37,12 +184,11 @@ export const DashboardPreview = () => {
                             color="neutral"
                             className='text-canvas-text-contrast border-primary-solid group relative border-b-2 pb-3 text-sm font-medium transition-all duration-300 hover:cursor-pointer bg-transparent hover:bg-transparent rounded-none'>
                             Dashboard
-                            {/* <div className="absolute inset-0 bg-primary-solid/5 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
                         </Button>
                     </div>
 
                     {/* Header with Breadcrumb */}
-                    <div className='animate-fade-in mb-4 flex flex-col items-start justify-between space-y-4 sm:flex-row sm:items-center sm:space-y-0 lg:mb-6'>
+                    <div className='mb-4 flex flex-col items-start justify-between space-y-4 sm:flex-row sm:items-center sm:space-y-0 lg:mb-6'>
                         <div className='text-canvas-text flex items-center space-x-2 text-sm'>
                             <span className='hover:text-primary-solid cursor-pointer transition-colors duration-200'>
                                 Dashboard
@@ -63,9 +209,6 @@ export const DashboardPreview = () => {
                                     className='bg-canvas-bg/80 border-canvas-border focus:ring-primary-solid/50 focus:border-primary-solid hover:bg-canvas-bg-subtle/50 w-full rounded-xl border py-2.5 pr-4 pl-10 text-sm backdrop-blur-sm transition-all duration-300 focus:ring-2 focus:outline-none sm:w-64'
                                 />
                             </div>
-                            {/* <div className='from-primary-solid to-primary-solid-hover group flex h-10 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br shadow-lg transition-all duration-300 hover:shadow-xl'>
-                                <div className='h-6 w-6 rounded-full bg-white transition-transform duration-200 group-hover:scale-110'></div>
-                            </div> */}
                         </div>
                     </div>
 
@@ -97,43 +240,22 @@ export const DashboardPreview = () => {
 
                     {/* Metrics Cards */}
                     <div className='mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mb-6 lg:gap-6'>
-                        <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group cursor-pointer rounded-2xl border bg-gradient-to-br p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl lg:p-6'>
-                            <div className='mb-4 flex items-start justify-between'>
-                                <h3 className='text-canvas-text text-sm font-medium'>This Week</h3>
-                                <div className='bg-success-solid/10 group-hover:bg-success-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300'>
-                                    <TrendingUp className='text-success-solid h-4 w-4' />
-                                </div>
-                            </div>
-                            <div className='text-canvas-text-contrast group-hover:text-success-solid mb-2 text-2xl font-bold transition-colors duration-300 lg:text-3xl'>
-                                $1,329
-                            </div>
-                            <div className='text-success-solid mb-4 text-sm font-medium'>+25% from last week</div>
-                            <div className='bg-canvas-bg/50 relative h-2 overflow-hidden rounded-full'>
-                                <div className='from-success-solid/20 to-success-solid/10 absolute inset-0 rounded-full bg-gradient-to-r'></div>
-                                <div
-                                    className='from-success-solid to-success-solid-hover h-full rounded-full bg-gradient-to-r shadow-sm transition-all duration-1000 ease-out'
-                                    style={{ width: '65%' }}></div>
-                            </div>
-                        </div>
-
-                        <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group cursor-pointer rounded-2xl border bg-gradient-to-br p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl lg:p-6'>
-                            <div className='mb-4 flex items-start justify-between'>
-                                <h3 className='text-canvas-text text-sm font-medium'>This Month</h3>
-                                <div className='bg-primary-solid/10 group-hover:bg-primary-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300'>
-                                    <BarChart3 className='text-primary-solid h-4 w-4' />
-                                </div>
-                            </div>
-                            <div className='text-canvas-text-contrast group-hover:text-primary-solid mb-2 text-2xl font-bold transition-colors duration-300 lg:text-3xl'>
-                                $5,329
-                            </div>
-                            <div className='text-success-solid mb-4 text-sm font-medium'>+10% from last month</div>
-                            <div className='bg-canvas-bg/50 relative h-2 overflow-hidden rounded-full'>
-                                <div className='from-primary-solid/20 to-primary-solid/10 absolute inset-0 rounded-full bg-gradient-to-r'></div>
-                                <div
-                                    className='from-primary-solid to-primary-solid-hover h-full rounded-full bg-gradient-to-r shadow-sm transition-all duration-1000 ease-out'
-                                    style={{ width: '45%' }}></div>
-                            </div>
-                        </div>
+                        <MetricCard 
+                            title="This Week"
+                            icon={<TrendingUp className='text-success-solid h-4 w-4' />}
+                            value="$1,329"
+                            percentage="+25% from last week"
+                            color="success"
+                            width="65%"
+                        />
+                        <MetricCard 
+                            title="This Month"
+                            icon={<BarChart3 className='text-primary-solid h-4 w-4' />}
+                            value="$5,329"
+                            percentage="+10% from last month"
+                            color="primary"
+                            width="45%"
+                        />
                     </div>
 
                     {/* Time Period Tabs */}
@@ -161,7 +283,7 @@ export const DashboardPreview = () => {
                         </Button>
                     </div>
 
-                    {/* Orders Table */}
+                    {/* Orders Table - Optimized to reduce re-rendering */}
                     <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border overflow-hidden rounded-2xl border bg-gradient-to-br shadow-lg backdrop-blur-sm'>
                         <div className='border-canvas-border from-canvas-bg-subtle/50 flex flex-col items-start justify-between space-y-4 border-b bg-gradient-to-r to-transparent p-4 sm:flex-row sm:items-center sm:space-y-0 lg:p-6'>
                             <div>
@@ -203,102 +325,16 @@ export const DashboardPreview = () => {
 
                             {/* Table Rows */}
                             <div className='divide-canvas-border/30 divide-y'>
-                                {[
-                                    {
-                                        name: 'Emma Brown',
-                                        email: 'emma@example.com',
-                                        type: 'Sale',
-                                        status: 'Fulfilled',
-                                        date: '2023-06-26',
-                                        amount: '$450.00',
-                                        statusColor: 'success'
-                                    },
-                                    {
-                                        name: 'Olivia Smith',
-                                        email: 'olivia@example.com',
-                                        type: 'Refund',
-                                        status: 'Declined',
-                                        date: '2023-06-24',
-                                        amount: '$150.00',
-                                        statusColor: 'alert'
-                                    }
-                                ].map((order, index) => (
-                                    <div
-                                        key={index}
-                                        className='hover:bg-canvas-bg-hover/50 group grid cursor-pointer grid-cols-5 gap-4 p-4 text-sm transition-all duration-300 lg:p-6'>
-                                        <div>
-                                            <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
-                                                {order.name}
-                                            </div>
-                                            <div className='text-canvas-text text-xs'>{order.email}</div>
-                                        </div>
-                                        <div className='text-canvas-text'>{order.type}</div>
-                                        <div>
-                                            <span
-                                                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 ${
-                                                    order.statusColor === 'success'
-                                                        ? 'bg-success-bg text-success-solid border-success-solid/20 border'
-                                                        : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
-                                                }`}>
-                                                {order.status}
-                                            </span>
-                                        </div>
-                                        <div className='text-canvas-text'>{order.date}</div>
-                                        <div className='text-canvas-text-contrast font-semibold'>{order.amount}</div>
-                                    </div>
+                                {ORDERS_DATA.map((order, index) => (
+                                    <OrderRow key={index} order={order} />
                                 ))}
                             </div>
                         </div>
 
                         {/* Mobile Card Layout */}
                         <div className='divide-canvas-border/30 divide-y md:hidden'>
-                            {[
-                                {
-                                    name: 'Olivia Smith',
-                                    email: 'olivia@example.com',
-                                    type: 'Refund',
-                                    status: 'Declined',
-                                    date: '2023-06-24',
-                                    amount: '$150.00',
-                                    statusColor: 'alert'
-                                },
-                                {
-                                    name: 'Emma Brown',
-                                    email: 'emma@example.com',
-                                    type: 'Sale',
-                                    status: 'Fulfilled',
-                                    date: '2023-06-26',
-                                    amount: '$450.00',
-                                    statusColor: 'success'
-                                }
-                            ].map((order, index) => (
-                                <div
-                                    key={index}
-                                    className='hover:bg-canvas-bg-hover/50 group cursor-pointer p-4 transition-all duration-300'>
-                                    <div className='mb-2 flex items-start justify-between'>
-                                        <div>
-                                            <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
-                                                {order.name}
-                                            </div>
-                                            <div className='text-canvas-text text-xs'>{order.email}</div>
-                                        </div>
-                                        <div className='text-canvas-text-contrast font-semibold'>{order.amount}</div>
-                                    </div>
-                                    <div className='flex items-center justify-between'>
-                                        <div className='flex items-center space-x-3'>
-                                            <span className='text-canvas-text text-sm'>{order.type}</span>
-                                            <span
-                                                className={`inline-flex rounded-full px-2 py-1 text-xs font-medium transition-all duration-200 ${
-                                                    order.statusColor === 'success'
-                                                        ? 'bg-success-bg text-success-solid border-success-solid/20 border'
-                                                        : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
-                                                }`}>
-                                                {order.status}
-                                            </span>
-                                        </div>
-                                        <div className='text-canvas-text text-sm'>{order.date}</div>
-                                    </div>
-                                </div>
+                            {MOBILE_ORDERS_DATA.map((order, index) => (
+                                <OrderCard key={index} order={order} />
                             ))}
                         </div>
                     </div>
@@ -401,7 +437,6 @@ export const DashboardPreview = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <style jsx>{`
@@ -415,10 +450,7 @@ export const DashboardPreview = () => {
                         transform: translateY(0);
                     }
                 }
-                .animate-fade-in {
-                    animation: fade-in 0.6s ease-out;
-                }
             `}</style>
         </div>
     );
-};
+});

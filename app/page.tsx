@@ -168,10 +168,10 @@ const generateTailwindConfig = (selectedColors) => {
 const DesignRift = () => {
     const [selectedColors, setSelectedColors] = useState({
         canvas: 'gray',
-        primary: 'blue',
+        primary: 'iris',
         secondary: '',
         success: 'green',
-        warning: '',
+        warning: 'yellow',
         alert: 'red',
         info: ''
     });
@@ -192,13 +192,13 @@ const DesignRift = () => {
     const tailwindConfig = generateTailwindConfig(selectedColors);
 
     return (
-        <div className='min-h-screen w-full'>
+        <div className='min-h-screen w-full '>
             {/* Apply generated CSS variables */}
             <style>{cssVariables}</style>
 
-            <div className='flex min-h-screen flex-col md:h-screen md:flex-row'>
+            <div className=' flex min-h-screen flex-col md:h-screen md:flex-row'>
                 {/* Left Sidebar - Color Selection Panel */}
-                <div className='bg-canvas-bg border-canvas-border w-full border-r p-6 md:w-80 md:overflow-y-auto md:h-full'>
+                <aside className='bg-canvas-bg border-canvas-border w-full border-r p-6 md:w-80 md:overflow-y-auto md:h-full'>
                     <div className='flex flex-col gap-1'>
                         <Logo />
                         <p className='text-canvas-text mb-4 text-sm'>
@@ -211,7 +211,7 @@ const DesignRift = () => {
                             <div className='flex flex-col space-y-6'>
                                 {/* Canvas Colors */}
                                 <ColorCategorySection
-                                    title='Base Color'
+                                    title='Canvas'
                                     swatchColors={canvasRecommendedColors}
                                     recommendedColors={canvasRecommendedColors}
                                     allColors={allColors}
@@ -222,7 +222,7 @@ const DesignRift = () => {
 
                                 {/* Primary Colors */}
                                 <ColorCategorySection
-                                    title='Primary Color'
+                                    title='Primary'
                                     swatchColors={getPrimaryRecommendations()}
                                     recommendedColors={getPrimaryRecommendations()}
                                     allColors={allColors}
@@ -233,7 +233,7 @@ const DesignRift = () => {
 
                                 {/* Secondary Colors */}
                                 <ColorCategorySection
-                                    title='Accent Color'
+                                    title='Secondary'
                                     swatchColors={[]}
                                     recommendedColors={[]}
                                     allColors={allColors}
@@ -244,7 +244,7 @@ const DesignRift = () => {
 
                                 {/* Destructive Color */}
                                 <ColorCategorySection
-                                    title='Destructive Color'
+                                    title='Destructive'
                                     swatchColors={colorCategories.alert}
                                     selectedColor={selectedColors.alert}
                                     onColorSelect={(color) => handleColorSelect('alert', color)}
@@ -252,10 +252,24 @@ const DesignRift = () => {
 
                                 {/* Success Colors */}
                                 <ColorCategorySection
-                                    title='Success Color'
+                                    title='Success'
                                     swatchColors={colorCategories.success}
                                     selectedColor={selectedColors.success}
                                     onColorSelect={(color) => handleColorSelect('success', color)}
+                                />
+                                          {/* Warning Colors */}
+                                          <ColorCategorySection
+                                    title='Warning'
+                                    swatchColors={colorCategories.warning}
+                                    selectedColor={selectedColors.warning}
+                                    onColorSelect={(color) => handleColorSelect('warning', color)}
+                                />
+                                          {/* info Colors */}
+                                          <ColorCategorySection
+                                    title='Info'
+                                    swatchColors={colorCategories.info}
+                                    selectedColor={selectedColors.info}
+                                    onColorSelect={(color) => handleColorSelect('info', color)}
                                 />
 
                                 <div className='border-canvas-border pt-4'>
@@ -276,7 +290,7 @@ const DesignRift = () => {
                             </div>
                         </div>
                     </AppearanceTabs>
-                </div>
+                </aside>
 
                 {/* Right Side - Dashboard Preview */}
                 <div className='flex-1 min-h-screen md:h-full md:overflow-hidden'>

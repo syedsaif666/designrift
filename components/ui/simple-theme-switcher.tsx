@@ -22,14 +22,14 @@ const SimpleThemeSwitcher = () => {
       >
         <Tabs.Trigger
           value="light"
-          className="flex-1 flex items-center justify-center gap-2 py-2 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-text data-[state=inactive]:hover:bg-canvas-bg-hover"
+          className="flex-1 flex items-center justify-center gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-border data-[state=inactive]:hover:bg-canvas-bg"
         >
           <Sun size={16} />
           <span>Light</span>
         </Tabs.Trigger>
         <Tabs.Trigger
           value="dark"
-          className="flex-1 flex items-center justify-center gap-2 py-2 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-text data-[state=inactive]:hover:bg-canvas-bg-hover"
+          className="flex-1 flex items-center justify-center gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-border data-[state=inactive]:hover:bg-canvas-bg"
         >
           <Moon size={16} />
           <span>Dark</span>

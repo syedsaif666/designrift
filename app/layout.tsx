@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     disableTransitionOnChange
                 >
                     {/* <main className="flex-auto items-center bg-gradient-to-tr from-bg-base from- via-bg-bg-hover via-min-w-0 flex flex-col md:px-0"> */}
-                    <main className='from-canvas-bg-subtle via-canvas-bg bg-gradient-to-tr min-w-0 flex flex-auto flex-col items-center md:px-0'>
+                    <main className=' bg-gradient-to-tr min-w-0 flex flex-auto flex-col items-center md:px-0'>
                         {/* <Header /> */}
                         <RootProvider>
 

@@ -24,9 +24,9 @@ const ColorCategorySection = ({
 }: ColorCategorySectionProps) => {
   return (
     <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-canvas-text-contrast capitalize">
+      <h4 className="text-sm font-bold tracking-wider text-canvas-text-contrast">
         {title}
-      </h3>
+      </h4>
       
       {swatchColors.length > 0 && (
         <div className="flex flex-wrap gap-3 mb-3">
