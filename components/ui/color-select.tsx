@@ -68,8 +68,8 @@ ColorOption.displayName = 'ColorOption';
 interface ColorSelectProps {
   value: string;
   onValueChange: (value: string) => void;
-  recommendedColors: string[];
-  allColors: string[];
+  recommendedColors: readonly string[];
+  allColors: readonly string[];
 }
 
 // Memoized SelectTrigger component

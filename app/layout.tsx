@@ -3,7 +3,7 @@ import { Roboto_Slab } from 'next/font/google';
 
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header/Header';
-import { env } from '@/lib/utils/env';
+// import { env } from '@/lib/utils/env';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
 import './global.css';
@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang='en' className={`${robotoSlab.variable}`} suppressHydrationWarning>
-            <GoogleAnalytics gaId={env.GOOGLE_ANALYTICS_MEASUREMENT_ID} />
+            {/* <GoogleAnalytics gaId={env.GOOGLE_ANALYTICS_MEASUREMENT_ID} /> */}
             <body className='antialiased lg:mx-auto'>
                 <ThemeProvider
                     attribute="class"
