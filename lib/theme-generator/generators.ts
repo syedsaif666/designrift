@@ -140,7 +140,7 @@ export const generateColorSteps = (
     .join('\n');
 
   // Add on-category color
-  const onColor = coolColors.includes(colorName as any) ? '#000000' : '#ffffff';
+  const onColor = coolColors.includes(colorName as string) ? '#000000' : '#ffffff';
   const lightOnVar = `  --${category}-on-${category}: ${onColor};`;
   const darkOnVar = `  --${category}-on-${category}: ${onColor};`;
 

@@ -196,7 +196,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
               onClick={() => setSelectedVersion('v3')}
               className="px-4 py-2"
             >
-              Tailwind CSS v3
+              Tailwindcss v3
             </Button>
             <Button
               color={selectedVersion === 'v4' ? 'primary' : 'neutral'}
@@ -205,7 +205,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
               onClick={() => setSelectedVersion('v4')}
               className="px-4 py-2"
             >
-              Tailwind CSS v4
+              Tailwindxss v4
             </Button>
           </div>
           
