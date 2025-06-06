@@ -22,9 +22,21 @@ export const ColorCategorySection: React.FC<ColorCategorySectionProps> = ({
   showSelect = false
 }) => {
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
+    <div className="">
+      <div className="space-y-3">
         <h3 className="text-canvas-text-contrast text-sm font-medium">{title}</h3>
+        {swatchColors.length > 0 && (
+          <div className="flex flex-wrap gap-3">
+            {swatchColors.map((color) => (
+              <ColorSwatch
+                key={color}
+                colorName={color}
+                isSelected={selectedColor === color}
+                onClick={() => onColorSelect(color)}
+              />
+            ))}
+          </div>
+        )}
         {showSelect && (
           <ColorSelect
             value={selectedColor}
@@ -35,18 +47,6 @@ export const ColorCategorySection: React.FC<ColorCategorySectionProps> = ({
         )}
       </div>
       
-      {swatchColors.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {swatchColors.map((color) => (
-            <ColorSwatch
-              key={color}
-              colorName={color}
-              isSelected={selectedColor === color}
-              onClick={() => onColorSelect(color)}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };

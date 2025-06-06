@@ -278,7 +278,7 @@ const DesignRift = () => {
                                 />
 
                                 <div className='border-canvas-border pt-4'>
-                                    <CodeDialog cssCode={cssVariables} tailwindCode={tailwindConfig} />
+                                    {/* <CodeDialog cssCode={cssVariables} tailwindCode={tailwindConfig} /> */}
                                 </div>
                             </div>
                             <div className='border-canvas-border flex border-t pt-2'>
