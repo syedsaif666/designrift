@@ -101,7 +101,7 @@
 
 import { SelectedColors, RadixColors, ColorStepResult } from './types';
 import { semanticSuffixes, coolColors } from './constants';
-let credit = '/* Generated with https://designrift.vercel.app */ \n';
+const credit = '/* Generated with https://designrift.vercel.app */ \n';
 
 
 /**
