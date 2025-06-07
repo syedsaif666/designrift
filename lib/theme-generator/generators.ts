@@ -24,7 +24,7 @@
 //     .map((suffix, index) => {
 //       const step = (index + 1) * 100;
 //       const value = lightColor[step]?.value || '#000000';
-      
+
 //       return `  --${category}-${suffix}: ${value};`;
 //     })
 //     .join('\n');
@@ -33,7 +33,7 @@
 //     .map((suffix, index) => {
 //       const step = (index + 1) * 100;
 //       const value = darkColor[step]?.value || '#ffffff';
-      
+
 //       return `  --${category}-${suffix}: ${value};`;
 //     })
 //     .join('\n');
@@ -95,12 +95,14 @@
 //   });
 
 //   config += '  }\n}';
-  
+
 //   return config;
 // };
 
 import { SelectedColors, RadixColors, ColorStepResult } from './types';
 import { semanticSuffixes, coolColors } from './constants';
+let credit = '/* Generated with https://designrift.vercel.app */ \n';
+
 
 /**
  * Generates color steps for a specific category (canvas, primary, etc.)
@@ -125,7 +127,7 @@ export const generateColorSteps = (
     .map((suffix, index) => {
       const step = (index + 1) * 100;
       const value = lightColor[step]?.value || '#000000';
-      
+
       return `  --${category}-${suffix}: ${value};`;
     })
     .join('\n');
@@ -134,7 +136,7 @@ export const generateColorSteps = (
     .map((suffix, index) => {
       const step = (index + 1) * 100;
       const value = darkColor[step]?.value || '#ffffff';
-      
+
       return `  --${category}-${suffix}: ${value};`;
     })
     .join('\n');
@@ -174,7 +176,7 @@ export const generateCSSVariables = (
   lightCSS += '}';
   darkCSS += '}';
 
-  return lightCSS + '\n' + darkCSS;
+  return credit + lightCSS + '\n' + darkCSS;
 };
 
 /**
@@ -195,7 +197,7 @@ export const generateTailwindV3Config = (selectedColors: SelectedColors): string
   });
 
   config += '}';
-  
+
   return config;
 };
 
@@ -218,7 +220,7 @@ export const generateTailwindV4Theme = (selectedColors: SelectedColors): string 
   });
 
   config += '}';
-  
+
   return config;
 };
 
@@ -234,6 +236,6 @@ export const generateTailwindV4Complete = (
 ): string => {
   const cssVariables = generateCSSVariables(selectedColors, radixColors);
   const themeExtensions = generateTailwindV4Theme(selectedColors);
-  
+
   return cssVariables + '\n\n' + themeExtensions;
 };
