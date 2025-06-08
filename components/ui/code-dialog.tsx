@@ -350,7 +350,6 @@
 
 
 // v1.0.2
-
 'use client'
 import React, { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -368,6 +367,7 @@ interface CodeDialogProps {
 const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialogProps) => {
   const [copiedText, setCopiedText] = useState('');
   const [selectedVersion, setSelectedVersion] = useState<'v3' | 'v4'>('v4');
+  const [activeTab, setActiveTab] = useState<string>(''); // Add state for active tab
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -395,63 +395,77 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
     files: Array<{ name: string; code: string; filename: string }>;
     copyType: string;
     description?: string;
-  }) => (
-    <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4 h-full flex flex-col">
-      <Tabs.Root defaultValue={files[0]?.name} className="h-full flex flex-col">
-        <Tabs.List className="flex border-b border-canvas-border mb-4">
+  }) => {
+    // Set initial active tab when files change
+    const currentActiveTab = activeTab && files.some(f => f.name === activeTab) ? activeTab : files[0]?.name;
+    
+    return (
+      <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4 h-full flex flex-col">
+        <Tabs.Root 
+          value={currentActiveTab} 
+          onValueChange={setActiveTab} 
+          className="h-full flex flex-col"
+        >
+          <Tabs.List className="flex border-b border-canvas-border mb-4">
+            {files.map((file) => (
+              <Tabs.Trigger
+                key={file.name}
+                value={file.name}
+                className="px-4 py-2 text-sm font-medium text-canvas-text hover:text-canvas-text-contrast border-b-2 border-transparent data-[state=active]:border-primary-solid data-[state=active]:text-canvas-text-contrast transition-colors"
+              >
+                {file.filename}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+
           {files.map((file) => (
-            <Tabs.Trigger
-              key={file.name}
-              value={file.name}
-              className="px-4 py-2 text-sm font-medium text-canvas-text hover:text-canvas-text-contrast border-b-2 border-transparent data-[state=active]:border-primary-solid data-[state=active]:text-canvas-text-contrast transition-colors"
-            >
-              {file.filename}
-            </Tabs.Trigger>
-          ))}
-        </Tabs.List>
-
-        {files.map((file) => (
-          <Tabs.Content key={file.name} value={file.name} className="flex-1 overflow-hidden flex flex-col">
-            <div className="flex items-center justify-end mb-3">
-              <div className="flex gap-2">
-                <Button
-                  color="neutral"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => copyToClipboard(file.code, `${copyType}-${file.name}`)}
-                  className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
-                >
-                  <Copy size={14} />
-                  {copiedText === `${copyType}-${file.name}` ? 'Copied!' : 'Copy'}
-                </Button>
-                <Button
-                  color="neutral"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => downloadFile(file.code, file.filename, file.filename.endsWith('.js') ? 'text/javascript' : 'text/css')}
-                  className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
-                >
-                  <Download size={14} />
-                  Download
-                </Button>
+            <Tabs.Content key={file.name} value={file.name} className="flex-1 overflow-hidden flex flex-col">
+              <div className="flex items-center justify-end mb-3">
+                <div className="flex gap-2">
+                  <Button
+                    color="neutral"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => copyToClipboard(file.code, `${copyType}-${file.name}`)}
+                    className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
+                  >
+                    <Copy size={14} />
+                    {copiedText === `${copyType}-${file.name}` ? 'Copied!' : 'Copy'}
+                  </Button>
+                  <Button
+                    color="neutral"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => downloadFile(file.code, file.filename, file.filename.endsWith('.js') ? 'text/javascript' : 'text/css')}
+                    className="flex items-center gap-2 px-3 py-1 bg-canvas-bg-hover hover:bg-canvas-bg-active text-canvas-text rounded text-sm transition-colors"
+                  >
+                    <Download size={14} />
+                    Download
+                  </Button>
+                </div>
               </div>
-            </div>
-            <div className="flex-1 overflow-hidden">
-              <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-auto h-full">
-                {file.code}
-              </pre>
-            </div>
-          </Tabs.Content>
-        ))}
-      </Tabs.Root>
+              <div className="flex-1 overflow-hidden">
+                <pre className="text-sm text-canvas-text bg-canvas-bg p-3 rounded overflow-auto h-full">
+                  {file.code}
+                </pre>
+              </div>
+            </Tabs.Content>
+          ))}
+        </Tabs.Root>
 
-      {description && (
-        <p className="text-xs text-canvas-text mt-2 ">
-          {description}
-        </p>
-      )}
-    </div>
-  );
+        {description && (
+          <p className="text-xs text-canvas-text mt-2 ">
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  };
+
+  // Reset active tab when version changes
+  React.useEffect(() => {
+    setActiveTab('');
+  }, [selectedVersion]);
 
   return (
     <Dialog.Root>
