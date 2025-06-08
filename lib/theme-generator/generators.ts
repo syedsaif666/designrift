@@ -141,10 +141,20 @@ export const generateColorSteps = (
     })
     .join('\n');
 
-  // Add on-category color
-  const onColor = coolColors.includes(colorName as string) ? '#000000' : '#ffffff';
-  const lightOnVar = `  --${category}-on-${category}: ${onColor};`;
-  const darkOnVar = `  --${category}-on-${category}: ${onColor};`;
+  // Special handling for canvas-on-canvas
+  let lightOnVar: string;
+  let darkOnVar: string;
+
+  if (category === 'canvas') {
+    // For canvas: black on light, white on dark
+    lightOnVar = `  --${category}-on-${category}: #fff;`;
+    darkOnVar = `  --${category}-on-${category}: #000;`;
+  } else {
+    // For other categories: use existing logic
+    const onColor = coolColors.includes(colorName as string) ? '#000000' : '#ffffff';
+    lightOnVar = `  --${category}-on-${category}: ${onColor};`;
+    darkOnVar = `  --${category}-on-${category}: ${onColor};`;
+  }
 
   return {
     light: lightVars + '\n' + lightOnVar,
@@ -172,6 +182,7 @@ export const generateCSSVariables = (
       darkCSS += `\n  /* ${category.toUpperCase()} */\n${dark}\n`;
     }
   });
+
 
   lightCSS += '}';
   darkCSS += '}';

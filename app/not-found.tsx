@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
     return (
-        <section className='flex min-h-screen items-center justify-center bg-[#0A0A0F] px-4'>
+        <section className='flex min-h-screen items-center justify-center bg-[#0A0A0F] px-4 w-full'>
             <div className='w-full max-w-md text-center'>
                 <div className='space-y-6'>
                     {/* Error Code */}
