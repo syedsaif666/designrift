@@ -47,6 +47,7 @@ interface OrderCardProps {
 // Extracted smaller components for better rendering performance
 const MetricCard = memo(({ title, icon, value, percentage, color, width }: MetricCardProps) => (
     <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group cursor-pointer rounded-2xl border bg-gradient-to-br p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl lg:p-6'>
+
         <div className='mb-4 flex items-start justify-between'>
             <h3 className='text-canvas-text text-sm font-medium'>{title}</h3>
             <div className={`bg-${color}-solid/10 group-hover:bg-${color}-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300`}>
@@ -78,11 +79,10 @@ const OrderRow = memo(({ order }: OrderRowProps) => (
         <div className='text-canvas-text'>{order.type}</div>
         <div>
             <span
-                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 ${
-                    order.statusColor === 'success'
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 ${order.statusColor === 'success'
                         ? 'bg-success-bg text-success-solid border-success-solid/20 border'
                         : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
-                }`}>
+                    }`}>
                 {order.status}
             </span>
         </div>
@@ -107,11 +107,10 @@ const OrderCard = memo(({ order }: OrderCardProps) => (
             <div className='flex items-center space-x-3'>
                 <span className='text-canvas-text text-sm'>{order.type}</span>
                 <span
-                    className={`inline-flex rounded-full px-2 py-1 text-xs font-medium transition-all duration-200 ${
-                        order.statusColor === 'success'
+                    className={`inline-flex rounded-full px-2 py-1 text-xs font-medium transition-all duration-200 ${order.statusColor === 'success'
                             ? 'bg-success-bg text-success-solid border-success-solid/20 border'
                             : 'bg-alert-bg text-alert-solid border-alert-solid/20 border'
-                    }`}>
+                        }`}>
                     {order.status}
                 </span>
             </div>
@@ -166,6 +165,7 @@ const MOBILE_ORDERS_DATA: OrderData[] = [
 export const DashboardPreview = memo(() => {
     return (
         <div className='from-canvas-bg-subtle  to-canvas-bg-subtle relative min-h-screen overflow-hidden bg-gradient-to-br'>
+
             {/* Background decorative elements - removed animations */}
             <div className='pointer-events-none absolute inset-0 overflow-hidden'>
                 <div className='bg-primary-solid/5 absolute -top-40 -right-40 h-80 w-80 rounded-full blur-3xl'></div>
@@ -224,7 +224,7 @@ export const DashboardPreview = memo(() => {
                                     Analysis.
                                 </p>
                                 <Button
-                                    color="primary"
+                                    color="neutral"
                                     variant="solid"
                                     size="default"
                                     fullWidth={true}
@@ -240,7 +240,7 @@ export const DashboardPreview = memo(() => {
 
                     {/* Metrics Cards */}
                     <div className='mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mb-6 lg:gap-6'>
-                        <MetricCard 
+                        <MetricCard
                             title="This Week"
                             icon={<TrendingUp className='text-success-solid h-4 w-4' />}
                             value="$1,329"
@@ -248,7 +248,7 @@ export const DashboardPreview = memo(() => {
                             color="success"
                             width="65%"
                         />
-                        <MetricCard 
+                        <MetricCard
                             title="This Month"
                             icon={<BarChart3 className='text-primary-solid h-4 w-4' />}
                             value="$5,329"

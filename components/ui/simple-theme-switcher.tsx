@@ -22,14 +22,14 @@ const SimpleThemeSwitcher = () => {
       >
         <Tabs.Trigger
           value="light"
-          className="flex-1 flex items-center justify-center rounded-md cursor-pointer data-[state=active]:shadow-sm  gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-solid data-[state=inactive]:hover:bg-canvas-bg data-[state=inactive]:hover:text-canvas-text"
+          className="flex-1 flex items-center justify-center rounded-md cursor-pointer data-[state=active]:shadow-sm  gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast  data-[state=inactive]:text-canvas-solid  data-[state=inactive]:hover:text-canvas-text"
         >
           <Sun size={16} />
           <span>Light</span>
         </Tabs.Trigger>
         <Tabs.Trigger
           value="dark"
-          className="flex-1 flex items-center justify-center rounded-md cursor-pointer data-[state=active]:shadow-sm  gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast data-[state=inactive]:bg-canvas-bg data-[state=inactive]:text-canvas-solid data-[state=inactive]:hover:bg-canvas-bg data-[state=inactive]:hover:text-canvas-text"
+          className="flex-1 flex items-center justify-center rounded-md cursor-pointer data-[state=active]:shadow-sm  gap-2 py-1 transition-colors data-[state=active]:bg-canvas-bg-active data-[state=active]:text-canvas-text-contrast  data-[state=inactive]:text-canvas-solid  data-[state=inactive]:hover:text-canvas-text"
         >
           <Moon size={16} />
           <span>Dark</span>

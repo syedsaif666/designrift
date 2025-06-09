@@ -1,4 +1,4 @@
-# Bloggen SEO Starter
+# designrift
 
 Bloggen SEO Starter is an AI-powered template designed to help you quickly set up a fully optimized blog or website. Created by SilverThread Labs, this template comes pre-configured with essential SEO features, allowing you to focus on generating high-quality content using Bloggen. With built-in MDX blogs, JSON-LD structured data, and dynamic Open Graph images, Bloggen SEO Starter is your go-to solution for a seamless blogging experience.
 
