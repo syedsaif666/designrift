@@ -173,7 +173,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
         <div className="flex flex-col gap-1">
           <Logo />
           <p className="text-canvas-text mb-4 text-sm">
-            Build beautiful themes for your webapp using Radix color palettes.
+          Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.
           </p>
         </div>
         

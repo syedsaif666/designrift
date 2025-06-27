@@ -1,7 +1,7 @@
 {
   "name": "designrift",
   "version": "0.0.1",
-  "description": "Build beautiful themes for your webapp using Radix color palettes.",
+  "description": "Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.",
   "keywords": [
     "designrift",
     "theme",
