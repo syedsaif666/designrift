@@ -551,7 +551,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
             {selectedVersion === 'v3' ? (
               <CodeBlock
                 files={[
-                  { name: "css", code: cssCode, filename: "global.css" },
+                  { name: "css", code: cssCode, filename: "theme.css" },
                   { name: "config", code: tailwindV3Config, filename: "tailwind.config.js" }
                 ]}
                 copyType="tailwind-v3"
@@ -560,7 +560,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
             ) : (
               <CodeBlock
                 files={[
-                  { name: "theme", code: tailwindV4Complete, filename: "global.css" }
+                  { name: "theme", code: tailwindV4Complete, filename: "theme.css" }
                 ]}
                 copyType="tailwind-v4"
                 description="Import this CSS file in your main CSS file or HTML"
