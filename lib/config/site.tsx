@@ -1,36 +1,35 @@
 import { getURL } from '@/lib/utils/url';
 
 export const siteConfig = {
-    title: 'Bloggen SEO Starter',
+    title: 'designrift',
     description:
-        'Launch your agency site with Bloggen SEO Starter featuring Global Metadata Configuration, MDX products & blog pages, dynamic OG images, JSON-LD and more.',
+        'Design stunning themes with Radix colors. Fast setup, WCAG contrast, dark mode, and infinite customization.',
     baseUrl: getURL(),
-    creator: 'Silverthread Labs',
-    publisher: 'Bloggen',
+    creator: 'Syed Saif',
+    publisher: 'Silverthread Labs',
     keywords: [
-        'Bloggen SEO Starter',
-        'Bloggen',
-        'SEO',
-        'MDX',
-        'Dynamic OG Images',
-        'Open Graph Images',
-        'JSON-LD',
-        'Schema Markup',
-        'High Performance',
-        'Lighthouse Score',
-        'Web Development'
+        'Radix Colors',
+        'Accessible Themes',
+        'WCAG Contrast',
+        'Dark Mode',
+        'Designrift',
+        'Theme Engine',
+        'Visual Customization',
+        'UI Design',
+        'Accessibility',
+        'Single-step Theme Setup'
     ],
     alternateNames: [
-        'bloggen seo Starter',
-        'Bloggen SEO Template',
-        'Bloggen Agency Starter',
-        'Bloggen Agency Template'
+        'designrift',
+        'design rift',
+        'design token',
+        'radix theme generator',
     ],
     author: {
-        name: 'Bloggen',
-        url: 'https://www.bloggen.dev',
-        logo: 'https://www.bloggen.dev/favicon.ico',
-        twitterHandle: '@bloggen'
+        name: 'Syed Saif',
+        url: 'https://www.syed-saif.com',
+        logo: 'https://www.syed-saif.com/favicon.ico',
+        twitterHandle: '@syedsaif_666'
     },
     getImageConfig: (title: string) => ({
         url: `${getURL()}/og?title=${encodeURIComponent(title)}`,
@@ -40,9 +39,9 @@ export const siteConfig = {
         description: title
     }),
     social: {
-        sameAs: []
+        sameAs: ['https://www.syed-saif.com', 'https://www.bloggen.dev', 'https://www.silverthreadlabs.com']
     },
     sitemap: {
-        staticRoutes: ['', '/contact', '/about', '/blog', '/products']
+        staticRoutes: ['']
     }
 };
