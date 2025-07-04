@@ -101,7 +101,7 @@
 
 import { SelectedColors, RadixColors, ColorStepResult } from './types';
 import { semanticSuffixes, coolColors } from './constants';
-const credit = '/* Generated with https://designrift.vercel.app */ \n';
+
 
 
 /**
@@ -172,6 +172,8 @@ export const generateCSSVariables = (
   selectedColors: SelectedColors,
   radixColors: RadixColors
 ): string => {
+  const credit = '/* Generated with https://designrift.dev */ \n';
+  const twImport = '@import "tailwindcss";'
   let lightCSS = '/* LIGHT THEME */\n:root {\n';
   let darkCSS = '\n/* DARK THEME */\n.dark {\n';
 
@@ -186,7 +188,7 @@ export const generateCSSVariables = (
   lightCSS += '}';
   darkCSS += '}';
 
-  return credit + lightCSS + '\n' + darkCSS;
+  return credit + twImport + '\n' + lightCSS + '\n' + darkCSS;
 };
 
 /**
