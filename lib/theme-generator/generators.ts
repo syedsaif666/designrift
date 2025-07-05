@@ -219,7 +219,7 @@ export const generateTailwindV3Config = (selectedColors: SelectedColors): string
  * @returns Tailwind v4 theme extensions string
  */
 export const generateTailwindV4Theme = (selectedColors: SelectedColors): string => {
-  let config = '@theme {\n';
+  let config = '@theme inline {\n';
 
   Object.entries(selectedColors).forEach(([category, colorName]) => {
     if (colorName) {
