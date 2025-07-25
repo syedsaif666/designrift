@@ -18,8 +18,8 @@ const SocialLinks = () => {
     return (
         <div className='flex space-x-2'>
             <SocialLink
-                href='https://github.com/silverthreadlabs/bloggen-seo-starter'
-                ariaLabel='Visit SilverThread Labs GitHub repository'
+                href='https://github.com/syedsaif666/designrift'
+                ariaLabel='Visit designrift GitHub repository'
                 icon={
                     <FaGithub size={16} className='group-hover:text-fg-text-contrast transition-colors duration-200' />
                 }

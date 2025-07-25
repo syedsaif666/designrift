@@ -18,10 +18,10 @@ const BODY = 'Hello, I would like to discuss a potential project.';
 const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
 const NAV_ITEMS = [
-    { href: '/about', label: 'About' },
+    // { href: '/about', label: 'About' },
     // { href: '/products', label: 'Products' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/support', label: 'support' },
+    // { href: '/blog', label: 'Blog' },
     { href: '/terms', label: 'Terms' }
 ];
 
