@@ -34,7 +34,7 @@ export default function Cta() {
 
                         {/* CTA Section */}
                         <div className='flex flex-col gap-4 sm:flex-row sm:justify-center'>
-                            <Link href='/theme-editor' target='_blank' rel='noopener noreferrer'>
+                            <Link href='/theme-editor' rel='noopener noreferrer'>
                                 <Button
                                     color='primary'
                                     variant='solid'
@@ -45,7 +45,7 @@ export default function Cta() {
                                 </Button>
                             </Link>
 
-                            <Link href='#docs' target='_blank' rel='noopener noreferrer'>
+                            <Link href='#docs' rel='noopener noreferrer'>
                                 <Button
                                     color='primary'
                                     variant='ghost'

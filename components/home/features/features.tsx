@@ -29,17 +29,21 @@ export default function Features() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <h2 className="text-canvas-text-contrast mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Powerful Features
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-text mb-6">
+            Powerful Features for{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Modern Development
+            </span>
           </h2>
-          <p className="text-canvas-text mx-auto max-w-2xl text-lg text-balance">
-            Discover the tools and capabilities that make our platform the perfect solution for your needs.
+          <p className="text-xl max-w-3xl mx-auto">
+            Everything you need to create beautiful, accessible, and maintainable themes
+            for your applications.
           </p>
         </motion.div>
 
         {/* Features as Cards */}
         <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -48,9 +52,11 @@ export default function Features() {
           {featuresData.map((feature) => (
             <FeatureCard
               key={feature.id}
+              icon={feature.icon}
               title={feature.title}
               description={feature.description}
               details={feature.details}
+              gradient={feature.gradient}
               isActive={activeFeature === feature.id}
               onHover={() => setActiveFeature(feature.id)}
               onLeave={() => setActiveFeature(null)}
