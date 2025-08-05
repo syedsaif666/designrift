@@ -13,10 +13,17 @@ import { ArrowUpRight } from 'lucide-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NAV_ITEMS = [
-    // { href: '/about', label: 'About' },
-    // { href: '/blog', label: 'Blog' }
-    // { href: '/products', label: 'Products' },
+    { href: '/feature', label: 'Features' },
+    { href: '/blog', label: 'Blog' },
 ];
+
+function scrollToSection(id: string) {
+    const el = document.querySelector(id);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,21 +40,40 @@ export default function Header() {
 
                     {/* Desktop nav - hidden on small screens, visible on md and up */}
                     <nav aria-label='Primary navigation' className='hidden items-center space-x-4 md:flex'>
-                        <ul className='flex space-x-3'>
+                    <ul className='flex space-x-3'>
                             {NAV_ITEMS.map(({ href, label }) => (
                                 <li key={href}>
-                                    <Link
-                                        href={href}
-                                        className='text-canvas-text hover:text-primary-text rounded-sm px-3 py-2 text-base font-medium transition-colors'>
-                                        {label}
-                                    </Link>
+                                    {href.startsWith('#') ? (
+                                        <a
+                                            href={href}
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                scrollToSection(href);
+                                            }}
+                                            className='text-canvas-text hover:text-canvas-text-contrast rounded-sm px-2 py-2 text-base font-medium transition-colors'>
+                                            {label}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            href={href}
+                                            className='text-canvas-text hover:text-canvas-text-contrast rounded-sm px-2 py-2 text-base font-medium transition-colors'>
+                                            {label}
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
-                        {/* <Link href='/contact' className='flex-1'>
-                            <Button color='primary' size='default' variant='solid' name='Contact'>
+                        {/* <ThemeToggle/> */}
+                        <Link href='/support' className='flex-1'>
+                            <Button
+                                color='primary'
+                                size='default'
+                                variant='solid'
+                                aria-label='Our Support'
+                                name='Our Support'>
+                                Support
                             </Button>
-                        </Link> */}
+                        </Link>
                         {/* <Link href='https://www.bloggen.dev/' target='_blank'>
                             <Button
                                 color='primary'
@@ -91,18 +117,32 @@ export default function Header() {
                     <ul className='border-fg-border space-y-3 border-t p-4'>
                         {NAV_ITEMS.map(({ href, label }) => (
                             <li key={href}>
-                                <Link
-                                    href={href}
-                                    onClick={toggleMobile}
-                                    className='text-canvas-text hover:bg-canvas-bg hover:text-primary-text block rounded-sm px-4 py-2 text-base font-medium transition-colors'>
-                                    {label}
-                                </Link>
+                                {href.startsWith('#') ? (
+                                    <a
+                                        href={href}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            scrollToSection(href);
+                                            toggleMobile();
+                                        }}
+                                        className='text-canvas-text hover:bg-canvas-bg hover:text-primary-text block rounded-sm px-4 py-2 text-base font-medium transition-colors'>
+                                        {label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        href={href}
+                                        onClick={toggleMobile}
+                                        className='text-canvas-text hover:bg-canvas-bg hover:text-primary-text block rounded-sm px-4 py-2 text-base font-medium transition-colors'>
+                                        {label}
+                                    </Link>
+                                )}
                             </li>
                         ))}
                         <li>
                             <div className='flex flex-col gap-3'>
-                                <Link href='/contact' onClick={toggleMobile} className='flex-1'>
-                                    <Button color='primary' size='default' variant='solid' fullWidth name='Contact'>
+                                <Link href='/support' onClick={toggleMobile} className='flex-1'>
+                                    <Button color='primary' size='default' variant='solid' fullWidth name='Our Support'>
+                                        Support
                                     </Button>
                                 </Link>
                                 {/* <Link href='https://www.bloggen.dev/' target='_blank' className='flex-1'>

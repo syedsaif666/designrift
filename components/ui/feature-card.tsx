@@ -1,41 +1,60 @@
-
+import { motion } from 'framer-motion';
+import React, { ReactElement } from 'react';
 
 interface FeatureCardProps {
-    icon: React.ReactElement;
+    icon: ReactElement;
     title: string;
-    descriptionStart: string;
-    code?: string;
-    descriptionEnd?: string;
+    description: string;
+    details: string[];
+    gradient: string
+    onHover?: () => void;
+    onLeave?: () => void;
+    isActive?: boolean;
 }
 
-function FeatureCard({ icon, title, descriptionStart, code, descriptionEnd }: FeatureCardProps) {
+function FeatureCard({ icon, title, description, details, gradient, onHover, onLeave, isActive }: FeatureCardProps) {
     return (
-        <div className='group relative'>
-            <div className='bg-canvas-bg-hover border-canvas-bg-active hover:border-canvas-line cursor-default rounded-xl border p-6 backdrop-blur-sm transition-all duration-300 ease-in-out'>
-                <div className='flex items-start gap-4'>
-                    {/* <div className='rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 p-3 transition-transform duration-300 ease-out group-hover:scale-[1.05]'> */}
-                    <div className='rounded-lg bg-gradient-to-br from-canvas-bg-hover to-canvas-border p-3 transition-transform duration-300 ease-out group-hover:scale-[1.05]'>
-                        <div className='text-canvas-text group-hover:text-primary-text transition-colors duration-300 ease-out'>
-                            {icon}
-                        </div>
-                    </div>
-                    <div>
-                        <h5 className='text-fg-text-contrast group-hover:text-primary-text mb-2 text-lg leading-relaxed font-semibold tracking-normal transition-colors duration-300 ease-out md:text-xl'>
-                            {title}
-                        </h5>
-                        <p className='text-fg-text text-sm leading-relaxed font-normal tracking-normal transition-colors duration-300 ease-out md:text-lg'>
-                            {descriptionStart}
-                            {code && (
-                                <code className='bg-canvas-bg-active border-canvas-line text-canvas-text-contrast rounded-md border px-2 py-1 font-mono text-sm'>
-                                    {code}
-                                </code>
-                            )}
-                            {descriptionEnd}
-                        </p>
-                    </div>
+        <motion.div
+            className={`relative rounded-2xl border p-8 bg-canvas-bg-subtle transition-all duration-300 cursor-pointer ${isActive
+                ? 'border-primary-solid bg-gradient-to-br from-primary-bg to-primary-bg-subtle text-primary-text-contrast'
+                : 'border-canvas-line hover:border-primary-border hover:bg-primary-bg-subtle'
+                }`}
+            whileHover={{ scale: 1.02, boxShadow: '0 8px 32px rgba(80,80,180,0.10)' }}
+            whileTap={{ scale: 0.98 }}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+        >
+            <div className='flex items-center justify-start gap-4'>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${gradient} mb-6 ${isActive ? 'scale-110' : 'scale-100'} transition-[scale] duration-300`}>
+                    {icon}
                 </div>
+                <h3 className="text-xl font-bold text-primary-text mb-4">
+                    {title}
+                </h3>
             </div>
-        </div>
+            {/* Badge */}
+            {/* <div className="mb-6">
+                <span className={`inline-block bg-primary-bg ${isActive ? 'bg-canvas-bg' : 'bg-primary-bg'} 'text-primary-text-contrast' : 'text-canvas-text-contrast'} px-4 py-2 rounded-lg text-sm font-medium`}>
+                    {title}
+                </span>
+            </div> */}
+            {/* Description */}
+            <p className="mb-6 leading-relaxed">
+                {description}
+            </p>
+            {/* Details */}
+            <ul className="space-y-2">
+                {details.map((detail, index) => (
+                    <li key={index} className="flex items-center text-sm text-primary-contrast">
+                        <div className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3 flex-shrink-0" />
+                        {detail}
+                    </li>
+                ))}
+            </ul>
+        </motion.div>
     );
 }
 

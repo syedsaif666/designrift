@@ -64,7 +64,7 @@ const ThemeSwitcher = () => {
             ].map(({ value, icon, title }) => (
                 <RadioGroup.Item
                     key={value}
-                    className="p-2 rounded-full data-[state=checked]:bg-canvas-bg-hover data-transition-colors"
+                    className="p-2 rounded-full data-[state=checked]:bg-canvas-bg-hover data-transition-colors cursor-pointer hover:bg-canvas-bg-subtle"
                     value={value}
                     title={title}
                     aria-label={title}
