@@ -7,6 +7,7 @@ import { ThemeSwitcher } from '@/components/ui/theme-switcher';
 
 import SocialLinks from './social-links';
 import { FaRegEnvelope } from 'react-icons/fa';
+import { useTheme } from 'next-themes';
 
 // import { useMediaQuery } from '@/lib/hooks/useMediaQuery';
 
@@ -28,6 +29,7 @@ const title = 'Silverthread Labs';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { resolvedTheme } = useTheme();
 
     return (
         <footer className='bg-canvas-bg-subtle border-canvas-bg-hover w-full border-t shadow-inner'>
@@ -35,7 +37,8 @@ export default function Footer() {
                 <div className='py-12'>
                     <div className={'flex flex-col items-start justify-between space-y-8 md:flex-row md:space-y-0'}>
                         <div className='flex flex-col space-y-4'>
-                            <Logo />
+                            {/* Logo that switches with theme */}
+                            <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
                             <nav className='flex flex-wrap gap-4'>
                                 {NAV_ITEMS.map(({ href, label }) => (
                                     <Link

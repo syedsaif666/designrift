@@ -19,7 +19,7 @@ export default function Hero() {
     const stats = [
         { value: '50+', label: 'Color Scales', icon: FaPalette },
         { value: '99.9%', label: 'Accessible', icon: FaEye },
-        { value: '3.2k', label: 'GitHub Stars', icon: FaStar },
+        { value: '3', label: 'GitHub Stars', icon: FaStar },
         { value: '< 5min', label: 'Setup Time', icon: FaPalette }
     ];
 
@@ -106,21 +106,6 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}>
                         
-                        {/* Badge */}
-                        <motion.div
-                            className='inline-flex items-center gap-3 mb-8 px-6 py-3 rounded-full bg-primary-bg border border-primary-border shadow-lg backdrop-blur-sm'
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}>
-                            <div>
-                                <FaPalette className='text-primary-solid w-5 h-5' />
-                            </div>
-                            <span className='text-sm font-semibold text-primary-text-contrast'>
-                                Powered by Radix Colors
-                            </span>
-                            <div className='w-2 h-2 bg-primary-solid rounded-full animate-pulse' />
-                        </motion.div>
-
                         {/* Main Headline */}
                         <motion.h1
                             className='text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-canvas-text-contrast mb-8 leading-tight'
@@ -176,48 +161,13 @@ export default function Hero() {
                                     <FaGithub className='w-5 h-5' />
                                     <span>View on GitHub</span>
                                     <div className='text-canvas-text text-sm bg-canvas-bg-subtle px-3 py-1 rounded-full'>
-                                        3.2k ⭐
+                                        3 ⭐
                                     </div>
                                 </Button>
                             </Link>
                         </motion.div>
 
-                        {/* Installation Command */}
-                        <motion.div
-                            className='max-w-xl mx-auto mb-16'
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}>
-                            
-                            <div className='bg-canvas-base border border-canvas-line rounded-2xl p-6 shadow-xl backdrop-blur-sm'>
-                                <div className='flex items-center gap-2 mb-4'>
-                                    <div className='w-3 h-3 bg-red-500 rounded-full' />
-                                    <div className='w-3 h-3 bg-yellow-500 rounded-full' />
-                                    <div className='w-3 h-3 bg-green-500 rounded-full' />
-                                    <span className='text-canvas-text text-sm ml-4'>Terminal</span>
-                                </div>
-                                
-                                <div className='flex items-center justify-between p-4 bg-canvas-bg rounded-xl border border-canvas-line'>
-                                    <div className='flex items-center gap-3'>
-                                        <span className='text-primary-solid'>$</span>
-                                        <span className='text-canvas-text-contrast font-mono text-lg'>
-                                            npm install designrift
-                                        </span>
-                                    </div>
-                                    <motion.button
-                                        onClick={handleCopy}
-                                        className='p-2 text-canvas-text hover:text-primary-solid transition-colors rounded-lg hover:bg-primary-bg-subtle'
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}>
-                                        {copied ? (
-                                            <FaCheck className='w-4 h-4 text-green-500' />
-                                        ) : (
-                                            <FaCopy className='w-4 h-4' />
-                                        )}
-                                    </motion.button>
-                                </div>
-                            </div>
-                        </motion.div>
+                       
                     </motion.div>
 
                     {/* Live Theme Demo */}
@@ -361,32 +311,32 @@ export default function Hero() {
 
                     {/* Stats Section */}
                     <motion.div
-                        className='grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20'
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}>
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                className='text-center group cursor-pointer'
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
-                                whileHover={{ scale: 1.05 }}>
-                                <div className='mb-4 flex justify-center'>
-                                    <div className='p-4 bg-primary-bg rounded-2xl group-hover:bg-primary-solid transition-colors duration-300 shadow-lg'>
-                                        <stat.icon className='w-6 h-6 text-primary-solid group-hover:text-white' />
-                                    </div>
-                                </div>
-                                <div className='text-3xl font-bold text-canvas-text-contrast mb-2'>
-                                    {stat.value}
-                                </div>
-                                <div className='text-canvas-text text-sm font-medium'>
-                                    {stat.label}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+    className='grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20'
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.8 }}>
+    {stats.map((stat, index) => (
+        <motion.div
+            key={index}
+            className='text-center group cursor-pointer'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+            whileHover={{ scale: 1.05 }}>
+            <div className='mb-4 flex justify-center'>
+                <div className='p-4 bg-primary-bg/50 group-hover:bg-primary-solid/80 rounded-2xl transition-colors duration-300 shadow-lg'>
+                    <stat.icon className='w-6 h-6 text-primary-solid/80 group-hover:text-white transition-colors duration-300' />
+                </div>
+            </div>
+            <div className='text-3xl font-bold text-canvas-text-contrast mb-2'>
+                {stat.value}
+            </div>
+            <div className='text-canvas-text text-sm font-medium'>
+                {stat.label}
+            </div>
+        </motion.div>
+    ))}
+</motion.div>
 
                     {/* Features Section */}
                     <motion.div

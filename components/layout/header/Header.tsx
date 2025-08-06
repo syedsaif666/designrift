@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ThemeSwitcher } from '@/components/ui/theme-switcher';
+import { useTheme } from 'next-themes';
 
 
 import Link from 'next/link';
@@ -28,6 +29,7 @@ function scrollToSection(id: string) {
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const toggleMobile = () => setMobileOpen((open) => !open);
+    const { resolvedTheme } = useTheme();
 
     return (
         <header
@@ -36,7 +38,8 @@ export default function Header() {
             {/* px-4 sm:px-6 lg:px-8 */}
             <div className='mx-auto max-w-7xl px-4 xl:px-0'>
                 <div className='flex h-16 items-center justify-between'>
-                    <Logo />
+                {/* Logo that switches with theme */}
+                <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
 
                     {/* Desktop nav - hidden on small screens, visible on md and up */}
                     <nav aria-label='Primary navigation' className='hidden items-center space-x-4 md:flex'>

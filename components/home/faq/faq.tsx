@@ -217,10 +217,6 @@ export default function Faq() {
             <div className="relative mx-auto max-w-7xl">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-bg/10 border border-primary-border/20 mb-6">
-                        <span className="text-primary-text-contrast text-sm font-medium">FAQ</span>
-                        <div className="w-2 h-2 bg-primary-bg rounded-full"></div>
-                    </div>
                     
                     <h2 className="text-canvas-text-contrast text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                         Everything you need
