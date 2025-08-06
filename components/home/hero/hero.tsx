@@ -112,11 +112,9 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.2 }}>
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>
+                            <div>
                                 <FaPalette className='text-primary-solid w-5 h-5' />
-                            </motion.div>
+                            </div>
                             <span className='text-sm font-semibold text-primary-text-contrast'>
                                 Powered by Radix Colors
                             </span>

@@ -1,6 +1,6 @@
 import type { Viewport } from 'next';
-import { Roboto_Slab } from 'next/font/google';
-
+// import { Roboto_Slab } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
 import Footer from '@/components/layout/footer/footer';
@@ -11,12 +11,21 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
 
-const robotoSlab = Roboto_Slab({
+const manrope = Manrope({
     subsets: ['latin'],
     display: 'swap',
     weight: ['400', '500', '600', '700'],
-    variable: '--font-robotoslab'
+    variable: '--font-manrope',
+    preload: true, // Add this
+    fallback: ['system-ui', 'arial'] // Add fallback
 });
+
+// const robotoSlab = Roboto_Slab({
+//     subsets: ['latin'],
+//     display: 'swap',
+//     weight: ['400', '500', '600', '700'],
+//     variable: '--font-robotoslab'
+// });
 
 export const viewport: Viewport = {
     width: 'device-width',
@@ -27,7 +36,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang='en' className={`${robotoSlab.variable}`} suppressHydrationWarning>
+        // <html lang='en' className={`${robotoSlab.variable}`} suppressHydrationWarning>
+        <html suppressHydrationWarning lang='en' className={`${manrope.variable}`}>
             {/* <GoogleAnalytics gaId={env.GOOGLE_ANALYTICS_MEASUREMENT_ID} /> */}
             <body className='antialiased lg:mx-auto'>
                 <ThemeProvider

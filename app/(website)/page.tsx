@@ -8,7 +8,7 @@ import Hero from '@/components/home/hero/hero';
 import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 import HomeSchema from '@/lib/seo/schema/theme-editor';
 import FAQSchema from '@/lib/seo/schema/faq';
-import Performance from '@/components/home/performance/performance';
+// import Performance from '@/components/home/performance/performance';
 // import { BlogPosts } from '@/components/blog/blog-post';
 // import { ThemeExample } from '@/components/home/example/theme-example';
 
@@ -22,7 +22,7 @@ export default function Page() {
             <HomeSchema />
             <FAQSchema />
             <Hero />
-            <Performance />
+            {/* <Performance /> */}
             {/* <ThemeExample /> */}
             {/* <DesignRift /> */}
             <Features />
