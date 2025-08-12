@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 
 export const metadata: Metadata = createPageMetadata({
-  path: ''
+  path: 'theme-editor'
 });
 
 const DesignRift = () => {
