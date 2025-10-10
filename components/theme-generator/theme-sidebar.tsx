@@ -140,6 +140,7 @@ import { AppearanceTabs } from '@/components/ui/appearance-tabs';
 import { CodeDialog } from '@/components/ui/code-dialog';
 import Logo from '@/components/logo/Logo';
 import { ColorCategorySection } from './color-category-section';
+import { useTheme } from 'next-themes';
 import {
   allColors,
   canvasRecommendedColors,
@@ -165,13 +166,15 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
   tailwindV4Complete 
 }) => {
   const primaryRecommendations = getPrimaryRecommendations(selectedColors.canvas);
+    const { resolvedTheme } = useTheme();
+
 
   return (
     <aside className="bg-canvas-bg border-canvas-border w-full border-r md:w-96 md:h-full flex flex-col">
       {/* Scrollable content */}
       <div className="flex-1 overflow-y-auto p-6">
-        <div className="flex flex-col gap-1">
-          <Logo />
+        <div className="flex flex-col gap-4">
+                          <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
           <p className="text-canvas-text mb-4 text-sm">
           Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.
           </p>
