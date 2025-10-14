@@ -1,50 +1,3 @@
-// import { useState, useCallback, useMemo } from 'react';
-// import {
-//   getDefaultSelectedColors,
-//   updateSelectedColor,
-//   generateCSSVariables,
-//   generateTailwindConfig,
-//   type SelectedColors,
-//   type ColorCategory,
-//   type RadixColors
-// } from '@/lib/theme-generator';
-
-// interface UseThemeGeneratorProps {
-//   radixColors: RadixColors;
-// }
-
-// export const useThemeGenerator = ({ radixColors }: UseThemeGeneratorProps) => {
-//   const [selectedColors, setSelectedColors] = useState<SelectedColors>(
-//     getDefaultSelectedColors()
-//   );
-
-//   const handleColorSelect = useCallback((category: ColorCategory, color: string) => {
-//     setSelectedColors((prev) => updateSelectedColor(prev, category, color));
-//   }, []);
-
-//   const cssVariables = useMemo(() => 
-//     generateCSSVariables(selectedColors, radixColors), 
-//     [selectedColors, radixColors]
-//   );
-
-//   const tailwindConfig = useMemo(() => 
-//     generateTailwindConfig(selectedColors), 
-//     [selectedColors]
-//   );
-
-//   const resetToDefaults = useCallback(() => {
-//     setSelectedColors(getDefaultSelectedColors());
-//   }, []);
-
-//   return {
-//     selectedColors,
-//     handleColorSelect,
-//     cssVariables,
-//     tailwindConfig,
-//     resetToDefaults
-//   };
-// };
-// 
 'use client'
 
 import { useState, useCallback, useMemo } from 'react';
@@ -61,15 +14,21 @@ import {
 
 interface UseThemeGeneratorProps {
   radixColors: RadixColors;
+  initialSelectedColors?: SelectedColors;
 }
 
-export const useThemeGenerator = ({ radixColors }: UseThemeGeneratorProps) => {
+export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThemeGeneratorProps) => {
   const [selectedColors, setSelectedColors] = useState<SelectedColors>(
-    getDefaultSelectedColors()
+    initialSelectedColors || getDefaultSelectedColors()
   );
 
   const handleColorSelect = useCallback((category: ColorCategory, color: string) => {
-    setSelectedColors((prev) => updateSelectedColor(prev, category, color));
+    setSelectedColors((prev) => {
+      const newColors = updateSelectedColor(prev, category, color);
+      // Save to cookie immediately with the new colors
+      document.cookie = `designrift-color-theme=${JSON.stringify(newColors)}; path=/; max-age=31536000`; // 1 year expiration
+      return newColors;
+    });
   }, []);
 
   const cssVariables = useMemo(() => 
@@ -88,7 +47,10 @@ export const useThemeGenerator = ({ radixColors }: UseThemeGeneratorProps) => {
   );
 
   const resetToDefaults = useCallback(() => {
-    setSelectedColors(getDefaultSelectedColors());
+    const defaultColors = getDefaultSelectedColors();
+    setSelectedColors(defaultColors);
+    // Save defaults to cookie
+    document.cookie = `designrift-color-theme=${JSON.stringify(defaultColors)}; path=/; max-age=31536000`; // 1 year expiration
   }, []);
 
   return {
