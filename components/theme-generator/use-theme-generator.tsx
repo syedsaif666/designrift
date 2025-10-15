@@ -25,8 +25,9 @@ export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThe
   const handleColorSelect = useCallback((category: ColorCategory, color: string) => {
     setSelectedColors((prev) => {
       const newColors = updateSelectedColor(prev, category, color);
-      // Save to cookie immediately with the new colors
-      document.cookie = `designrift-color-theme=${JSON.stringify(newColors)}; path=/; max-age=31536000`; // 1 year expiration
+      if (typeof window !== 'undefined') {
+        document.cookie = `designrift-color-theme=${JSON.stringify(newColors)}; path=/; max-age=31536000`;
+      }
       return newColors;
     });
   }, []);
@@ -49,8 +50,9 @@ export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThe
   const resetToDefaults = useCallback(() => {
     const defaultColors = getDefaultSelectedColors();
     setSelectedColors(defaultColors);
-    // Save defaults to cookie
-    document.cookie = `designrift-color-theme=${JSON.stringify(defaultColors)}; path=/; max-age=31536000`; // 1 year expiration
+    if (typeof window !== 'undefined') {
+      document.cookie = `designrift-color-theme=${JSON.stringify(defaultColors)}; path=/; max-age=31536000`; // 1 year expiration
+    }
   }, []);
 
   return {
