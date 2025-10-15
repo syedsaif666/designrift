@@ -173,12 +173,6 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
     <aside className="bg-canvas-bg border-canvas-border w-full border-r md:w-96 md:h-full flex flex-col">
       {/* Scrollable content */}
       <div className="flex-1 overflow-y-auto p-6">
-        <div className="flex flex-col gap-4">
-                          <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
-          <p className="text-canvas-text mb-4 text-sm">
-          Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.
-          </p>
-        </div>
         
         <AppearanceTabs>
           <div className="flex flex-col space-y-6">

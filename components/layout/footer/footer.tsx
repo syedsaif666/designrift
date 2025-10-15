@@ -1,15 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-
 import Logo from '@/components/logo/Logo';
 import { ThemeSwitcher } from '@/components/ui/theme-switcher';
-
 import SocialLinks from './social-links';
-import { FaRegEnvelope } from 'react-icons/fa';
 import { useTheme } from 'next-themes';
-
-// import { useMediaQuery } from '@/lib/hooks/useMediaQuery';
 
 const EMAIL = 'silverthreadlabs@gmail.com';
 const SUBJECT = 'Business Inquiry';
@@ -38,7 +33,9 @@ export default function Footer() {
                     <div className={'flex flex-col items-start justify-between space-y-8 md:flex-row md:space-y-0'}>
                         <div className='flex flex-col space-y-4'>
                             {/* Logo that switches with theme */}
-                            <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                            <Link href='/'>
+                                <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                            </Link>
                             <nav className='flex flex-wrap gap-4'>
                                 {NAV_ITEMS.map(({ href, label }) => (
                                     <Link

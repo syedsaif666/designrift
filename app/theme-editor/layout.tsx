@@ -3,11 +3,9 @@ import { Manrope } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { cookies } from 'next/headers';
 
-import Footer from '@/components/layout/footer/footer';
-import Header from '@/components/layout/header/Header';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import Navbar from '@/components/layout/theme-editor/navbar';
 
-import './global.css';
+import '../global.css';
 import { RootProvider } from 'fumadocs-ui/provider';
 import radixColors from '@/public/radix-colors.json';
 import { ThemeProviderCustom } from '@/components/theme-generator/theme-provider-custom';
@@ -27,7 +25,7 @@ export const viewport: Viewport = {
     initialScale: 1
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function ThemeEditorLayout({ children }: { children: React.ReactNode }) {
     const cookieStore = await cookies();
     const savedColorsStr = cookieStore.get('designrift-color-theme')?.value;
     
@@ -42,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
     return (
         <html suppressHydrationWarning lang='en' className={`${manrope.variable}`}>
-            <body className='antialiased lg:mx-auto'>
+            <body className='antialiased'>
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
@@ -50,9 +48,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     storageKey='designrift-theme'
                 >
                     <ThemeProviderCustom radixColors={radixColors} initialSelectedColors={initialSelectedColors}>
-                        <main className='from-canvas-bg to-canvas-bg-base flex flex-auto flex-col items-center bg-gradient-to-b md:px-0'>
+                        <Navbar />
+                        <div className='overflow-hidden h-[calc(100vh-4rem)]'>
                             <RootProvider>{children}</RootProvider>
-                        </main>
+                        </div>
                     </ThemeProviderCustom>
                 </ThemeProvider>
             </body>
