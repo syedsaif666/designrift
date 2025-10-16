@@ -13,7 +13,7 @@ interface PricingCardProps {
 const PricingCard: FC<PricingCardProps> = memo(
   ({ title, price, features, recommended = false, color = 'primary' }) => (
     <div
-      className={`from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group relative overflow-hidden rounded-2xl border bg-gradient-to-br p-6 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl ${
+      className={`from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group relative overflow-hidden rounded-2xl border bg-gradient-to-br p-6 m2 backdrop-blur-sm transition-all duration-500 hover:shadow-xl ${
         recommended ? 'ring-2 ring-primary-solid' : ''
       }`}
     >

@@ -5,6 +5,7 @@ import CardsTab from './cards';
 import ColorsTab from './colors';
 import DashboardTab from './dashboard';
 import PricingTab from './pricing';
+import Dashboard from './dashboard/dashboard-content';
 
 export interface PreviewProps {}
 
@@ -33,19 +34,20 @@ export default function Preview({}: PreviewProps) {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value='dashboard' className='space-y-6 max-h-[calc(100vh-150px)] overflow-y-auto'>
-            <DashboardTab />
+          <TabsContent value='dashboard' className='space-y-6 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
+            {/* <DashboardTab /> */}
+            <Dashboard />
           </TabsContent>
-          <TabsContent value='pricing' className='space-y-6 max-h-[calc(100vh-150px)] overflow-y-auto'>
+          <TabsContent value='pricing' className='space-y-6 overflow-y-auto'>
             <PricingTab />
           </TabsContent>
-          <TabsContent value='cards' className='space-y-6 max-h-[calc(100vh-150px)] overflow-y-auto'>
+          <TabsContent value='cards' className='space-y-6 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
             <CardsTab />
           </TabsContent>
-          <TabsContent value='buttons' className='space-y-8 max-h-[calc(100vh-150px)] overflow-y-auto'>
+          <TabsContent value='buttons' className='space-y-8 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
             <ButtonsTab />
           </TabsContent>
-          <TabsContent value='colors' className='space-y-6 max-h-[calc(100vh-150px)] overflow-y-auto'>
+          <TabsContent value='colors' className='space-y-6 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
             <ColorsTab />
           </TabsContent>
         </Tabs>

@@ -14,7 +14,7 @@ export interface PricingTabProps {}
 
 export default function PricingTab({}: PricingTabProps) {
   return (
-    <>
+    <div className='space-y-6 min-h-[calc(100vh-9.5rem)] max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
       <div className='text-center mb-8'>
         <h2 className='text-canvas-text-contrast mb-2 text-2xl font-bold'>Choose Your Plan</h2>
         <p className='text-canvas-text'>Select the perfect plan for your needs</p>
@@ -62,6 +62,6 @@ export default function PricingTab({}: PricingTabProps) {
           ]}
         />
       </div>
-    </>
+    </div>
   );
 }
