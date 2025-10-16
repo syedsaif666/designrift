@@ -5,6 +5,7 @@ import { DashboardPreview } from '@/components/ui/dashboard-preview';
 import { ThemeSidebar } from './theme-sidebar';
 import type { RadixColors } from '@/lib/theme-generator';
 import { useTheme } from '@/components/theme-generator/theme-provider-custom';
+import DesignSystemShowcase from '../previews/tabs-nav';
 
 interface ThemeGeneratorProps {
   radixColors: RadixColors;
@@ -30,7 +31,8 @@ export const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ radixColors }) =
           tailwindV4Complete={tailwindV4Complete}
         />
         <div className="flex-1 min-h-screen md:h-full md:overflow-hidden">
-          <DashboardPreview />
+          {/* <DashboardPreview /> */}
+          <DesignSystemShowcase />
         </div>
       </div>
     </div>
