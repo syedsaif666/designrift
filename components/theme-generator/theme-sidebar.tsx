@@ -30,9 +30,15 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
   const primaryRecommendations = getPrimaryRecommendations(selectedColors.canvas);
 
   return (
-    <aside className="bg-canvas-bg border-canvas-border w-full border-r md:w-96 md:h-full flex flex-col">
+    <aside className="bg-canvas-bg-subtle border-canvas-border w-full border-r md:w-96 md:h-full flex flex-col">
       {/* Scrollable content with padding to avoid overlap with sticky footer */}
-      <div className="flex-1 overflow-y-auto p-6 pb-20"> {/* Added pb-32 to account for footer height */}
+
+      <div className="flex-1 overflow-y-auto p-6 pb-20">
+        <div className="flex flex-col gap-4">
+          <p className="text-canvas-text mb-4 text-sm">
+            Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.
+          </p>
+        </div>
         <AppearanceTabs>
           <div className="flex flex-col space-y-6">
             {/* Canvas Colors */}

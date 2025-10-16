@@ -15,7 +15,7 @@ export default function Preview({}: PreviewProps) {
     <div className='from-canvas-bg-subtle to-canvas-bg-subtle relative min-h-screen overflow-hidden bg-gradient-to-br p-6'>
       <div className='relative mx-auto max-w-7xl'>
         <Tabs value={activeTab} onValueChange={setActiveTab} className='w-full'>
-          <TabsList className='sticky top-0 z-10 backdrop-blur-sm'>
+          <TabsList className='sticky top-0 z-10 backdrop-blur-sm mb-3'>
             <TabsTrigger value='dashboard' className='whitespace-nowrap'>
               Dashboard
             </TabsTrigger>
