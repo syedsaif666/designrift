@@ -42,7 +42,7 @@ function TabsTrigger({
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "data-[state=active]:bg-canvas-bg data-[state=active]:text-canvas-text-contrast focus-visible:ring-primary-solid/50 focus-visible:outline-primary-solid text-canvas-text inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent p-4 text-sm font-medium whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[state=active]:bg-canvas-bg data-[state=active]:text-canvas-text-contrast focus-visible:ring-primary-solid/50 focus-visible:outline-primary-solid text-canvas-text inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent p-4 text-sm font-medium whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:cursor-pointer",
         className
       )}
       {...props}

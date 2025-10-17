@@ -94,7 +94,7 @@ const buttonVariants = cva(
             {
                 color: 'neutral',
                 variant: 'solid',
-                class: 'bg-canvas-text-contrast text-canvas-default hover:bg-canvas-text-contrast/90'
+                class: 'bg-canvas-text-contrast text-canvas-text hover:bg-canvas-text-contrast/90'
             },
             {
                 color: 'neutral',
@@ -254,4 +254,4 @@ Button.displayName = 'Button';
 // export default Button;
 
 const ButtonMemoized = React.memo(Button);
-export { ButtonMemoized as Button };
+export { ButtonMemoized as Button, buttonVariants };

@@ -21,9 +21,9 @@
     "id": 3,
     "header": "Executive summary",
     "type": "Narrative",
-    "status": "Done",
+    "status": "Failed",
     "target": "10",
-    "limit": "13",
+    "limit": "9",
     "reviewer": "Eddie Lake"
   },
   {
@@ -66,9 +66,9 @@
     "id": 8,
     "header": "Innovation and Advantages",
     "type": "Narrative",
-    "status": "Done",
+    "status": "Failed",
     "target": "25",
-    "limit": "26",
+    "limit": "24",
     "reviewer": "Assign reviewer"
   },
   {

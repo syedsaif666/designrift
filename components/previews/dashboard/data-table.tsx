@@ -27,6 +27,7 @@ import {
   IconChevronsLeft,
   IconChevronsRight,
   IconCircleCheckFilled,
+  IconCircleXFilled,
   IconDotsVertical,
   IconGripVertical,
   IconLayoutColumns,
@@ -194,6 +195,8 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       <Badge variant="outline" className="text-canvas-text px-1.5">
         {row.original.status === "Done" ? (
           <IconCircleCheckFilled className="fill-success-solid" />
+        ) : row.original.status === "Failed" ? (
+          <IconCircleXFilled className="fill-alert-solid" />
         ) : (
           <IconLoader className="text-canvas-text-contrast" />
         )}
