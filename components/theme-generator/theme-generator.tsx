@@ -79,7 +79,9 @@ export const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ radixColors }) =
 
         {/* Right Side - Dashboard Preview */}
         <div className="flex-1 min-h-screen md:h-full md:overflow-hidden">
-          <DashboardPreview />
+          <React.Suspense fallback={<div className="flex items-center justify-center p-6 text-sm text-canvas-text">Loading preview…</div>}>
+            <DashboardPreview />
+          </React.Suspense>
         </div>
       </div>
     </div>

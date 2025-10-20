@@ -13,12 +13,12 @@ interface BlogPostsProps {
 
 export function BlogPosts({ isHomePage = false }: BlogPostsProps) {
     const allBlogs = getBlogPosts();
-    const sortedBlogs = allBlogs.sort((a, b) => {
-        if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
-            return -1;
-        }
+    // Clone before sorting to avoid mutating the source array returned from the data layer
+    const sortedBlogs = [...allBlogs].sort((a, b) => {
+        const aTime = new Date(a.metadata.publishedAt).getTime();
+        const bTime = new Date(b.metadata.publishedAt).getTime();
 
-        return 1;
+        return bTime - aTime;
     });
 
     const displayedBlogs = isHomePage ? sortedBlogs.slice(0, 3) : sortedBlogs;
@@ -77,7 +77,7 @@ export function BlogPosts({ isHomePage = false }: BlogPostsProps) {
                                         </time>
                                     </div>
 
-                                    <h2 className='text-canvas-text-contrast group-hover:text-primary-text mb-3 text-lg leading-relaxed font-semibold tracking-normal transition-colors duration-300 md:text-xl line-clamp-2'>
+                                    <h2 className='text-canvas-text-contrast group-hover:text-primary-text mb-3 line-clamp-2 text-lg leading-relaxed font-semibold tracking-normal transition-colors duration-300 md:text-xl'>
                                         {post.metadata.title}
                                     </h2>
 

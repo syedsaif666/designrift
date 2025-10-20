@@ -1,21 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ThemeSwitcher } from '@/components/ui/theme-switcher';
-import { useTheme } from 'next-themes';
-
 
 import Link from 'next/link';
 
+import { useTheme } from 'next-themes';
+
 import Logo from '@/components/logo/Logo';
 import { Button } from '@/components/ui/button';
+import { ThemeSwitcher } from '@/components/ui/theme-switcher';
 
 import { ArrowUpRight } from 'lucide-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NAV_ITEMS = [
     { href: '/feature', label: 'Features' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/blog', label: 'Blog' }
 ];
 
 function scrollToSection(id: string) {
@@ -24,7 +24,6 @@ function scrollToSection(id: string) {
         el.scrollIntoView({ behavior: 'smooth' });
     }
 }
-
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -38,18 +37,20 @@ export default function Header() {
             {/* px-4 sm:px-6 lg:px-8 */}
             <div className='mx-auto max-w-7xl px-4 xl:px-0'>
                 <div className='flex h-16 items-center justify-between'>
-                {/* Logo that switches with theme */}
-                <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                    {/* Logo that switches with theme (clickable to go home) */}
+                    <Link href='/' aria-label='Home' className='inline-block cursor-pointer'>
+                        <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                    </Link>
 
                     {/* Desktop nav - hidden on small screens, visible on md and up */}
                     <nav aria-label='Primary navigation' className='hidden items-center space-x-4 md:flex'>
-                    <ul className='flex space-x-3'>
+                        <ul className='flex space-x-3'>
                             {NAV_ITEMS.map(({ href, label }) => (
                                 <li key={href}>
                                     {href.startsWith('#') ? (
                                         <a
                                             href={href}
-                                            onClick={e => {
+                                            onClick={(e) => {
                                                 e.preventDefault();
                                                 scrollToSection(href);
                                             }}

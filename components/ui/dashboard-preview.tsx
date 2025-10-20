@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 
+import { Button } from './button';
 import {
     BarChart3,
     Download,
@@ -14,7 +15,6 @@ import {
     TrendingUp,
     Users
 } from 'lucide-react';
-import { Button } from './button';
 
 // Define types for component props
 interface MetricCardProps {
@@ -49,16 +49,19 @@ const MetricCard = memo(({ title, icon, value, percentage, color, width }: Metri
     <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border group cursor-pointer rounded-2xl border bg-gradient-to-br p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:shadow-xl lg:p-6'>
         <div className='mb-4 flex items-start justify-between'>
             <h3 className='text-canvas-text text-sm font-medium'>{title}</h3>
-            <div className={`bg-${color}-solid/10 group-hover:bg-${color}-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300`}>
+            <div
+                className={`bg-${color}-solid/10 group-hover:bg-${color}-solid/20 flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-300`}>
                 {icon}
             </div>
         </div>
-        <div className={`text-canvas-text-contrast group-hover:text-${color}-solid mb-2 text-2xl font-bold transition-colors duration-300 lg:text-3xl`}>
+        <div
+            className={`text-canvas-text-contrast group-hover:text-${color}-solid mb-2 text-2xl font-bold transition-colors duration-300 lg:text-3xl`}>
             {value}
         </div>
         <div className={`text-${color}-solid mb-4 text-sm font-medium`}>{percentage}</div>
         <div className='bg-canvas-bg/50 relative h-2 overflow-hidden rounded-full'>
-            <div className={`from-${color}-solid/20 to-${color}-solid/10 absolute inset-0 rounded-full bg-gradient-to-r`}></div>
+            <div
+                className={`from-${color}-solid/20 to-${color}-solid/10 absolute inset-0 rounded-full bg-gradient-to-r`}></div>
             <div
                 className={`from-${color}-solid to-${color}-solid-hover h-full rounded-full bg-gradient-to-r shadow-sm transition-all duration-1000 ease-out`}
                 style={{ width }}></div>
@@ -67,8 +70,7 @@ const MetricCard = memo(({ title, icon, value, percentage, color, width }: Metri
 ));
 
 const OrderRow = memo(({ order }: OrderRowProps) => (
-    <div
-        className='hover:bg-canvas-bg-hover/50 group grid cursor-pointer grid-cols-5 gap-4 p-4 text-sm transition-all duration-300 lg:p-6'>
+    <div className='hover:bg-canvas-bg-hover/50 group grid cursor-pointer grid-cols-5 gap-4 p-4 text-sm transition-all duration-300 lg:p-6'>
         <div>
             <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
                 {order.name}
@@ -92,8 +94,7 @@ const OrderRow = memo(({ order }: OrderRowProps) => (
 ));
 
 const OrderCard = memo(({ order }: OrderCardProps) => (
-    <div
-        className='hover:bg-canvas-bg-hover/50 group cursor-pointer p-4 transition-all duration-300'>
+    <div className='hover:bg-canvas-bg-hover/50 group cursor-pointer p-4 transition-all duration-300'>
         <div className='mb-2 flex items-start justify-between'>
             <div>
                 <div className='text-canvas-text-contrast group-hover:text-primary-solid font-medium transition-colors duration-200'>
@@ -165,7 +166,8 @@ const MOBILE_ORDERS_DATA: OrderData[] = [
 
 export const DashboardPreview = memo(() => {
     return (
-        <div className='from-canvas-bg-subtle  to-canvas-bg-subtle relative min-h-screen overflow-hidden bg-gradient-to-br'>
+        // Use full viewport height and allow internal scrolling where needed.
+        <div className='from-canvas-bg-subtle to-canvas-bg-subtle relative min-h-screen bg-gradient-to-br'>
             {/* Background decorative elements - removed animations */}
             <div className='pointer-events-none absolute inset-0 overflow-hidden'>
                 <div className='bg-primary-solid/5 absolute -top-40 -right-40 h-80 w-80 rounded-full blur-3xl'></div>
@@ -173,16 +175,17 @@ export const DashboardPreview = memo(() => {
             </div>
 
             {/* Main Content */}
-            <div className='relative flex min-h-screen flex-col lg:flex-row'>
+            {/* Use a full-height flex container; make inner columns scrollable */}
+            <div className='relative flex h-screen flex-col lg:flex-row'>
                 {/* Dashboard Content - Mobile: Bottom, Desktop: Left */}
-                <div className='max-h-screen flex-1 space-y-4 overflow-y-auto p-4 lg:order-1 lg:max-h-none lg:space-y-6 lg:p-6'>
+                <div className='flex-1 space-y-4 overflow-y-auto p-4 lg:order-1 lg:space-y-6 lg:p-6'>
                     <h1 className='text-canvas-text-contrast text-2xl font-bold'>Theme Preview</h1>
                     {/* Top Navigation Tabs */}
                     <div className='border-canvas-border mb-4 flex items-center space-x-8 border-b backdrop-blur-sm lg:mb-6'>
                         <Button
-                            variant="ghost"
-                            color="neutral"
-                            className='text-canvas-text-contrast border-primary-solid group relative border-b-2 pb-3 text-sm font-medium transition-all duration-300 hover:cursor-pointer bg-transparent hover:bg-transparent rounded-none'>
+                            variant='ghost'
+                            color='neutral'
+                            className='text-canvas-text-contrast border-primary-solid group relative rounded-none border-b-2 bg-transparent pb-3 text-sm font-medium transition-all duration-300 hover:cursor-pointer hover:bg-transparent'>
                             Dashboard
                         </Button>
                     </div>
@@ -202,7 +205,7 @@ export const DashboardPreview = memo(() => {
                         </div>
                         <div className='flex w-full items-center space-x-3 sm:w-auto'>
                             <div className='group relative flex-1 sm:flex-none'>
-                                <Search className='text-canvas-text-contrast z-10 group-focus-within:text-primary-solid absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform transition-colors duration-200' />
+                                <Search className='text-canvas-text-contrast group-focus-within:text-primary-solid absolute top-1/2 left-3 z-10 h-4 w-4 -translate-y-1/2 transform transition-colors duration-200' />
                                 <input
                                     type='text'
                                     placeholder='Search orders...'
@@ -224,9 +227,9 @@ export const DashboardPreview = memo(() => {
                                     Analysis.
                                 </p>
                                 <Button
-                                    color="primary"
-                                    variant="solid"
-                                    size="default"
+                                    color='primary'
+                                    variant='solid'
+                                    size='default'
                                     fullWidth={true}
                                     className='sm:w-auto'>
                                     Create New Order
@@ -240,44 +243,40 @@ export const DashboardPreview = memo(() => {
 
                     {/* Metrics Cards */}
                     <div className='mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mb-6 lg:gap-6'>
-                        <MetricCard 
-                            title="This Week"
+                        <MetricCard
+                            title='This Week'
                             icon={<TrendingUp className='text-success-solid h-4 w-4' />}
-                            value="$1,329"
-                            percentage="+25% from last week"
-                            color="success"
-                            width="65%"
+                            value='$1,329'
+                            percentage='+25% from last week'
+                            color='success'
+                            width='65%'
                         />
-                        <MetricCard 
-                            title="This Month"
+                        <MetricCard
+                            title='This Month'
                             icon={<BarChart3 className='text-primary-solid h-4 w-4' />}
-                            value="$5,329"
-                            percentage="+10% from last month"
-                            color="primary"
-                            width="45%"
+                            value='$5,329'
+                            percentage='+10% from last month'
+                            color='primary'
+                            width='45%'
                         />
                     </div>
 
                     {/* Time Period Tabs */}
                     <div className='bg-canvas-bg-subtle/50 border-canvas-border mb-4 flex w-full space-x-1 overflow-x-auto rounded-xl border p-1 backdrop-blur-sm sm:w-fit lg:mb-6'>
-                        <Button
-                            color="primary"
-                            variant="solid"
-                            size="sm"
-                            className='whitespace-nowrap'>
+                        <Button color='primary' variant='solid' size='sm' className='whitespace-nowrap'>
                             Week
                         </Button>
                         <Button
-                            color="neutral"
-                            variant="ghost"
-                            size="sm"
+                            color='neutral'
+                            variant='ghost'
+                            size='sm'
                             className='text-canvas-text hover:text-canvas-text-contrast hover:bg-canvas-bg-subtle/50 whitespace-nowrap'>
                             Month
                         </Button>
                         <Button
-                            color="neutral"
-                            variant="ghost"
-                            size="sm"
+                            color='neutral'
+                            variant='ghost'
+                            size='sm'
                             className='text-canvas-text hover:text-canvas-text-contrast hover:bg-canvas-bg-subtle/50 whitespace-nowrap'>
                             Year
                         </Button>
@@ -292,18 +291,18 @@ export const DashboardPreview = memo(() => {
                             </div>
                             <div className='flex w-full items-center space-x-3 sm:w-auto'>
                                 <Button
-                                    color="neutral"
-                                    variant="outline"
-                                    size="sm"
+                                    color='neutral'
+                                    variant='outline'
+                                    size='sm'
                                     leadingIcon={<Filter className='h-4 w-4' />}
                                     fullWidth={true}
                                     className='sm:w-auto'>
                                     Filter
                                 </Button>
                                 <Button
-                                    color="primary"
-                                    variant="solid"
-                                    size="sm"
+                                    color='primary'
+                                    variant='solid'
+                                    size='sm'
                                     leadingIcon={<Download className='h-4 w-4' />}
                                     fullWidth={true}
                                     className='sm:w-auto'>
@@ -340,16 +339,16 @@ export const DashboardPreview = memo(() => {
                     </div>
                 </div>
                 {/* Order Details Sidebar - Mobile: Top, Desktop: Right */}
-                <div className='from-canvas-bg/95 rounded-lg to-canvas-bg-subtle/95 border-canvas-border max-h-screen w-full overflow-y-auto border-b bg-gradient-to-b p-4 shadow-xl backdrop-blur-sm lg:order-2 lg:max-h-none lg:w-80 lg:overflow-visible lg:border-b-0 lg:border-l lg:p-6'>
+                <div className='from-canvas-bg/95 to-canvas-bg-subtle/95 border-canvas-border w-full overflow-y-auto rounded-lg border-b bg-gradient-to-b p-4 shadow-xl backdrop-blur-sm lg:order-2 lg:h-full lg:w-80 lg:overflow-y-auto lg:border-b-0 lg:border-l lg:p-6'>
                     <div className='border-canvas-border mb-4 flex items-center justify-between border-b pb-4 lg:mb-6'>
                         <h3 className='text-canvas-text-contrast text-lg font-semibold'>Order Oe31b70H</h3>
                         <div className='flex items-center space-x-3'>
                             <Button
-                                color="neutral"
-                                variant="ghost"
+                                color='neutral'
+                                variant='ghost'
                                 iconOnly={true}
                                 leadingIcon={<MoreHorizontal className='h-4 w-4' />}
-                                size="sm"
+                                size='sm'
                             />
                         </div>
                     </div>
@@ -438,7 +437,6 @@ export const DashboardPreview = memo(() => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 });

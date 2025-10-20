@@ -9,26 +9,46 @@ import BlogSchema from '@/lib/seo/schema/blog';
 import BlogPostSchema from '@/lib/seo/schema/blog-posting';
 import { blogSource, source } from '@/lib/source';
 import { getMDXComponents } from '@/mdx-components';
+
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { DocsBody, DocsPage } from 'fumadocs-ui/page';
 
-export default async function Page(props: { params: Promise<{ slug?: string[] }> }) {
-    const params = await props.params;
+export default async function Page({ params }: { params: Promise<{ slug?: string[] }> }) {
+    // Next.js may provide params as a Promise for dynamic routes — await it before use
+    const resolvedParams = await params;
+    const rawSlug = resolvedParams?.slug as string | string[] | undefined;
+    const slugArray = Array.isArray(rawSlug) ? rawSlug : rawSlug ? [rawSlug] : [];
 
-    // // If this is the root /blog path (empty slug)
-    if (!params.slug || params.slug.length === 0) {
+    // If this is the root /blog path (empty slug)
+    if (!slugArray || slugArray.length === 0) {
         return (
-            <main role='main' className='min-h-screen '>
+            <main role='main' className='min-h-screen'>
                 <BlogSchema />
                 <BlogPosts />
             </main>
         );
     }
 
-    const page = blogSource.getPage(params.slug);
-    if (!page) notFound();
+    // Lookup page and handle missing/invalid pages gracefully
+    let page;
+    try {
+        page = blogSource.getPage(slugArray);
+    } catch (err) {
+        // source lookup failed (maybe malformed slug) — treat as not found
+        console.error('Error loading blog page:', err);
 
-    const MDXContent = page.data.body;
+        return notFound();
+    }
+
+    if (!page) {
+        return notFound();
+    }
+
+    const MDXContent = page.data?.body;
+    if (!MDXContent) {
+        // If MDX content is missing, return 404 to avoid rendering a broken page
+        return notFound();
+    }
     // console.log({ summary: typeof page.data.summary, publishedAt:typeof  page.data.publishedAt, author:typeof  page.data.author });
     // return <p>{JSON.stringify(page.data.summary)}</p>
     // const ogImage = page.data.image
@@ -44,7 +64,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
                 publishedAt={page.data.publishedAt}
                 image={page.data.image}
                 // ogImage={page.data.ogImage}
-                slug={params.slug}
+                slug={slugArray}
                 author={page.data.author}
                 tags={page.data.tags}
             />
@@ -79,8 +99,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
     const resolvedParams = await params;
 
     const currentPath = 'blog';
+
+    // Normalize slug to array
+    const slugArray = Array.isArray(resolvedParams?.slug)
+        ? resolvedParams.slug
+        : resolvedParams?.slug
+          ? [resolvedParams.slug]
+          : [];
+
     // If this is the root path
-    if (!resolvedParams.slug || resolvedParams.slug.length === 0) {
+    if (!slugArray || slugArray.length === 0) {
         return createPageMetadata({
             path: currentPath,
             description:
@@ -89,15 +117,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
         });
     }
 
-    const page = blogSource.getPage(resolvedParams.slug);
-    if (!page) notFound();
+    const page = blogSource.getPage(slugArray);
+    if (!page) {
+        return notFound();
+    }
 
     const ogImage = page.data.image
         ? `${siteConfig.baseUrl}${page.data.image}`
         : `${siteConfig.baseUrl}/og?title=${encodeURIComponent(page.data.title)}`;
 
     const baseMeta = createPageMetadata({
-        path: `${currentPath}/${resolvedParams.slug}`,
+        path: `${currentPath}/${slugArray.join('/')}`,
         description: page.data.description,
         baseMetadata: defaultMetadata
     });
@@ -109,7 +139,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
             ...baseMeta.openGraph,
             type: 'article',
             publishedTime: page.data.publishedAt,
-            url: `${siteConfig.baseUrl}/${currentPath}/${resolvedParams.slug?.join('/') || ''}`,
+            url: `${siteConfig.baseUrl}/${currentPath}/${slugArray.join('/')}`,
             images: [
                 {
                     url: ogImage,
