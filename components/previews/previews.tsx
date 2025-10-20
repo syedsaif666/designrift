@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ExamplesPreviewContainer from '@/components/theme-generator/examples-preview-container';
-import ButtonsTab from './buttons/buttons';
-import ColorsTab from './colors/colors';
-import PricingTab from './pricing/pricing';
-import Cards from './cards/cards-content';
-import Dashboard from './dashboard/dashboard-content';
+import Dashboard from './dashboard';
+import Pricing from './pricing';
+import Cards from './cards';
+import Buttons from './buttons';
+import Colors from './colors';
 
 export interface PreviewProps { }
 
@@ -39,7 +39,7 @@ export default function Preview({ }: PreviewProps) {
             <Dashboard />
           </TabsContent>
           <TabsContent value='pricing' className='space-y-8 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
-            <PricingTab />
+            <Pricing />
           </TabsContent>
           <TabsContent value="cards">
             <ExamplesPreviewContainer className="m-0 space-y-8 max-h-[calc(100vh-9.5rem)] overflow-y-auto">
@@ -47,10 +47,10 @@ export default function Preview({ }: PreviewProps) {
             </ExamplesPreviewContainer>
           </TabsContent>
           <TabsContent value='buttons' className='space-y-8 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
-            <ButtonsTab />
+            <Buttons />
           </TabsContent>
           <TabsContent value='colors' className='space-y-6 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
-            <ColorsTab />
+            <Colors />
           </TabsContent>
         </Tabs>
       </div>

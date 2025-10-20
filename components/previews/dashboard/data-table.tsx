@@ -198,7 +198,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         ) : row.original.status === "Failed" ? (
           <IconCircleXFilled className="fill-alert-solid" />
         ) : (
-          <IconLoader className="text-canvas-text-contrast" />
+          <IconLoader className="text-warning-solid" />
         )}
         {row.original.status}
       </Badge>

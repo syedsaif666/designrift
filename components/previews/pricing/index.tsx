@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export default function PricingTab() {
+export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
   const pricingData = {
@@ -93,14 +93,14 @@ export default function PricingTab() {
         </div>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto md:items-end'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 lg:gap-0 mx-auto lg:items-end'>
         {plans.map((plan, index) => (
           <Card
             key={index}
             className={`relative transition-all duration-300 hover:shadow-xl border border-primary-border  ${plan.recommended ? '' : ''
-              } ${index === 0 ? 'rounded-br-none rounded-tr-none border-r-0' :
-                index === 1 ? 'rounded-b-none' :
-                  'rounded-bl-none rounded-tl-none border-l-0'
+              } ${index === 0 ? 'lg:rounded-br-none lg:rounded-tr-none lg:border-r-0' :
+                index === 1 ? 'lg:rounded-b-none' :
+                  'lg:rounded-bl-none lg:rounded-tl-none lg:border-l-0'
               }`}
           >
             <CardHeader className='text-center pb-4'>
@@ -114,7 +114,7 @@ export default function PricingTab() {
                   </span>
                 )}
               </div>
-              <CardDescription className='text-canvas-text/80 text-start'>
+              <CardDescription className='text-canvas-text-contrast text-start'>
                 {plan.description}
               </CardDescription>
             </CardHeader>
@@ -130,19 +130,18 @@ export default function PricingTab() {
                   </span>
                 </div>
                 {/* FIXED: Always reserve space with invisible text when monthly */}
-                <p 
-                  className={`text-xs text-canvas-text/80 mt-1 transition-opacity duration-200 ${
-                    isYearly ? 'opacity-100' : 'opacity-0'
-                  }`}
+                <p
+                  className={`text-xs text-canvas-text/80 mt-1 transition-opacity duration-200 ${isYearly ? 'opacity-100' : 'opacity-0'
+                    }`}
                 >
                   Billed annually
                 </p>
               </div>
 
               <ul className={`space-y-3 
-                ${index === 0 ? 'min-h-40' :
-                  index === 1 ? 'min-h-56' :
-                    'min-h-44'
+                ${index === 0 ? 'lg:min-h-40' :
+                  index === 1 ? 'lg:min-h-56' :
+                    'lg:min-h-44'
                 }`}>
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className='flex items-start gap-3'>

@@ -4,7 +4,7 @@ import { Download, Check, X, Filter, AlertTriangle, RefreshCw } from 'lucide-rea
 
 export interface ButtonTabProps {}
 
-export default function ButtonsTab({}: ButtonTabProps) {
+export default function Buttons({}: ButtonTabProps) {
   return (
     <div className="space-y-6 p-4">
       <div className='from-canvas-bg-subtle/80 to-canvas-bg/60 border-canvas-border rounded-2xl border bg-gradient-to-br p-6 shadow-lg backdrop-blur-sm'>
