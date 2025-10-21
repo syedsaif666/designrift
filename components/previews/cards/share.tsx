@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,22 +18,18 @@ const people = [
   {
     name: "Olivia Martin",
     email: "m@example.com",
-    avatar: "/avatars/03.png",
   },
   {
     name: "Isabella Nguyen",
     email: "b@example.com",
-    avatar: "/avatars/04.png",
   },
   {
     name: "Sofia Davis",
     email: "p@example.com",
-    avatar: "/avatars/05.png",
   },
   {
     name: "Ethan Thompson",
     email: "e@example.com",
-    avatar: "/avatars/01.png",
   },
 ];
 export function CardsShare() {
@@ -61,7 +57,6 @@ export function CardsShare() {
               <div key={person.email} className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <Avatar>
-                    <AvatarImage src={person.avatar} alt="Image" />
                     <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>

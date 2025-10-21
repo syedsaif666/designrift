@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ThemeSidebar } from './theme-sidebar';
 import type { RadixColors } from '@/lib/theme-generator';
 import { useTheme } from '@/components/theme-generator/theme-provider-custom';
@@ -31,6 +31,9 @@ export const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ radixColors }) =
         />
         <div className="flex-1 min-h-screen md:h-full md:overflow-hidden">
           <Preview />
+          <Suspense fallback={<div className="flex items-center justify-center p-6 text-sm text-canvas-text">Loading preview…</div>}>
+            <Preview />
+          </Suspense>
         </div>
       </div>
     </div>

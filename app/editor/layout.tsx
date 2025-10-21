@@ -3,7 +3,7 @@ import { Manrope } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { cookies } from 'next/headers';
 
-import Navbar from '@/components/layout/theme-editor/navbar';
+import Navbar from '@/components/layout/editor/navbar';
 
 import '../global.css';
 import { RootProvider } from 'fumadocs-ui/provider';

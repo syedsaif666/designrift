@@ -57,7 +57,7 @@ export default function CTA() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.3 }}>
                                 
-                                <Link href='/theme-editor' rel='noopener noreferrer'>
+                                <Link href='/editor' rel='noopener noreferrer'>
                                     <Button
                                         color='primary'
                                         variant='solid'

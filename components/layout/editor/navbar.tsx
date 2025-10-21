@@ -23,7 +23,7 @@ export default function Navbar() {
 
     return (
         <header
-            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 z-50 w-full border-b shadow-sm h-16'
+            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 z-50 w-full border-b h-16'
             role='banner'>
             <div className='px-2 md:px-4'>
                 <div className='flex h-16 items-center justify-between'>

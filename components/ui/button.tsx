@@ -94,7 +94,7 @@ const buttonVariants = cva(
             {
                 color: 'neutral',
                 variant: 'solid',
-                class: 'bg-canvas-text-contrast text-canvas-text hover:bg-canvas-text-contrast/90'
+                class: 'bg-canvas-text-contrast text-canvas-solid hover:bg-canvas-text-contrast/90'
             },
             {
                 color: 'neutral',

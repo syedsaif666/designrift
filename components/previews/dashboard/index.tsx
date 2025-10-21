@@ -2,7 +2,7 @@ import { AppSidebar } from "@/components/previews/dashboard/app-sidebar"
 import { ChartAreaInteractive } from "@/components/previews/dashboard/chart-area-interactive"
 import { DataTable } from "@/components/previews/dashboard/data-table"
 import { SectionCards } from "@/components/previews/dashboard/section-cards"
-import { SiteHeader } from "@/components/previews/dashboard/site-header"
+// import { SiteHeader } from "@/components/previews/dashboard/site-header"
 import {
   SidebarInset,
   SidebarProvider,

@@ -400,7 +400,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
     const currentActiveTab = activeTab && files.some(f => f.name === activeTab) ? activeTab : files[0]?.name;
     
     return (
-      <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4 h-full flex flex-col">
+      <div className="bg-canvas-bg-subtle border border-canvas-border rounded-lg p-4 pb-8 h-full flex flex-col">
         <Tabs.Root 
           value={currentActiveTab} 
           onValueChange={setActiveTab} 
@@ -507,7 +507,7 @@ const CodeDialog = ({ cssCode, tailwindV3Config, tailwindV4Complete }: CodeDialo
           </div>
 
           {/* Version Selector */}
-          <div className="mb-6">
+          <div className="mb-2">
             {/* <label className="block text-sm font-medium text-canvas-text-contrast mb-2">
               Tailwind CSS Version
             </label> */}

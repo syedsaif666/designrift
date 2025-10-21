@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -19,19 +19,16 @@ const teamMembers = [
   {
     name: "Sofia Davis",
     email: "m@example.com",
-    avatar: "/avatars/01.png",
     role: "Owner",
   },
   {
     name: "Jackson Lee",
     email: "p@example.com",
-    avatar: "/avatars/02.png",
     role: "Developer",
   },
   {
     name: "Isabella Nguyen",
     email: "i@example.com",
-    avatar: "/avatars/03.png",
     role: "Billing",
   },
 ];
@@ -67,7 +64,6 @@ export function CardsTeamMembers() {
           <div key={member.name} className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <Avatar className="border">
-                <AvatarImage src={member.avatar} alt="Image" />
                 <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="flex flex-col gap-0.5">

@@ -42,6 +42,6 @@ export const siteConfig = {
         sameAs: ['https://www.syed-saif.com', 'https://www.bloggen.dev', 'https://www.silverthreadlabs.com']
     },
     sitemap: {
-        staticRoutes: ['', '/theme-editor', '/support', '/terms']
+        staticRoutes: ['', '/editor', '/support', '/terms']
     }
 };
