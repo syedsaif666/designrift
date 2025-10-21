@@ -23,7 +23,12 @@ export default [
         settings: {
             react: {
                 version: 'detect'
-            }
+            },
+            'import/resolver': {
+                typescript: {
+                    alwaysTryTypes: true,
+                },
+            },
         }
     },
     pluginJs.configs.recommended, // ? https://github.com/eslint/eslint
@@ -48,7 +53,8 @@ export default [
             'tailwindcss/no-custom-classname': 'off',
             'tailwindcss/migration-from-tailwind-2': 'off',
             'import/no-unresolved': 'off',
-            'import/no-named-as-default': 'off'
+            'import/no-named-as-default': 'off',
+            "@typescript-eslint/no-empty-object-type": "off"
         }
     },
     // ! ===================== DISCLAIMER =====================

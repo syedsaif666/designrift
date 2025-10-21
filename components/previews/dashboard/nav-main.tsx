@@ -34,7 +34,6 @@ export function NavMain({
             </SidebarMenuButton>
             <Button
               size="sm"
-              className="from-canvas-bg-subtle/80 to-canvas-bg/60 bg-gradient-to-br size-8 group-data-[collapsible=icon]:opacity-0"
               variant="outline"
             >
               <IconMail className="text-canvas-text-contrast" />

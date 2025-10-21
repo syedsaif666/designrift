@@ -11,7 +11,8 @@ export const useTheme = () => {
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProviderCustom');
   }
-  return context;
+  
+return context;
 };
 
 interface ThemeProviderCustomProps {

@@ -85,7 +85,8 @@ const ResponsiveDialog = ({
   const effectiveDismissible = alert ? true : dismissible
 
  const isIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent)
-  return (
+  
+return (
     <ResponsiveDialogProvider
       modal={effectiveModal}
       dismissible={effectiveDismissible}
@@ -119,7 +120,8 @@ const ResponsiveDialogTrigger = ({
   const ResponsiveDialogTrigger = shouldUseDialog
     ? DialogPrimitive.Trigger
     : DrawerPrimitive.Trigger
-  return <ResponsiveDialogTrigger {...props} />
+  
+return <ResponsiveDialogTrigger {...props} />
 }
 ResponsiveDialogTrigger.displayName = "ResponsiveDialogTrigger"
 
@@ -131,7 +133,8 @@ const ResponsiveDialogPortal = ({
 
   const shouldUseDialog = onlyDialog || (!onlyDrawer && isDesktop)
   const ResponsiveDialogPortal = shouldUseDialog ? DialogPrimitive.Portal : DrawerPrimitive.Portal
-  return <ResponsiveDialogPortal {...props} />
+  
+return <ResponsiveDialogPortal {...props} />
 }
 ResponsiveDialogPortal.displayName = "ResponsiveDialogPortal"
 
@@ -146,7 +149,8 @@ const ResponsiveDialogOverlay = ({
   const ResponsiveDialogOverlay = shouldUseDialog
     ? DialogPrimitive.Overlay
     : DrawerPrimitive.Overlay
-  return (
+  
+return (
     <ResponsiveDialogOverlay
       {...props}
       className={cn(
@@ -336,7 +340,8 @@ const ResponsiveDialogTitle = React.forwardRef<
 
   const shouldUseDialog = onlyDialog || (!onlyDrawer && isDesktop)
   const ResponsiveDialogTitle = shouldUseDialog ? DialogPrimitive.Title : DrawerPrimitive.Title
-  return (
+  
+return (
     <ResponsiveDialogTitle
       ref={ref}
       className={cn("text-lg leading-none font-semibold tracking-tight text-canvas-text-contrast", className)}
@@ -358,7 +363,8 @@ const ResponsiveDialogDescription = React.forwardRef<
   const ResponsiveDialogDescription = shouldUseDialog
     ? DialogPrimitive.Description
     : DrawerPrimitive.Description
-  return (
+  
+return (
     <ResponsiveDialogDescription
       ref={ref}
       className={cn("text-canvas-text-contrast/70 text-sm", className)}

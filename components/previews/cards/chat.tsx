@@ -181,6 +181,7 @@ export function CardsChat() {
                           selectedUsers.filter((selectedUser) => selectedUser !== user)
                         )
                       }
+
                       return setSelectedUsers(
                         [...users].filter((u) => [...selectedUsers, user].includes(u))
                       )

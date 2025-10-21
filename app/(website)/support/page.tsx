@@ -10,7 +10,7 @@ import { Metadata } from 'next';
 
 import CalBooking from '@/components/support/cal-booking';
 import ContactForm from '@/components/support/support-form';
-import TabsComponent from '@/components/ui/tabs';
+import TabsComponent from '@/components/ui/support-tabs';
 import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 import SupportSchema from '@/lib/seo/schema/support';
 
