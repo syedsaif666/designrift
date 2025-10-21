@@ -3,7 +3,7 @@ import { ColorCard } from './color-card';
 
 export interface ColorsTabProps { }
 
-export default function Colors({ }: ColorsTabProps) {
+export default function Colors(_props: ColorsTabProps) {
   const colorSections = [
     {
       title: 'Canvas Colors',

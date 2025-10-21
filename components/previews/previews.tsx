@@ -9,7 +9,7 @@ import Colors from './colors';
 
 export interface PreviewProps { }
 
-export default function Preview({ }: PreviewProps) {
+export default function Preview(_props: PreviewProps) {
   const [activeTab, setActiveTab] = useState('dashboard');
 
   return (
