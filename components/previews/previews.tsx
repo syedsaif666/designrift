@@ -35,7 +35,6 @@ export default function Preview({ }: PreviewProps) {
           </TabsList>
 
           <TabsContent value='dashboard' className='space-y-6 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
-            {/* <DashboardTab /> */}
             <Dashboard />
           </TabsContent>
           <TabsContent value='pricing' className='space-y-8 max-h-[calc(100vh-9.5rem)] overflow-y-auto'>
