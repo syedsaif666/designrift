@@ -1,38 +1,66 @@
-import { ReactNode } from 'react';
+"use client"
 
-import * as Tabs from '@radix-ui/react-tabs';
+import * as React from "react"
+import * as TabsPrimitive from "@radix-ui/react-tabs"
 
-interface TabItem {
-    value: string;
-    label: string;
-    content: ReactNode;
+import { cn } from "@/lib/utils"
+
+function Tabs({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Root>) {
+  return (
+    <TabsPrimitive.Root
+      data-slot="tabs"
+      className={cn("flex flex-col gap-2", className)}
+      {...props}
+    />
+  )
 }
 
-interface TabsComponentProps {
-    tabs: TabItem[];
-    defaultValue?: string;
-    className?: string;
+function TabsList({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.List>) {
+  return (
+    <TabsPrimitive.List
+      data-slot="tabs-list"
+      className={cn(
+        "bg-canvas-bg-subtle backdrop-blur-sm border border-canvas-border text-canvas-text inline-flex h-11 w-fit items-center justify-center rounded-lg p-1",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
-export default function TabsComponent({ tabs, defaultValue, className = '' }: TabsComponentProps) {
-    return (
-        <Tabs.Root defaultValue={defaultValue || tabs[0]?.value} className={`w-full ${className}`}>
-            <Tabs.List className='bg-canvas-line mx-auto mb-12 flex w-full max-w-md rounded-md p-1 shadow-inner'>
-                {tabs.map((tab) => (
-                    <Tabs.Trigger
-                        key={tab.value}
-                        value={tab.value}
-                        className='data-[state=active]:bg-canvas-bg-subtle data-[state=active]:text-contrast data-[state=inactive]:text-fg-text data-[state=inactive]:hover:text-fg-text-contrast flex-1 cursor-pointer rounded-sm px-6 py-1.5 text-sm font-medium transition-all duration-200 data-[state=active]:shadow-sm'>
-                        {tab.label}
-                    </Tabs.Trigger>
-                ))}
-            </Tabs.List>
-
-            {tabs.map((tab) => (
-                <Tabs.Content key={tab.value} value={tab.value} className='focus:outline-none'>
-                    {tab.content}
-                </Tabs.Content>
-            ))}
-        </Tabs.Root>
-    );
+function TabsTrigger({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+  return (
+    <TabsPrimitive.Trigger
+      data-slot="tabs-trigger"
+      className={cn(
+        "data-[state=active]:bg-canvas-bg data-[state=active]:text-canvas-text-contrast focus-visible:ring-primary-solid/50 focus-visible:outline-primary-solid text-canvas-text inline-flex h-full flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent p-4 text-sm font-medium whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 hover:cursor-pointer",
+        className
+      )}
+      {...props}
+    />
+  )
 }
+
+function TabsContent({
+  className,
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Content>) {
+  return (
+    <TabsPrimitive.Content
+      data-slot="tabs-content"
+      className={cn("flex-1 outline-none", className)}
+      {...props}
+    />
+  )
+}
+
+export { Tabs, TabsList, TabsTrigger, TabsContent }

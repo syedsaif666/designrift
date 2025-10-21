@@ -136,7 +136,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}>
                             
-                            <Link href='/theme-editor' rel='noopener noreferrer'>
+                            <Link href='/editor' rel='noopener noreferrer'>
                                 <Button
                                     className='group cursor-pointer relative font-semibold shadow-xl hover:shadow-2xl flex items-center gap-3 px-10 py-5 rounded-2xl text-lg transition-all duration-300'
                                     color='primary'

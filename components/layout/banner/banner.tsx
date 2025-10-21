@@ -11,7 +11,7 @@ export default function Banner() {
                 className='safe-paddings hover:bg-canvas-bg-hover relative z-50 flex h-9 w-full items-center justify-center gap-x-2.5 overflow-hidden bg-canvas-bg-subtle px-4 py-2.5 leading-none transition-all duration-300 ease-out dark:bg-canvas-bg-subtle hover:dark:bg-canvas-bg-hover'
                 href='https://www.bloggen.dev/'
                 target='_blank'>
-                <span className='tracking-extra-tight text-canvas-on-canvas relative z-50 truncate py-1 text-sm font-medium sm:text-[13px]'>
+                <span className='tracking-extra-tight text-canvas-text-contrast relative z-50 truncate py-1 text-sm font-medium sm:text-[13px]'>
                     Try bloggen.dev - A tool for AI-powered blog content generation and SEO optimization. Create, publish and grow your blog
                 </span>
 

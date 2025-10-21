@@ -176,7 +176,6 @@ export const DashboardPreview = memo(() => {
             <div className='relative flex min-h-screen flex-col lg:flex-row'>
                 {/* Dashboard Content - Mobile: Bottom, Desktop: Left */}
                 <div className='max-h-screen flex-1 space-y-4 overflow-y-auto p-4 lg:order-1 lg:max-h-none lg:space-y-6 lg:p-6'>
-                    <h1 className='text-canvas-text-contrast text-2xl font-bold'>Theme Preview</h1>
                     {/* Top Navigation Tabs */}
                     <div className='border-canvas-border mb-4 flex items-center space-x-8 border-b backdrop-blur-sm lg:mb-6'>
                         <Button
