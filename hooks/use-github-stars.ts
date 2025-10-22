@@ -12,7 +12,8 @@ async function fetchGithubStars(
   if (!response.ok) {
     throw new Error("Failed to fetch stargazers count");
   }
-  return response.json();
+  
+return response.json();
 }
 
 export function useGithubStars(owner: string, repo: string) {

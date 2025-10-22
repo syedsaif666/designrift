@@ -40,8 +40,8 @@ const buttonVariants = cva(
             },
             size: {
                 sm: 'px-5 h-8 text-sm',
-                default: 'px-6 h-10 text-base',
-                lg: 'px-8 h-14 text-lg'
+                default: 'px-6 h-9 text-base',
+                lg: 'px-8 h-12 text-lg'
             },
             // Add a new isIcon variant
             isIcon: {
