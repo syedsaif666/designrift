@@ -133,6 +133,7 @@ const MarqueeRow = ({
         };
 
         animationFrame.current = requestAnimationFrame(animate);
+
         return () => cancelAnimationFrame(animationFrame.current);
     }, [containerWidth, reverse, shouldReduceMotion, speed]);
 
