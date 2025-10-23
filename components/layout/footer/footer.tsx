@@ -26,7 +26,7 @@ export default function Footer() {
     const { resolvedTheme } = useTheme();
 
     return (
-        <footer className='border-canvas-bg-hover w-full border-t shadow-inner'>
+        <footer className='border-canvas-bg-hover w-full'>
             <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
                 <div className='py-12'>
                     <div className={'flex flex-col items-start justify-between space-y-8 md:flex-row md:space-y-0'}>

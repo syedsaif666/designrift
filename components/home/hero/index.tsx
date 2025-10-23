@@ -12,7 +12,6 @@ export default function HeroSection() {
 
     return (
         <section className="mx-auto min-h-screen flex items-center justify-center px-4 py-20">
-            <BackgroundBeam />
             <div className="flex xl:flex-row flex-col justify-between items-center w-[85vw] gap-4">
                 {/* Left Content */}
                 <div className="space-y-8 xl:w-1/2 w-[80vw]">

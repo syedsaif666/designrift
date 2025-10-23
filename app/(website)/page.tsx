@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import {HomeContent} from '@/components/home/home-content';
+import {HomeContent} from '@/components/home';
 import { createPageMetadata } from '@/lib/seo/metadata/create-page-metadata';
 import radixColors from '@/public/radix-colors.json';
 

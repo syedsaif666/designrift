@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Logo from '@/components/logo/Logo';
 import { Button } from '@/components/ui/button';
-import { FaBars, FaTimes, FaGithub, FaReddit } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGithub, FaReddit, FaStar } from 'react-icons/fa';
 import { useGithubStars } from '@/hooks/use-github-stars';
 import { formatCompactNumber } from '@/lib/utils/format';
 
@@ -26,10 +26,14 @@ export default function Navbar() {
 
                     {/* Desktop nav */}
                     <nav aria-label='Primary navigation' className='items-center space-x-3 md:space-x-4 flex'>
-                        <Link href="https://github.com/syedsaif666/designrift" className='h-8 text-base md:text-lg flex px-2 md:px-4 items-center hover:text-canvas-text text-canvas-text-contrast border-r border-canvas-border transition-all'>
-                            <FaGithub className='mr-2 md:mr-3 mb-1 h-4 md:h-5 w-4 md:w-5' />
-                            {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
-                        </Link>
+                        <Link
+                        href='https://github.com/syedsaif666/designrift'
+                        className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
+                    >
+                        <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
+                        {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
+                        <span><FaStar className='ml-1 text-warning-solid w-[14px]' /></span>
+                    </Link>
                         <div className='h-8 flex items-center space-x-3 md:space-x-4 border-r border-canvas-border pr-3 md:pr-4'>
                             <Link href="#" className='hover:text-canvas-text text-canvas-text-contrast transition-all'>
                                 <FaReddit className='mr-1 h-5 md:h-6 w-5 md:w-6' />

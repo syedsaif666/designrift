@@ -43,7 +43,7 @@ export default function Header() {
     return (
         <header
             className={`sticky top-0 z-50 w-full transition-all ${isScrolled
-                ? 'bg-primary-bg-subtle/60 border-canvas-bg-hover border-b shadow-sm backdrop-blur'
+                ? 'bg-white/10 border-b border-white/20 shadow-sm backdrop-blur-sm'
                 : 'bg-transparent'
                 }`}
             role='banner'
@@ -82,7 +82,7 @@ export default function Header() {
                 <div className='flex justify-center items-center gap-2'>
                     <Link
                         href='https://github.com/syedsaif666/designrift'
-                        className='flex justify-center items-center border border-canvas-border px-3 py-1 rounded-full hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
+                        className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
                     >
                         <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
                         {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
