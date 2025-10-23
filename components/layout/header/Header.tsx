@@ -11,6 +11,7 @@ import { HeaderThemeSwitcher } from './header-theme-switcher';
 
 const NAV_ITEMS = [
     { href: '/#features', label: 'Features' },
+    { href: '/#faq', label: 'FAQ' },
     { href: '/blog', label: 'Blog' },
 ];
 
@@ -48,7 +49,7 @@ export default function Header() {
             role='banner'
         >
             <div className='mx-auto max-w-[85vw] h-16 flex items-center justify-between'>
-                <Link href='/'>
+                <Link href='/' className='md:pr-12'>
                     <Logo />
                 </Link>
 

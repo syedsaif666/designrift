@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { cn } from "@/lib/utils";
 
 
-const ExamplesPreviewContainer = ({
+export const ExamplesPreviewContainer = ({
   children,
   className,
 }: {
@@ -18,4 +18,3 @@ const ExamplesPreviewContainer = ({
   );
 };
 
-export default ExamplesPreviewContainer;

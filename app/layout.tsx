@@ -4,7 +4,7 @@ import { Manrope } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { getDefaultSelectedColors, type SelectedColors } from '@/lib/theme-generator';
 import { ThemeProvider } from 'next-themes';
-import { ThemeProviderCustom } from '@/components/theme-generator/theme-provider-custom';
+import { ThemeProviderCustom } from '@/components/theme-generator';
 import { RootProvider } from 'fumadocs-ui/provider';
 import radixColors from '@/public/radix-colors.json';
 import { Viewport } from 'next';

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext } from 'react';
-import { useThemeGenerator } from '@/components/theme-generator/use-theme-generator';
+import { useThemeGenerator } from '@/components/theme-generator';
 import type { RadixColors, SelectedColors } from '@/lib/theme-generator';
 
 const ThemeContext = createContext<ReturnType<typeof useThemeGenerator> | null>(null);
