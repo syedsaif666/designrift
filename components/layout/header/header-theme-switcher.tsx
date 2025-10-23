@@ -12,12 +12,10 @@ const HeaderThemeSwitcher = () => {
         setTheme(isDark ? 'light' : 'dark');
     };
 
-    // Ensure component only renders after hydration
     useEffect(() => {
         setMounted(true);
     }, []);
 
-    // Don't render until after hydration to prevent mismatch
     if (!mounted) {
         return (
             <Button
@@ -32,6 +30,7 @@ const HeaderThemeSwitcher = () => {
     return (
         <Button
             variant='ghost'
+            color='neutral'
             onClick={toggleTheme}
             aria-label="Toggle theme"
             iconOnly

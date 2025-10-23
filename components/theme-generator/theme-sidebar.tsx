@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AppearanceTabs } from '@/components/ui/appearance-tabs';
 import { CodeDialog } from '@/components/ui/code-dialog';
 import { ColorCategorySection } from './color-category-section';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import {
   allColors,
   canvasRecommendedColors,
@@ -14,7 +14,6 @@ import {
   type SelectedColors,
   type ColorCategory
 } from '@/lib/theme-generator';
-import { Button } from '../ui/button';
 import { FaArrowRight } from 'react-icons/fa';
 
 interface ThemeSidebarProps {

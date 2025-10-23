@@ -16,13 +16,13 @@ export const getPrimaryRecommendations = (canvasColor: string): readonly string[
  * @returns Default SelectedColors object
  */
 export const getDefaultSelectedColors = (): SelectedColors => ({
-  canvas: '',
-  primary: '',
+  canvas: 'slate',
+  primary: 'iris',
   secondary: '',
-  success: '',
-  warning: '',
-  alert: '',
-  info: ''
+  success: 'green',
+  warning: 'yellow',
+  alert: 'red',
+  info: 'blue'
 });
 
 /**

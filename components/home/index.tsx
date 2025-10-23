@@ -7,6 +7,7 @@ import HomeSchema from '@/lib/seo/schema/theme-editor';
 import type { RadixColors } from '@/lib/theme-generator';
 import { Features } from '@/components/home/features';
 import { Testimonials } from '@/components/home/testimonials';
+import { Presets } from '@/components/home/presets';
 
 interface ThemeGeneratorProps {
     radixColors: RadixColors;
@@ -17,6 +18,7 @@ export const HomeContent: React.FC<ThemeGeneratorProps> = ({ radixColors }) => {
         <>
             <HomeSchema />
             <Hero />
+            <Presets />
             <Features />
             <Testimonials />
             <Faq />

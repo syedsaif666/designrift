@@ -82,7 +82,7 @@ export default function Header() {
                 <div className='flex justify-center items-center gap-2'>
                     <Link
                         href='https://github.com/syedsaif666/designrift'
-                        className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
+                        className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-canvas-bg-hover transition-colors hover:border-canvas-border-hover text-base'
                     >
                         <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
                         {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
