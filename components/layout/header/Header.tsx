@@ -1,17 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import Logo from '@/components/logo/Logo';
 import { Button } from '@/components/ui/button';
-import { FaBars, FaTimes, FaChevronRight, FaGithub } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronRight, FaGithub, FaStar } from 'react-icons/fa';
 import { formatCompactNumber } from '@/lib/utils/format';
 import { useGithubStars } from '@/hooks/use-github-stars';
 import { HeaderThemeSwitcher } from './header-theme-switcher';
 
 const NAV_ITEMS = [
-    { href: '/feature', label: 'Features' },
+    { href: '/#features', label: 'Features' },
     { href: '/blog', label: 'Blog' },
 ];
 
@@ -26,7 +25,6 @@ export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const toggleMobile = () => setMobileOpen((open) => !open);
-    const { resolvedTheme } = useTheme();
     const { stargazersCount } = useGithubStars("syedsaif666", "designrift");
 
     useEffect(() => {
@@ -44,34 +42,34 @@ export default function Header() {
     return (
         <header
             className={`sticky top-0 z-50 w-full transition-all ${isScrolled
-                    ? 'bg-canvas-bg-subtle/80 border-canvas-bg-hover border-b shadow-sm backdrop-blur'
-                    : 'bg-transparent'
+                ? 'bg-primary-bg-subtle/60 border-canvas-bg-hover border-b shadow-sm backdrop-blur'
+                : 'bg-transparent'
                 }`}
             role='banner'
         >
             <div className='mx-auto max-w-[85vw] h-16 flex items-center justify-between'>
                 <Link href='/'>
-                    <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                    <Logo />
                 </Link>
 
-                <nav aria-label='Primary navigation' className='hidden items-center space-x-4 md:flex'>
+                <nav aria-label='Primary navigation' className='hidden md:flex md:flex-1 justify-center items-center'>
                     <ul className='flex space-x-3'>
                         {NAV_ITEMS.map(({ href, label }) => (
                             <li key={href}>
                                 {href.startsWith('#') ? (
-                                    <a
+                                    <Link
                                         href={href}
                                         onClick={e => {
                                             e.preventDefault();
                                             scrollToSection(href);
                                         }}
-                                        className='text-canvas-text hover:text-canvas-text-contrast rounded-sm px-2 py-2 text-base font-medium transition-colors'>
+                                        className='text-canvas-text-contrast hover:text-primary-text rounded-sm px-2 py-2 text-base font-medium transition-colors'>
                                         {label}
-                                    </a>
+                                    </Link>
                                 ) : (
                                     <Link
                                         href={href}
-                                        className='text-canvas-text hover:text-canvas-text-contrast rounded-sm px-2 py-2 text-base font-medium transition-colors'>
+                                        className='text-canvas-text-contrast hover:text-primary-text rounded-sm px-2 py-2 text-base font-medium transition-colors'>
                                         {label}
                                     </Link>
                                 )}
@@ -79,18 +77,18 @@ export default function Header() {
                         ))}
                     </ul>
                 </nav>
-                <div className='flex justify-center items-center gap-4'>
-                    <Link href="https://github.com/syedsaif666/designrift">
-                        <Button
-                            variant='ghost'
-                            color='primary'
-                        >
-                            <FaGithub className='mr-2 md:mr-3 mb-1 h-4 md:h-5 w-4 md:w-5' />
-                            {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
-                        </Button>
+                
+                <div className='flex justify-center items-center gap-2'>
+                    <Link
+                        href='https://github.com/syedsaif666/designrift'
+                        className='flex justify-center items-center border border-canvas-border px-3 py-1 rounded-full hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
+                    >
+                        <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
+                        {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
+                        <span><FaStar className='ml-1 text-warning-solid w-[14px]' /></span>
                     </Link>
                     <HeaderThemeSwitcher />
-                    <Link href='/editor' className='flex-1'>
+                    <Link href='/editor' className='md:flex-1 hidden md:block'>
                         <Button
                             color='primary'
                             size='default'
@@ -129,7 +127,7 @@ export default function Header() {
                     aria-label='Mobile navigation'
                     role='dialog'
                     aria-modal='true'
-                    className='bg-canvas-base/95 fixed inset-0 top-16 z-50 backdrop-blur-sm md:hidden'>
+                    className='bg-canvas-base/95 fixed inset-0 top-24 z-50 backdrop-blur-sm md:hidden'>
                     <ul className='border-fg-border space-y-3 border-t p-4'>
                         {NAV_ITEMS.map(({ href, label }) => (
                             <li key={href}>

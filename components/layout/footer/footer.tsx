@@ -12,10 +12,9 @@ const BODY = 'Hello, I would like to discuss a potential project.';
 const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
 const NAV_ITEMS = [
+    { href: '/#features', label: 'Features' },
+    { href: '/#faq', label: 'Faq' },
     { href: '/blog', label: 'Blog' },
-    { href: '/faq', label: 'Faq' },
-    { href: '/feature', label: 'Features' },
-    { href: '/contact', label: 'Contact' },
     { href: '/terms', label: 'Terms' },
     { href: '/policy', label: 'Policy' }
 ];
@@ -34,9 +33,9 @@ export default function Footer() {
                         <div className='flex flex-col space-y-4'>
                             {/* Logo that switches with theme */}
                             <Link href='/'>
-                                <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                                <Logo />
                             </Link>
-                            <nav className='flex flex-wrap gap-4'>
+                            <nav className='flex flex-wrap gap-4 px-2'>
                                 {NAV_ITEMS.map(({ href, label }) => (
                                     <Link
                                         key={href}
@@ -56,7 +55,7 @@ export default function Footer() {
                     </div>
 
                     {/* Copyright */}
-                    <div className='border-canvas-line mt-8 border-t pt-8'>
+                    <div className='border-canvas-line mt-8 border-t pt-8 flex justify-center'>
                         <p className='text-canvas-text text-sm'>
                             © {currentYear} Bloggen. Crafted by{' '}
                             <Link href='https://silverthreadlabs.com' target='_blank' rel='noopener noreferrer'>

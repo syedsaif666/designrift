@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Logo from '@/components/logo/Logo';
 import { Button } from '@/components/ui/button';
@@ -12,28 +11,17 @@ import { formatCompactNumber } from '@/lib/utils/format';
 export default function Navbar() {
     const { stargazersCount } = useGithubStars("syedsaif666", "designrift");
     const [mobileOpen, setMobileOpen] = useState(false);
-    const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     const toggleMobile = () => setMobileOpen((open) => !open);
 
     return (
         <header
-            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 z-50 w-full border-b h-16'
+            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 w-full border-b h-16'
             role='banner'>
             <div className='px-2 md:px-4'>
                 <div className='flex h-16 items-center justify-between'>
                     {/* Logo with placeholder until theme is resolved */}
                     <Link href='/'>
-                        {mounted ? (
-                            <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
-                        ) : (
-                            <div className='h-8 md:h-10 rounded w-36 bg-gradient-to-r from-primary-bg bg-primary-bg-hover animate-pulse' />
-                        )}
+                            <Logo  />
                     </Link>
 
                     {/* Desktop nav */}

@@ -60,7 +60,7 @@ export default function Faq() {
     };
 
     return (
-        <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden max-w-[85vw]" aria-label="Frequently Asked Questions">
+        <section id='faq' className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden max-w-[85vw]" aria-label="Frequently Asked Questions">
             <div className="relative mx-auto max-w-[85vw]">
                 {/* Header */}
                 <motion.div

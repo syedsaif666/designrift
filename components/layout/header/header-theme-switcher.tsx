@@ -21,10 +21,9 @@ const HeaderThemeSwitcher = () => {
     if (!mounted) {
         return (
             <Button
-                variant='soft'
+                variant='ghost'
                 aria-label="Toggle theme"
                 iconOnly
-                leadingIcon={<Sun size={22} />}
             >
             </Button>
         );
@@ -32,7 +31,7 @@ const HeaderThemeSwitcher = () => {
 
     return (
         <Button
-            variant='soft'
+            variant='ghost'
             onClick={toggleTheme}
             aria-label="Toggle theme"
             iconOnly

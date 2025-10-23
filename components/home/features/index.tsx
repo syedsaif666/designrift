@@ -78,7 +78,7 @@ export function Features() {
                             }}
                         >
                             <Card
-                                className="group relative overflow-hidden border border-canvas-bg-hover bg-canvas-bg-subtle backdrop-blur-sm hover:border-primary-bg-hover transition-all duration-300 hover:shadow-xl hover:shadow-primary-solid/10 h-full"
+                                className="group relative overflow-hidden border border-canvas-bg-hover bg-canvas-bg-subtle backdrop-blur-sm hover:border-primary-bg-hover transition-all duration-300 hover:shadow-xl hover:shadow-primary-solid/10 h-full hover:scale-105"
                             >
                                 {/* Gradient overlay on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-canvas-solid/0 via-transparent to-primary-solid/0 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
@@ -99,9 +99,6 @@ export function Features() {
                                             {feature.description}
                                         </p>
                                     </div>
-
-                                    {/* Bottom accent line */}
-                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-canvas-solid to-primary-solid transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                                 </CardContent>
                             </Card>
                         </motion.div>

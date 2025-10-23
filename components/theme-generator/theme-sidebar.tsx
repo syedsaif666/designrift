@@ -40,7 +40,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="xl:hidden absolute top-22.5 left-0 z-50 bg-canvas-bg border px-0.5 py-3 rounded-r-md"
+        className="xl:hidden absolute top-22.5 left-0 md:z-0 z-50 bg-canvas-bg border px-0.5 py-3 rounded-r-md"
         aria-label="Open theme sidebar"
       >
         <FaArrowRight className="w-4 h-4 text-canvas-text" />
@@ -58,7 +58,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
       <aside
         className={`
           bg-canvas-bg-subtle border-canvas-border w-80 border-r flex flex-col
-          fixed xl:relative inset-y-0 left-0 z-50
+          fixed xl:relative inset-y-0 left-0 z-50 md:z-0
           transform transition-transform duration-300 ease-in-out
           xl:w-96 xl:h-full xl:translate-x-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'}

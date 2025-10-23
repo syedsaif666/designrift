@@ -1,16 +1,20 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FaArrowRight, FaGithub, FaStar } from 'react-icons/fa';
+import { FaArrowRight, FaGithub, FaStar, FaPalette, FaPaintBrush, FaSwatchbook } from 'react-icons/fa';
 import { formatCompactNumber } from '@/lib/utils/format';
 import { useGithubStars } from '@/hooks/use-github-stars';
+import AbstractBackground from './abstract-background';
 
 const CTA = () => {
     const { stargazersCount } = useGithubStars("syedsaif666", "designrift");
 
     return (
-        <section className="min-h-80 w-full flex items-center justify-center bg-canvas-bg-active/60 backdrop-blur-md px-4 py-20">
-            <div className="text-center space-y-6">
+        <section className="relative min-h-80 w-full flex items-center justify-center bg-primary-bg-active/40 backdrop-blur-md px-4 border-y border-canvas-border py-20 overflow-hidden">
+            {/* Background */}
+            <AbstractBackground />
+
+            <div className="text-center space-y-6 relative z-10">
                 <h1 className="text-2xl md:text-4xl font-bold">
                     Ready to Elevate Your Components?
                 </h1>
