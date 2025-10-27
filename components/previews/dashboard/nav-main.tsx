@@ -29,8 +29,8 @@ export function NavMain({
               tooltip="Quick Create"
               className="bg-primary-solid text-canvas-text-contrast hover:bg-primary-solid/90 active:from-primary-solid/90 min-w-8 duration-200 ease-linear"
             >
-              <IconCirclePlusFilled className="text-canvas-base" />
-              <span className="text-canvas-base">Quick Create</span>
+              <IconCirclePlusFilled className="text-[#fdfdfd]" />
+              <span className="text-[#fdfdfd]">Quick Create</span>
             </SidebarMenuButton>
             <Button
               size="sm"

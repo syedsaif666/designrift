@@ -55,7 +55,19 @@ export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThe
     }
   }, []);
 
-  // ✅ NEW: Sync theme on tab focus
+  // ✅ Apply CSS variables to the document's root element
+  // useEffect(() => {
+  //   const root = document.documentElement;
+  //   const style = cssVariables.split(';').filter(Boolean);
+  //   style.forEach((cssVar) => {
+  //     const [property, value] = cssVar.split(':').map((str) => str.trim());
+  //     if (property && value) {
+  //       root.style.setProperty(property, value);
+  //     }
+  //   });
+  // }, [cssVariables]);
+
+  // ✅ Sync theme on tab focus
   useEffect(() => {
     const handleFocus = () => {
       try {
