@@ -27,10 +27,7 @@ const getColorValue = (color: string, resolvedTheme: string, shade: string = '90
 
 export function Presets() {
   const { resolvedTheme } = useTheme();
-  const { handleColorSelect } = useThemeGenerator({
-    radixColors,
-    currentTheme: resolvedTheme
-  });
+  const { handleColorSelect } = useThemeGenerator({ radixColors });
 
   const handlePresetClick = (colors: typeof themePresets[0]['colors']) => {
     Object.entries(colors).forEach(([category, color]) => {
@@ -64,7 +61,7 @@ export function Presets() {
         const cardWidth = 250;
         const screenWidth = window.innerWidth;
         const cardsNeeded = Math.ceil(screenWidth / cardWidth) + 3;
-        let loopCount = Math.ceil(cardsNeeded / items.length);
+        const loopCount = Math.ceil(cardsNeeded / items.length);
         let duplicateCountTemp = loopCount % 2 === 0 ? loopCount : loopCount + 1;
         duplicateCountTemp = Math.max(2, duplicateCountTemp);
         setDuplicateCount(duplicateCountTemp);
@@ -102,7 +99,8 @@ export function Presets() {
       };
 
       animationFrame.current = requestAnimationFrame(animate);
-      return () => cancelAnimationFrame(animationFrame.current);
+      
+return () => cancelAnimationFrame(animationFrame.current);
     }, [containerWidth, reverse, shouldReduceMotion, speed]);
 
     const pause = () => (isPaused.current = true);

@@ -27,7 +27,8 @@ const generateCubes = (startCol: number, endCol: number, rows: number): Cube[] =
             cubes.push({ x, y, key });
         }
     }
-    return cubes;
+    
+return cubes;
 };
 
 const AbstractBackground: React.FC<AbstractBackgroundProps> = () => {

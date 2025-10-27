@@ -28,7 +28,8 @@ export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThe
       if (typeof window !== 'undefined') {
         document.cookie = `designrift-color-theme=${JSON.stringify(newColors)}; path=/; max-age=31536000`;
       }
-      return newColors;
+      
+return newColors;
     });
   }, []);
 
