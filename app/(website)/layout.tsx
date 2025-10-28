@@ -1,7 +1,7 @@
 import type { Viewport } from 'next';
 // import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/footer';
-import Header from '@/components/layout/header/header';
+import Header from '@/components/layout/header';
 import { BackgroundBeam } from '@/components/ui/background-beam';
 
 export const viewport: Viewport = {
