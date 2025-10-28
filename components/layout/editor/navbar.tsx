@@ -19,23 +19,22 @@ export default function Navbar() {
             role='banner'>
             <div className='px-2 md:px-4'>
                 <div className='flex h-16 items-center justify-between'>
-                    {/* Logo with placeholder until theme is resolved */}
                     <Link href='/'>
-                            <Logo  />
+                        <Logo />
                     </Link>
 
                     {/* Desktop nav */}
                     <nav aria-label='Primary navigation' className='items-center space-x-3 md:space-x-4 flex'>
                         <Link
-                        href='https://github.com/syedsaif666/designrift'
-                        className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
-                    >
-                        <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
-                        {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
-                        <span><FaStar className='ml-1 text-warning-solid w-[14px]' /></span>
-                    </Link>
+                            href='https://github.com/syedsaif666/designrift'
+                            className='flex justify-center items-center border border-canvas-border px-3 h-9 rounded-md hover:bg-primary-bg-hover transition-colors hover:border-primary-border-hover text-base'
+                        >
+                            <FaGithub className="mr-3 w-5 h-5 dark:text-[#FDFDFD]" />
+                            {stargazersCount > 0 && formatCompactNumber(stargazersCount)}
+                            <span><FaStar className='ml-1 text-warning-solid w-[14px]' /></span>
+                        </Link>
                         <div className='h-8 flex items-center space-x-3 md:space-x-4 border-r border-canvas-border pr-3 md:pr-4'>
-                            <Link href="#" className='hover:text-canvas-text text-canvas-text-contrast transition-all'>
+                            <Link href="https://www.reddit.com/r/DukeOfAllTrades/" className='hover:text-canvas-text text-canvas-text-contrast transition-all'>
                                 <FaReddit className='mr-1 h-5 md:h-6 w-5 md:w-6' />
                             </Link>
                         </div>

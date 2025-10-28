@@ -4,7 +4,6 @@ import { type ColorCategory } from '@/lib/theme-generator';
 import { themePresets } from './theme-presets'
 import { useTheme } from 'next-themes';
 import radixColors from '@/public/radix-colors.json';
-import { useThemeGenerator } from '@/components/theme-generator';
 import { motion, useMotionValue, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useThemeCustom } from '@/components/theme-generator/theme-provider-custom';
@@ -100,8 +99,8 @@ export function Presets() {
       };
 
       animationFrame.current = requestAnimationFrame(animate);
-      
-return () => cancelAnimationFrame(animationFrame.current);
+
+      return () => cancelAnimationFrame(animationFrame.current);
     }, [containerWidth, reverse, shouldReduceMotion, speed]);
 
     const pause = () => (isPaused.current = true);
@@ -139,12 +138,10 @@ return () => cancelAnimationFrame(animationFrame.current);
               style={{
                 backgroundColor: getColorValue(preset.colors.primary, resolvedTheme || 'light', '400'),
               }}
+
             >
               <h3
-                className="font-medium group-hover:text-primary-text transition-colors"
-                style={{
-                  color: getColorValue(preset.colors.canvas, resolvedTheme || 'light', '900'),
-                }}
+                className="font-medium group-hover:text-primary-text transition-colors text-canvas-text-contrast"
               >
                 {preset.name}
               </h3>
@@ -156,8 +153,7 @@ return () => cancelAnimationFrame(animationFrame.current);
                     style={{
                       backgroundColor: getColorValue(
                         preset.colors[colorKey as keyof typeof preset.colors],
-                        resolvedTheme || 'light',
-                        '900'
+                        resolvedTheme || 'light'
                       ),
                     }}
                   />

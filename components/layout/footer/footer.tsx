@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Logo from '@/components/logo/Logo';
 import { ThemeSwitcher } from '@/components/ui/theme-switcher';
 import SocialLinks from './social-links';
-import { useTheme } from 'next-themes';
 
 const EMAIL = 'silverthreadlabs@gmail.com';
 const SUBJECT = 'Business Inquiry';
@@ -23,7 +22,6 @@ const title = 'Silverthread Labs';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const { resolvedTheme } = useTheme();
 
     return (
         <footer className='border-canvas-bg-hover w-full'>

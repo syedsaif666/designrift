@@ -43,7 +43,7 @@ const SocialLinks = () => {
             />
 
             <SocialLink
-                href='https://www.reddit.com/user/syedsaif666/'
+                href='https://www.reddit.com/r/DukeOfAllTrades/'
                 ariaLabel='Follow SilverThread Labs on Reddit'
                 icon={
                     <FaRedditAlien
