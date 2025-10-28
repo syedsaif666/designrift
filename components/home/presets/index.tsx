@@ -7,6 +7,7 @@ import radixColors from '@/public/radix-colors.json';
 import { useThemeGenerator } from '@/components/theme-generator';
 import { motion, useMotionValue, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { useThemeCustom } from '@/components/theme-generator/theme-provider-custom';
 
 const colorCache = new Map<string, string>();
 const getColorValue = (color: string, resolvedTheme: string, shade: string = '900'): string => {
@@ -27,7 +28,7 @@ const getColorValue = (color: string, resolvedTheme: string, shade: string = '90
 
 export function Presets() {
   const { resolvedTheme } = useTheme();
-  const { handleColorSelect } = useThemeGenerator({ radixColors });
+  const { handleColorSelect } = useThemeCustom();
 
   const handlePresetClick = (colors: typeof themePresets[0]['colors']) => {
     Object.entries(colors).forEach(([category, color]) => {

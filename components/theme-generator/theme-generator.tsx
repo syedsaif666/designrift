@@ -3,7 +3,7 @@
 import React from 'react';
 import { ThemeSidebar } from './theme-sidebar';
 import type { RadixColors } from '@/lib/theme-generator';
-import { useTheme } from '@/components/theme-generator/theme-provider-custom';
+import { useThemeCustom } from '@/components/theme-generator/theme-provider-custom';
 import Preview from '@/components/previews/previews';
 
 interface ThemeGeneratorProps {
@@ -17,7 +17,7 @@ export const ThemeGenerator: React.FC<ThemeGeneratorProps> = ({ radixColors }) =
     cssVariables,
     tailwindV3Config,
     tailwindV4Complete
-  } = useTheme();
+  } = useThemeCustom();
 
   return (
     <div className="min-h-screen w-full">

@@ -28,8 +28,8 @@ export const useThemeGenerator = ({ radixColors, initialSelectedColors }: UseThe
       if (typeof window !== 'undefined') {
         document.cookie = `designrift-color-theme=${JSON.stringify(newColors)}; path=/; max-age=31536000`;
       }
-      
-return newColors;
+
+      return newColors;
     });
   }, []);
 
@@ -56,17 +56,16 @@ return newColors;
     }
   }, []);
 
-  // ✅ Apply CSS variables to the document's root element
-  // useEffect(() => {
-  //   const root = document.documentElement;
-  //   const style = cssVariables.split(';').filter(Boolean);
-  //   style.forEach((cssVar) => {
-  //     const [property, value] = cssVar.split(':').map((str) => str.trim());
-  //     if (property && value) {
-  //       root.style.setProperty(property, value);
-  //     }
-  //   });
-  // }, [cssVariables]);
+  // ✅ Inject full CSS into a <style> tag
+  useEffect(() => {
+    let styleElement = document.querySelector('#theme-style');
+    if (!styleElement) {
+      styleElement = document.createElement('style');
+      styleElement.id = 'theme-style';
+      document.head.appendChild(styleElement);
+    }
+    styleElement.innerHTML = cssVariables;
+  }, [cssVariables]);
 
   // ✅ Sync theme on tab focus
   useEffect(() => {

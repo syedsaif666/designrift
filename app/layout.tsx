@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import './global.css';
 import { Manrope } from 'next/font/google';
 import { cookies } from 'next/headers';
-import { getDefaultSelectedColors, type SelectedColors } from '@/lib/theme-generator';
+import { getDefaultSelectedColors, type SelectedColors, generateCSSVariables } from '@/lib/theme-generator'; // Add generateCSSVariables import
 import { ThemeProvider } from 'next-themes';
 import { ThemeProviderCustom } from '@/components/theme-generator';
 import { RootProvider } from 'fumadocs-ui/provider';
@@ -36,8 +36,13 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     }
   }
 
+  const initialCssVariables = generateCSSVariables(initialSelectedColors, radixColors);
+
   return (
     <html suppressHydrationWarning lang='en' className={`${manrope.variable}`}>
+      <head>
+        <style id="theme-vars">{initialCssVariables}</style>
+      </head>
       <body>
         <ThemeProvider
           attribute='class'
