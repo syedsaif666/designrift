@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
         {
             title: 'Introduction',
             content:
-                "This Privacy Policy explains how Silverthread Labs collects, uses, and protects your personal information when you use our website and services."
+                "This Privacy Policy explains how designrift collects, uses, and protects your personal information when you use our website and services."
         },
         {
             title: 'Information We Collect',
@@ -61,10 +61,6 @@ export default function PrivacyPolicy() {
             title: 'Changes to This Policy',
             content:
                 'We may update this Privacy Policy from time to time. The latest version will always be posted on our website.'
-        },
-        {
-            title: 'Contact Us',
-            content: 'If you have any questions about this Privacy Policy, please contact us at privacy@silverthreadlabs.com.'
         }
     ];
 

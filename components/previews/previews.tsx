@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import ExamplesPreviewContainer from '@/components/theme-generator/examples-preview-container';
+import { ExamplesPreviewContainer } from '@/components/theme-generator';
 import Dashboard from './dashboard';
 import Pricing from './pricing';
 import Cards from './cards';

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Logo from '@/components/logo/Logo';
 import { ThemeSwitcher } from '@/components/ui/theme-switcher';
 import SocialLinks from './social-links';
-import { useTheme } from 'next-themes';
 
 const EMAIL = 'silverthreadlabs@gmail.com';
 const SUBJECT = 'Business Inquiry';
@@ -12,10 +11,9 @@ const BODY = 'Hello, I would like to discuss a potential project.';
 const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(BODY)}`;
 
 const NAV_ITEMS = [
+    { href: '/#features', label: 'Features' },
+    { href: '/#faq', label: 'Faq' },
     { href: '/blog', label: 'Blog' },
-    { href: '/faq', label: 'Faq' },
-    { href: '/feature', label: 'Features' },
-    { href: '/contact', label: 'Contact' },
     { href: '/terms', label: 'Terms' },
     { href: '/policy', label: 'Policy' }
 ];
@@ -24,19 +22,18 @@ const title = 'Silverthread Labs';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const { resolvedTheme } = useTheme();
 
     return (
-        <footer className='bg-canvas-bg-subtle border-canvas-bg-hover w-full border-t shadow-inner'>
+        <footer className='border-canvas-bg-hover w-full'>
             <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
                 <div className='py-12'>
                     <div className={'flex flex-col items-start justify-between space-y-8 md:flex-row md:space-y-0'}>
                         <div className='flex flex-col space-y-4'>
                             {/* Logo that switches with theme */}
                             <Link href='/'>
-                                <Logo variant={resolvedTheme === 'dark' ? 'dark' : 'light'} />
+                                <Logo />
                             </Link>
-                            <nav className='flex flex-wrap gap-4'>
+                            <nav className='flex flex-wrap gap-4 px-2'>
                                 {NAV_ITEMS.map(({ href, label }) => (
                                     <Link
                                         key={href}
@@ -56,7 +53,7 @@ export default function Footer() {
                     </div>
 
                     {/* Copyright */}
-                    <div className='border-canvas-line mt-8 border-t pt-8'>
+                    <div className='border-canvas-line mt-8 border-t pt-8 flex justify-center'>
                         <p className='text-canvas-text text-sm'>
                             © {currentYear} Bloggen. Crafted by{' '}
                             <Link href='https://silverthreadlabs.com' target='_blank' rel='noopener noreferrer'>

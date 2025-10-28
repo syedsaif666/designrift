@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AppearanceTabs } from '@/components/ui/appearance-tabs';
 import { CodeDialog } from '@/components/ui/code-dialog';
 import { ColorCategorySection } from './color-category-section';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import {
   allColors,
   canvasRecommendedColors,
@@ -14,7 +14,6 @@ import {
   type SelectedColors,
   type ColorCategory
 } from '@/lib/theme-generator';
-import { Button } from '../ui/button';
 import { FaArrowRight } from 'react-icons/fa';
 
 interface ThemeSidebarProps {
@@ -40,7 +39,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="xl:hidden absolute top-22.5 left-0 z-50 bg-canvas-bg border px-0.5 py-3 rounded-r-md"
+        className="xl:hidden absolute top-22.5 left-0 md:z-0 z-50 bg-canvas-bg border px-0.5 py-3 rounded-r-md"
         aria-label="Open theme sidebar"
       >
         <FaArrowRight className="w-4 h-4 text-canvas-text" />
@@ -58,7 +57,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
       <aside
         className={`
           bg-canvas-bg-subtle border-canvas-border w-80 border-r flex flex-col
-          fixed xl:relative inset-y-0 left-0 z-50
+          fixed xl:relative inset-y-0 left-0 z-50 md:z-0
           transform transition-transform duration-300 ease-in-out
           xl:w-96 xl:h-full xl:translate-x-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'}
@@ -75,11 +74,11 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
 
         {/* Scrollable content with padding to avoid overlap with sticky footer */}
         <div className="flex-1 overflow-y-auto p-6 pb-20">
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <p className="text-canvas-text mb-4 text-sm">
               Create stunning, accessible themes using Radix colors. Get built-in dark mode and accessibility. Set up once, customize infinitely.
             </p>
-          </div>
+          </div> */}
           <AppearanceTabs>
             <div className="flex flex-col space-y-6">
               {/* Canvas Colors */}

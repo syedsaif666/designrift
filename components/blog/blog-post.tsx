@@ -32,26 +32,26 @@ export function BlogPosts({ isHomePage = false }: BlogPostsProps) {
             <div className='relative z-10'>
                 <div className='mx-auto py-10 sm:py-16'>
                     {/* Section Header */}
-                    <div className='mb-16'>
-                        <span className='text-primary-text mb-4 block text-sm leading-relaxed font-normal tracking-wider uppercase md:text-lg'>
-                            Browse Template Blog Posts
-                        </span>
-                        <div className='flex flex-row items-center gap-2'>
-                            <h1 className='text-4xl leading-tight font-bold tracking-tight md:text-6xl'>
-                                <span className='text-canvas-text-contrast'>Latest</span>
-                                <span className='from-primary-solid via-primary-text to-primary-text-contrast bg-gradient-to-r bg-clip-text text-transparent'>
-                                    {' '}
-                                    Articles
-                                </span>
-                            </h1>
+                    <div className="mb-16 flex flex-col items-center justify-center space-y-4 text-center">
+                        <div className="inline-flex">
+                            <span className="bg-gradient-to-r from-primary-bg to-primary-bg-hover text-canvas-text-contrast px-6 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2">
+                                <span className='text-alert-solid'>✦</span>
+                                Blogs
+                            </span>
                         </div>
+                        <h2 className="text-canvas-text-contrast max-w-2xl text-3xl font-extrabold tracking-tight md:text-4xl">
+                            Latest Articles
+                        </h2>
+                        <p className="text-canvas-text font-medium max-w-3xl md:text-lg">
+                            Browse Template Blog Posts
+                        </p>
                     </div>
 
                     {/* Blog Grid */}
                     <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
                         {displayedBlogs.map((post, index) => (
                             <Link key={post.slug} href={`/blog/${post.slug}`} className='group block'>
-                                <article className='bg-canvas-bg border-canvas-active hover:border-canvas-line rounded-lg border p-6 backdrop-blur-sm transition-all duration-300'>
+                                <article className='bg-canvas-bg-subtle border-canvas-border hover:border-primary-border-hover/60 rounded-lg border p-6 backdrop-blur-sm transition-all duration-300'>
                                     <div className='relative mb-6 aspect-video overflow-hidden rounded-sm'>
                                         <Image
                                             src={post.metadata.image || ''}

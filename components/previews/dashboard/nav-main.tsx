@@ -27,10 +27,10 @@ export function NavMain({
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
               tooltip="Quick Create"
-              className="from-primary-solid to-primary-solid/80 bg-gradient-to-br text-canvas-text-contrast hover:from-primary-solid/90 hover:to-primary-solid/70 hover:bg-gradient-to-br hover:text-canvas-text-contrast active:from-primary-solid/90 active:to-primary-solid/70 active:bg-gradient-to-br active:text-canvas-text-contrast min-w-8 duration-200 ease-linear"
+              className="bg-primary-solid text-canvas-text-contrast hover:bg-primary-solid/90 active:from-primary-solid/90 min-w-8 duration-200 ease-linear"
             >
-              <IconCirclePlusFilled className="text-canvas-text-contrast" />
-              <span>Quick Create</span>
+              <IconCirclePlusFilled className="text-[#fdfdfd]" />
+              <span className="text-[#fdfdfd]">Quick Create</span>
             </SidebarMenuButton>
             <Button
               size="sm"

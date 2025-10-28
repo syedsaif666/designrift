@@ -28,7 +28,7 @@ export default function TermsOfService() {
         {
             title: 'Introduction',
             content:
-                "These Terms of Service ('Terms') govern your use of the Silverthread Labs website and services. By accessing or using our services, you agree to be bound by these Terms."
+                "These Terms of Service ('Terms') govern your use of the designrift website and services. By accessing or using our services, you agree to be bound by these Terms."
         },
         {
             title: 'Acceptance of Terms',
@@ -48,7 +48,7 @@ export default function TermsOfService() {
         {
             title: 'Intellectual Property',
             content:
-                'All content on our website, including text, graphics, logos, and software, is the property of Silverthread Labs and is protected by copyright and other intellectual property laws.'
+                'All content on our website, including text, graphics, logos, and software, is the property of designrift and is protected by copyright and other intellectual property laws.'
         },
         {
             title: 'Privacy Policy',
@@ -58,7 +58,7 @@ export default function TermsOfService() {
         {
             title: 'Limitation of Liability',
             content:
-                'To the fullest extent permitted by applicable law, Silverthread Labs shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.'
+                'To the fullest extent permitted by applicable law, designrift shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.'
         },
         {
             title: 'Termination',
@@ -68,11 +68,7 @@ export default function TermsOfService() {
         {
             title: 'Governing Law',
             content:
-                'These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which Silverthread Labs is established, without regard to its conflict of law provisions.'
-        },
-        {
-            title: 'Contact Information',
-            content: 'Questions about the Terms should be sent to us at legal@silverthreadlabs.com.'
+                'These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which designrift is established, without regard to its conflict of law provisions.'
         }
     ];
     

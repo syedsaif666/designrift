@@ -173,7 +173,7 @@ export const generateCSSVariables = (
   radixColors: RadixColors
 ): string => {
   const credit = '/* Generated with https://designrift.dev */ \n';
-  const twImport = '@import "tailwindcss";'
+  // const twImport = '@import "tailwindcss";'
   let lightCSS = '/* LIGHT THEME */\n:root {\n';
   let darkCSS = '\n/* DARK THEME */\n.dark {\n';
 
@@ -188,7 +188,8 @@ export const generateCSSVariables = (
   lightCSS += '}';
   darkCSS += '}';
 
-  return credit + twImport + '\n' + lightCSS + '\n' + darkCSS;
+  // return credit + twImport + '\n' + lightCSS + '\n' + darkCSS;
+  return credit + '\n' + lightCSS + '\n' + darkCSS;
 };
 
 /**
