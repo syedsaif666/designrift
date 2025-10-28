@@ -13,7 +13,7 @@ export default function WebsiteLayout({ children }: { children: React.ReactNode 
 
     return (
         <>
-            <Banner />
+            {/* <Banner /> */}
             <Header />
             <main className='relative'>
                 <BackgroundBeam />

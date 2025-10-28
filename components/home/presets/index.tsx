@@ -7,6 +7,7 @@ import radixColors from '@/public/radix-colors.json';
 import { motion, useMotionValue, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useThemeCustom } from '@/components/theme-generator/theme-provider-custom';
+import PresetsPreview from './presets-preview';
 
 const colorCache = new Map<string, string>();
 const getColorValue = (color: string, resolvedTheme: string, shade: string = '900'): string => {
@@ -210,6 +211,8 @@ export function Presets() {
           />
         </div>
       </div>
+
+      <PresetsPreview />
     </section>
   );
 }
