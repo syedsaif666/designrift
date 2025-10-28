@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { AppearanceTabs } from '@/components/ui/appearance-tabs';
 import { CodeDialog } from '@/components/ui/code-dialog';
 import { ColorCategorySection } from './color-category-section';
-import { X } from 'lucide-react';
 import {
   allColors,
   canvasRecommendedColors,
@@ -14,7 +13,7 @@ import {
   type SelectedColors,
   type ColorCategory
 } from '@/lib/theme-generator';
-import { FaArrowRight } from 'react-icons/fa';
+import { RiMenuUnfoldLine, RiMenuFoldLine } from "react-icons/ri";
 
 interface ThemeSidebarProps {
   selectedColors: SelectedColors;
@@ -37,13 +36,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
   return (
     <>
       {/* Mobile Toggle Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="xl:hidden absolute top-22.5 left-0 md:z-0 z-50 bg-canvas-bg border px-0.5 py-3 rounded-r-md"
-        aria-label="Open theme sidebar"
-      >
-        <FaArrowRight className="w-4 h-4 text-canvas-text" />
-      </button>
+      <RiMenuUnfoldLine onClick={() => setIsOpen(true)} aria-label="Open theme sidebar" className='w-11 h-11 text-canvas-text-contrast xl:hidden absolute top-22 left-6 md:z-0 z-50 bg-canvas-bg border p-2.5 rounded-md' />
 
       {/* Overlay */}
       {isOpen && (
@@ -63,14 +56,7 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
           ${isOpen ? 'translate-x-0' : '-translate-x-full xl:translate-x-0'}
         `}
       >
-        {/* Close Button (Mobile Only) */}
-        <button
-          onClick={() => setIsOpen(false)}
-          className="xl:hidden absolute top-4 right-4 z-10 text-canvas-text p-2 hover:bg-canvas-bg-hover rounded-lg transition-colors"
-          aria-label="Close theme sidebar"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <RiMenuFoldLine onClick={() => setIsOpen(false)} aria-label="Close theme sidebar" className="w-11 h-11 p-2.5 bg-canvas-bg border text-canvas-text-contrast xl:hidden fixed top-2 right-4 z-10 rounded-md" />
 
         {/* Scrollable content with padding to avoid overlap with sticky footer */}
         <div className="flex-1 overflow-y-auto p-6 pb-20">

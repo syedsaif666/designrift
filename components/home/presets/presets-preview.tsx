@@ -101,7 +101,7 @@ const PresetsPreview: React.FC = () => {
     };
 
     return (
-        <div className="flex mx-auto max-h-[90vh] w-[85vw] bg-canvas-bg-subtle border border-canvas-border rounded-2xl mt-16 text-sm">
+        <div className="hidden lg:flex mx-auto max-h-[90vh] w-[85vw] bg-canvas-bg-subtle border border-canvas-border rounded-2xl mt-16 text-sm">
             {/* Toast Container */}
             <div className="fixed top-4 right-4 z-50 space-y-2">
                 {toasts.map(toast => (

@@ -410,7 +410,7 @@ return arrayMove(data, oldIndex, newIndex)
       defaultValue="outline"
       className="w-full flex-col justify-start gap-6"
     >
-      <div className="flex items-center justify-between px-4 lg:px-6">
+      <div className="flex items-center justify-between pr-2">
         <Label htmlFor="view-selector" className="sr-only">
           View
         </Label>
@@ -481,7 +481,7 @@ return arrayMove(data, oldIndex, newIndex)
       </div>
       <TabsContent
         value="outline"
-        className="relative flex flex-col gap-4 overflow-auto px-4 lg:px-6"
+        className="relative flex flex-col gap-4 overflow-auto pr-2"
       >
         <div className="overflow-hidden rounded-lg border border-canvas-border">
           <DndContext

@@ -6,7 +6,7 @@ const Buttons = () => {
   const variants = ['solid', 'soft', 'surface', 'outline', 'ghost'] as const;
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="space-y-8 py-6">
       <div>
         <h3 className="text-lg font-semibold mb-4">Primary Variants</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

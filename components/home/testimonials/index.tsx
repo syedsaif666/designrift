@@ -196,7 +196,7 @@ const MarqueeRow = ({
 export function Testimonials() {
     return (
         <section id="testimonials" className="relative min-h-screen w-full py-20">
-            <div className="container mx-auto px-4 md:px-6 max-w-[85vw]">
+            <div className="container mx-auto px-4 w-full md:w-[85vw]">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

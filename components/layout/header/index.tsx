@@ -40,21 +40,37 @@ export default function Header() {
         };
     }, []);
 
+    // Add this new useEffect to prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (mobileOpen) {
+            // Prevent scrolling on mount
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Re-enable scrolling when component unmounts
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup function to reset overflow when component unmounts
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [mobileOpen]);
+
     return (
         <header
-            className={`sticky top-0 z-50 w-full transition-all ${isScrolled
+            className={`md:sticky top-0 z-50 w-full transition-all ${isScrolled
                 ? 'bg-white/10 border-b border-white/20 shadow-sm backdrop-blur-sm'
                 : 'bg-transparent'
                 }`}
             role='banner'
         >
-            <div className='mx-auto max-w-[85vw] h-16 flex items-center justify-between'>
+            <div className='mx-auto md:max-w-[85vw] h-16 flex items-center justify-between'>
                 <Link href='/' className='md:pr-12'>
                     <Logo />
                 </Link>
 
                 <nav aria-label='Primary navigation' className='hidden md:flex md:flex-1 justify-center items-center'>
-                    <ul className='flex space-x-3'>
+                    <ul className='flex space-x-5'>
                         {NAV_ITEMS.map(({ href, label }) => (
                             <li key={href}>
                                 {href.startsWith('#') ? (
@@ -78,7 +94,7 @@ export default function Header() {
                         ))}
                     </ul>
                 </nav>
-                
+
                 <div className='flex justify-center items-center gap-2'>
                     <Link
                         href='https://github.com/syedsaif666/designrift'
@@ -128,7 +144,7 @@ export default function Header() {
                     aria-label='Mobile navigation'
                     role='dialog'
                     aria-modal='true'
-                    className='bg-canvas-base/95 fixed inset-0 top-24 z-50 backdrop-blur-sm md:hidden'>
+                    className='bg-canvas-base/70 fixed inset-0 top-16 z-50 backdrop-blur-sm md:hidden'>
                     <ul className='border-fg-border space-y-3 border-t p-4'>
                         {NAV_ITEMS.map(({ href, label }) => (
                             <li key={href}>

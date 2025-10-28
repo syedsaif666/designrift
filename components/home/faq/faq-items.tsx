@@ -64,7 +64,7 @@ export function FAQItemComponent({ item, isOpen, onToggle }: FAQItemComponentPro
                             </div>
 
                             {/* Question */}
-                            <h3 className="text-canvas-text-contrast text-lg font-semibold leading-tight pr-4">
+                            <h3 className="text-canvas-text-contrast text-base md:text-lg font-semibold leading-tight pr-4">
                                 {item.question}
                             </h3>
                         </div>

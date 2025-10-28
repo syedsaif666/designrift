@@ -174,7 +174,7 @@ export function Presets() {
 
   return (
     <section id="presets" className="relative min-h-[20rem] w-full py-10">
-      <div className="container mx-auto px-4 md:px-6 w-[85vw]">
+      <div className="container mx-auto px-4 w-full md:w-[85vw]">
         <div className="mb-6 flex flex-col items-center justify-center space-y-3 text-center">
           <div className="inline-flex">
             <span className="bg-gradient-to-r from-primary-bg to-primary-bg-hover text-canvas-text-contrast px-4 py-2 rounded-full text-xs font-medium inline-flex items-center gap-2">

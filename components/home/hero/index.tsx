@@ -11,9 +11,9 @@ export default function HeroSection() {
 
     return (
         <section className="mx-auto min-h-[90vh] flex items-center justify-center px-4 py-20">
-            <div className="flex xl:flex-row flex-col justify-between items-center w-[85vw] gap-4">
+            <div className="flex xl:flex-row flex-col justify-between items-center w-full md:w-[85vw] gap-4">
                 {/* Left Content */}
-                <div className="space-y-8 xl:w-1/2 w-[80vw]">
+                <div className="space-y-8 xl:w-1/2 md:w-[80vw]">
                     <div className="inline-flex">
                         <span className="bg-gradient-to-r from-primary-bg to-primary-bg-hover text-canvas-text-contrast px-6 py-2.5 rounded-full text-sm font-medium inline-flex items-center gap-2">
                             <span className='text-alert-solid'>✦</span>
