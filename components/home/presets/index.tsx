@@ -184,7 +184,7 @@ export function Presets() {
           <h2 className="text-canvas-text-contrast max-w-2xl text-xl font-extrabold tracking-tight md:text-3xl">
             Elevate Your Design Instantly
           </h2>
-          <p className="text-canvas-text font-medium max-w-lg text-sm md:text-base">
+          <p className="text-canvas-text font-medium max-w-2xl text-sm md:text-base">
             Apply theme presets with a single click. See how each option enhances the look.
           </p>
         </div>
