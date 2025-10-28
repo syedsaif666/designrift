@@ -63,7 +63,7 @@ export default function Pricing() {
   ];
 
   return (
-    <div className='space-y-8 p-8'>
+    <div className='space-y-8 pr-2 py-8'>
       <div className='text-center space-y-4'>
         <div className='flex flex-col justify-center items-center space-y-7'>
           <h2 className='text-canvas-text/80-contrast text-4xl font-bold tracking-tight'>

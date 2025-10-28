@@ -42,7 +42,7 @@ const features = [
 export function Features() {
     return (
         <section id="features" className="relative isolate w-full py-24 md:py-36 overflow-hidden">
-            <div className="container mx-auto px-4 md:px-0 max-w-[85vw]">
+            <div className="container mx-auto w-full md:w-[87vw]">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

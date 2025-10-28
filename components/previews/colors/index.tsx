@@ -141,7 +141,7 @@ export default function Colors(_props: ColorsTabProps) {
   ];
 
   return (
-    <div className='p-6 md:p-10'>
+    <div className='py-4 md:py-10'>
       <div className='max-w-7xl mx-auto space-y-12'>
         <div className='text-center mb-12'>
           <h1 className='text-canvas-text-contrast text-2xl md:text-4xl font-bold mb-3'>

@@ -12,7 +12,7 @@ import {
 
 export function SectionCards() {
   return (
-    <div className="*:data-[slot=card]:from-canvas-bg-subtle/80 *:data-[slot=card]:to-canvas-bg/60 grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot céu:card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
+    <div className="*:data-[slot=card]:from-canvas-bg-subtle/80 *:data-[slot=card]:to-canvas-bg/60 grid grid-cols-1 gap-4 pr-2 *:data-[slot=card]:bg-gradient-to-t *:data-[slot céu:card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       <Card className="@container/card">
         <CardHeader>
           <CardDescription className="text-canvas-text">Total Revenue</CardDescription>
