@@ -5,13 +5,12 @@ import { Code } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import { FaCheck, FaArrowRight, FaGithub, FaStar, FaEye, FaPalette } from 'react-icons/fa';
-import { BackgroundBeam } from '@/components/ui/background-beam';
 
 export default function HeroSection() {
     const { stargazersCount } = useGithubStars("syedsaif666", "designrift");
 
     return (
-        <section className="mx-auto min-h-screen flex items-center justify-center px-4 py-20">
+        <section className="mx-auto min-h-[90vh] flex items-center justify-center px-4 py-20">
             <div className="flex xl:flex-row flex-col justify-between items-center w-[85vw] gap-4">
                 {/* Left Content */}
                 <div className="space-y-8 xl:w-1/2 w-[80vw]">

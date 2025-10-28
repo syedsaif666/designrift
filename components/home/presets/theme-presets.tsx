@@ -38,7 +38,7 @@ export const themePresets = [
   {
     name: "Catppuccin",
     colors: {
-      canvas: "mauve",
+      canvas: "plum",
       primary: "pink",
       secondary: "teal",
       success: "teal",
