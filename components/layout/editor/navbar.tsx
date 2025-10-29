@@ -15,7 +15,7 @@ export default function Navbar() {
 
     return (
         <header
-            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 w-full border-b h-16'
+            className='bg-canvas-bg-subtle border-canvas-bg-hover sticky top-0 w-full border-b h-16 z-50'
             role='banner'>
             <div className='px-2 md:px-4'>
                 <div className='flex h-16 items-center justify-between'>
@@ -85,7 +85,7 @@ export default function Navbar() {
                     aria-label='Mobile navigation'
                     role='dialog'
                     aria-modal='true'
-                    className='fixed inset-0 top-16 z-50 backdrop-blur-md md:hidden'>
+                    className='fixed inset-0 top-16 z-50 backdrop-blur-md md:hidden block'>
                     <ul className='space-y-3 border-t p-2 md:p-4'>
                         <li>
                             <div className='flex flex-col gap-2 md:gap-3'>

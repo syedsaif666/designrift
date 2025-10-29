@@ -10,7 +10,7 @@ export default function ThemeEditorLayout({ children }: { children: React.ReactN
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <main className='overflow-hidden h-[calc(100vh-4rem)]'>
                 {children}
             </main>
