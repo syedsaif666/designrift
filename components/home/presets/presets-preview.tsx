@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Archive, Trash2, Mail, MoreVertical, Reply, RotateCcw, MoveRight, ChevronDown, Send, Inbox, FileText, Megaphone, ShoppingCart, Tag, MessageSquare, Bell, AlertCircle, CheckCircle, Info, AlertTriangle, X, Plus, Star, Clock, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Email {
     id: number;
@@ -22,45 +23,45 @@ interface Toast {
 const emailData: Email[] = [
     {
         id: 1,
-        sender: 'William Smith',
-        subject: 'Meeting Tomorrow',
-        preview: "Hi, let's have a meeting tomorrow to discuss the project. I've been reviewing the project details and have some ideas I'd like to share. It's...",
-        timestamp: 'about 2 years ago',
-        tags: ['meeting', 'work', 'important'],
+        sender: 'xAI Team',
+        subject: 'Grok 4 Release Notes',
+        preview: "Excited to share the release notes for Grok 4. It includes new tools and improved performance. Let's discuss implementation in our next meeting.",
+        timestamp: '30 minutes ago',
+        tags: ['release', 'AI', 'important'],
         isUnread: true,
         priority: 'high'
     },
     {
         id: 2,
-        sender: 'Alice Smith',
-        subject: 'Re: Project Update',
-        preview: "Thank you for the project update. It looks great! I've gone through the report, and the progress is impressive. The team has done a fantastic...",
-        timestamp: 'about 2 years ago',
-        tags: ['work', 'important'],
+        sender: 'Elon Musk',
+        subject: 'Re: AI Safety Concerns',
+        preview: "Thanks for the update on AI safety. We need to prioritize this in our next sprint. I've added some notes to the document for your review.",
+        timestamp: '4 hours ago',
+        tags: ['safety', 'AI', 'important'],
         priority: 'normal'
     },
     {
         id: 3,
-        sender: 'Bob Johnson',
-        subject: 'Weekend Plans',
-        preview: "Any plans for the weekend? I was thinking of going hiking in the nearby mountains. It's been a while since we had some outdoor fun. If you're...",
-        timestamp: 'over 2 years ago',
+        sender: 'Close Friend',
+        subject: 'Catch Up Over Coffee?',
+        preview: "Hey, it's been a while. How about grabbing coffee this weekend? I'd love to hear more about your work with AI and recent projects.",
+        timestamp: '1 day ago',
         tags: ['personal'],
         priority: 'normal'
     },
     {
         id: 4,
-        sender: 'Emily Davis',
-        subject: 'Re: Question about Budget',
-        preview: 'Regarding the budget concerns you raised...',
-        timestamp: 'over 2 years ago',
-        tags: ['finance'],
+        sender: 'HR Department',
+        subject: 'Re: Annual Performance Review',
+        preview: "Your annual performance review is scheduled for next week. Please prepare your self-assessment and any supporting materials.",
+        timestamp: '3 days ago',
+        tags: ['hr'],
         isUnread: true,
         priority: 'urgent'
     }
 ];
 
-type SidebarItem = 
+type SidebarItem =
     | {
         icon: LucideIcon;
         label: string;
@@ -70,18 +71,18 @@ type SidebarItem =
     | { separator: true };
 
 const sidebarItems: SidebarItem[] = [
-    { icon: Inbox, label: 'Inbox', count: 128, active: true },
-    { icon: FileText, label: 'Drafts', count: 9 },
+    { icon: Inbox, label: 'Inbox', count: 100, active: true },
+    { icon: FileText, label: 'Drafts', count: 10 },
     { icon: Send, label: 'Sent', count: null },
-    { icon: Star, label: 'Starred', count: 15 },
-    { icon: Clock, label: 'Snoozed', count: 3 },
+    { icon: Star, label: 'Starred', count: 20 },
+    { icon: Clock, label: 'Snoozed', count: 5 },
     { icon: Trash2, label: 'Trash', count: null },
     { separator: true },
-    { icon: MessageSquare, label: 'Social', count: 972 },
-    { icon: Bell, label: 'Updates', count: 342 },
-    { icon: Users, label: 'Forums', count: 128 },
-    { icon: ShoppingCart, label: 'Shopping', count: 8 },
-    { icon: Tag, label: 'Promotions', count: 21 }
+    { icon: MessageSquare, label: 'Social', count: 500 },
+    { icon: Bell, label: 'Updates', count: 200 },
+    { icon: Users, label: 'Forums', count: 100 },
+    { icon: ShoppingCart, label: 'Shopping', count: 15 },
+    { icon: Tag, label: 'Promotions', count: 30 }
 ];
 
 const PresetsPreview: React.FC = () => {
@@ -107,23 +108,21 @@ const PresetsPreview: React.FC = () => {
                 {toasts.map(toast => (
                     <div
                         key={toast.id}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg min-w-80 animate-slide-in ${
-                            toast.type === 'success' ? 'bg-success-bg border border-success-border' :
+                        className={`flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg min-w-80 animate-slide-in ${toast.type === 'success' ? 'bg-success-bg border border-success-border' :
                             toast.type === 'warning' ? 'bg-warning-bg border border-warning-border' :
-                            toast.type === 'alert' ? 'bg-alert-bg border border-alert-border' :
-                            'bg-info-bg border border-info-border'
-                        }`}
+                                toast.type === 'alert' ? 'bg-alert-bg border border-alert-border' :
+                                    'bg-info-bg border border-info-border'
+                            }`}
                     >
                         {toast.type === 'success' && <CheckCircle size={20} className="text-success-solid" />}
                         {toast.type === 'warning' && <AlertTriangle size={20} className="text-warning-solid" />}
                         {toast.type === 'alert' && <AlertCircle size={20} className="text-alert-solid" />}
                         {toast.type === 'info' && <Info size={20} className="text-info-solid" />}
-                        <span className={`flex-1 ${
-                            toast.type === 'success' ? 'text-success-text-contrast' :
+                        <span className={`flex-1 ${toast.type === 'success' ? 'text-success-text-contrast' :
                             toast.type === 'warning' ? 'text-warning-text-contrast' :
-                            toast.type === 'alert' ? 'text-alert-text-contrast' :
-                            'text-info-text-contrast'
-                        }`}>{toast.message}</span>
+                                toast.type === 'alert' ? 'text-alert-text-contrast' :
+                                    'text-info-text-contrast'
+                            }`}>{toast.message}</span>
                         <button onClick={() => setToasts(prev => prev.filter(t => t.id !== toast.id))}>
                             <X size={16} className="text-canvas-text" />
                         </button>
@@ -145,21 +144,25 @@ const PresetsPreview: React.FC = () => {
                             Are you sure you want to delete this email? This action cannot be undone.
                         </p>
                         <div className="flex gap-3 justify-end">
-                            <button
+                            <Button
+                                variant='soft'
+                                color='neutral'
+                                size='default'
                                 onClick={() => setShowDialog(false)}
-                                className="px-4 py-2 rounded-lg font-medium transition-colors bg-canvas-bg-hover text-canvas-text-contrast"
                             >
                                 Cancel
-                            </button>
-                            <button
+                            </Button>
+                            <Button
+                                variant='destructive'
+                                color='primary'
+                                size='default'
                                 onClick={() => {
                                     setShowDialog(false);
                                     addToast('alert', 'Email deleted successfully');
                                 }}
-                                className="px-4 py-2 rounded-lg font-medium transition-colors bg-alert-solid text-alert-on-alert"
                             >
                                 Delete
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -172,9 +175,9 @@ const PresetsPreview: React.FC = () => {
                     <button className="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-canvas-bg-active">
                         <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded flex items-center justify-center font-medium bg-primary-solid text-primary-on-primary">
-                                A
+                                G
                             </div>
-                            <span className="font-medium text-canvas-text-contrast">Alicia Koch</span>
+                            <span className="font-medium text-canvas-text-contrast">Grok User</span>
                         </div>
                         <ChevronDown size={16} className="text-canvas-text" />
                     </button>
@@ -198,18 +201,16 @@ const PresetsPreview: React.FC = () => {
                         ) : (
                             <button
                                 key={index}
-                                className={`flex items-center justify-between w-full px-3 py-2 rounded-lg mb-0.5 transition-colors ${
-                                    item.active ? 'bg-primary-bg-active text-primary-text-contrast' : 'text-canvas-text-contrast'
-                                }`}
+                                className={`flex items-center justify-between w-full px-3 py-2 rounded-lg mb-0.5 transition-colors ${item.active ? 'bg-primary-bg-active text-primary-text-contrast' : 'text-canvas-text-contrast'
+                                    }`}
                             >
                                 <div className="flex items-center gap-3">
                                     <item.icon size={18} />
                                     <span className="font-medium">{item.label}</span>
                                 </div>
                                 {item.count !== null && (
-                                    <span className={`text-xs px-2 py-0.5 rounded ${
-                                        item.active ? 'bg-primary-bg-hover text-primary-text' : 'bg-canvas-bg text-canvas-text-contrast'
-                                    }`}>
+                                    <span className={`text-xs px-2 py-0.5 rounded ${item.active ? 'bg-primary-bg-hover text-primary-text' : 'bg-canvas-bg text-canvas-text-contrast'
+                                        }`}>
                                         {item.count}
                                     </span>
                                 )}
@@ -231,17 +232,15 @@ const PresetsPreview: React.FC = () => {
                     <div className="flex gap-2 mb-3">
                         <button
                             onClick={() => setActiveTab('all')}
-                            className={`px-4 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                                activeTab === 'all' ? 'bg-canvas-bg-active text-canvas-text-contrast' : 'text-canvas-text'
-                            }`}
+                            className={`px-4 py-1.5 rounded-md text-xs font-medium transition-colors ${activeTab === 'all' ? 'bg-canvas-bg-active text-canvas-text-contrast' : 'text-canvas-text'
+                                }`}
                         >
                             All mail
                         </button>
                         <button
                             onClick={() => setActiveTab('unread')}
-                            className={`px-4 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                                activeTab === 'unread' ? 'bg-canvas-bg-active text-canvas-text-contrast' : 'text-canvas-text'
-                            }`}
+                            className={`px-4 py-1.5 rounded-md text-xs font-medium transition-colors ${activeTab === 'unread' ? 'bg-canvas-bg-active text-canvas-text-contrast' : 'text-canvas-text'
+                                }`}
                         >
                             Unread
                         </button>
@@ -264,9 +263,8 @@ const PresetsPreview: React.FC = () => {
                         <div
                             key={email.id}
                             onClick={() => setSelectedEmail(email)}
-                            className={`p-4 border-b cursor-pointer transition-colors border-canvas-border ${
-                                selectedEmail.id === email.id ? 'bg-canvas-bg-active' : ''
-                            }`}
+                            className={`p-4 border-b cursor-pointer transition-colors border-canvas-border ${selectedEmail.id === email.id ? 'bg-canvas-bg-active' : ''
+                                }`}
                         >
                             <div className="flex items-start justify-between mb-1">
                                 <div className="flex items-center gap-2">
@@ -301,11 +299,10 @@ const PresetsPreview: React.FC = () => {
                                 {email.tags.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className={`px-2 py-1 rounded text-xs font-medium ${
-                                            tag === 'important' ? 'bg-secondary-bg text-secondary-text' :
+                                        className={`px-2 py-1 rounded text-xs font-medium ${tag === 'important' ? 'bg-secondary-bg text-secondary-text' :
                                             tag === 'finance' ? 'bg-success-bg text-success-text' :
-                                            'bg-canvas-bg text-canvas-text'
-                                        }`}
+                                                'bg-canvas-bg text-canvas-text'
+                                            }`}
                                     >
                                         {tag}
                                     </span>
@@ -321,25 +318,25 @@ const PresetsPreview: React.FC = () => {
                 {/* Header Actions */}
                 <div className="flex items-center justify-between p-4 border-b border-canvas-border">
                     <div className="flex items-center gap-2">
-                        <button 
+                        <button
                             onClick={() => addToast('info', 'Email archived')}
                             className="p-2 rounded-lg transition-colors bg-canvas-bg"
                         >
                             <Archive size={18} className="text-canvas-text" />
                         </button>
-                        <button 
+                        <button
                             onClick={() => addToast('success', 'Marked as read')}
                             className="p-2 rounded-lg transition-colors bg-canvas-bg"
                         >
                             <Mail size={18} className="text-canvas-text" />
                         </button>
-                        <button 
+                        <button
                             onClick={() => setShowDialog(true)}
                             className="p-2 rounded-lg transition-colors bg-canvas-bg"
                         >
                             <Trash2 size={18} className="text-canvas-text" />
                         </button>
-                        <button 
+                        <button
                             onClick={() => addToast('warning', 'Email moved to spam')}
                             className="p-2 rounded-lg transition-colors bg-canvas-bg"
                         >
@@ -347,7 +344,7 @@ const PresetsPreview: React.FC = () => {
                         </button>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button 
+                        <button
                             className="px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 bg-primary-solid text-primary-on-primary"
                         >
                             <Reply size={16} />
@@ -378,7 +375,7 @@ const PresetsPreview: React.FC = () => {
                                         {selectedEmail.sender}
                                     </h2>
                                     <span className="text-xs text-canvas-text">
-                                        Oct 22, 2023, 9:00:00 AM
+                                        Oct 29, 2025, 2:30:00 PM
                                     </span>
                                 </div>
                                 <h3 className="font-medium mb-1 text-canvas-text-contrast">
@@ -393,12 +390,7 @@ const PresetsPreview: React.FC = () => {
                         {/* Email Body */}
                         <div className="space-y-3 text-canvas-text-contrast">
                             <p>
-                                Hi, let's have a meeting tomorrow to discuss the project. I've been reviewing the project details and
-                                have some ideas I'd like to share. It's crucial that we align on our next steps to ensure the project's
-                                success.
-                            </p>
-                            <p>
-                                Please come prepared with any questions or insights you may have. Looking forward to our meeting!
+                                {selectedEmail.preview}
                             </p>
                             <p>Best regards, {selectedEmail.sender.split(' ')[0]}</p>
                         </div>
@@ -407,10 +399,10 @@ const PresetsPreview: React.FC = () => {
                         <div className="mt-4 p-4 rounded-lg bg-info-bg border border-info-border">
                             <div className="flex items-center gap-2 mb-2">
                                 <Info size={18} className="text-info-solid" />
-                                <span className="font-medium text-info-text-contrast">Meeting Details</span>
+                                <span className="font-medium text-info-text-contrast">Release Details</span>
                             </div>
                             <p className="text-sm text-info-text">
-                                Scheduled for tomorrow at 10:00 AM. Conference Room B.
+                                Grok 4 released on October 29, 2025. Check the documentation for more information.
                             </p>
                         </div>
                     </div>

@@ -36,7 +36,11 @@ export const ThemeSidebar: React.FC<ThemeSidebarProps> = ({
   return (
     <>
       {/* Mobile Toggle Button */}
-      <RiMenuUnfoldLine onClick={() => setIsOpen(true)} aria-label="Open theme sidebar" className='w-11 h-11 text-canvas-text-contrast xl:hidden absolute top-22 left-6 md:z-0 z-50 bg-canvas-bg border p-2.5 rounded-md' />
+      <RiMenuUnfoldLine
+        onClick={() => setIsOpen(true)}
+        aria-label="Open theme sidebar"
+        className='w-11 h-11 text-canvas-text-contrast xl:hidden absolute top-22 left-6 md:z-0 z-40 bg-canvas-bg border p-2.5 rounded-md'
+      />
 
       {/* Overlay */}
       {isOpen && (
